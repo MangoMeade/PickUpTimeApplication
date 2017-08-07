@@ -1,6 +1,7 @@
 package com.jdbc.controller;
 
-
+import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,11 +15,7 @@ import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
-import com.jdbc.models.EventsEntity;
-import com.jdbc.models.UsersEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
 import java.util.ArrayList;
 
 @Controller
@@ -61,7 +58,7 @@ public class HomeController {
     public String addNewUser(@RequestParam("firstName") String firstname,
                              @RequestParam("lastName") String lastname,
                              @RequestParam("email") String email,
-                             @RequestParam("phoneNumber") double phoneNum,
+                             @RequestParam("phoneNumber") String phoneNum,
                              @RequestParam("gender") String gender,
                              @RequestParam("userName") String username,
                              @RequestParam("password") String password,

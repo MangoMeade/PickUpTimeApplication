@@ -46,7 +46,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "phoneNumber", nullable = true, length = 20)
+    @Column(name = "phoneNumber", nullable = true, length = 255)
     public String getPhoneNumber() {
         return phoneNumber;
     }

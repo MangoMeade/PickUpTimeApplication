@@ -1,6 +1,7 @@
 package com.jdbc.models;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "events", schema = "pickupdb", catalog = "")
@@ -13,6 +14,7 @@ public class EventsEntity {
     private String time;
     private Integer peopleGoing;
     private int eventId;
+    private Date day;
 
     @Basic
     @Column(name = "name", nullable = true, length = 255)
@@ -94,6 +96,16 @@ public class EventsEntity {
         this.eventId = eventId;
     }
 
+    @Basic
+    @Column(name = "day", nullable = true)
+    public Date getDay() {
+        return day;
+    }
+
+    public void setDay(Date day) {
+        this.day = day;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -109,6 +121,7 @@ public class EventsEntity {
         if (longitude != null ? !longitude.equals(that.longitude) : that.longitude != null) return false;
         if (time != null ? !time.equals(that.time) : that.time != null) return false;
         if (peopleGoing != null ? !peopleGoing.equals(that.peopleGoing) : that.peopleGoing != null) return false;
+        if (day != null ? !day.equals(that.day) : that.day != null) return false;
 
         return true;
     }
@@ -123,6 +136,7 @@ public class EventsEntity {
         result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (peopleGoing != null ? peopleGoing.hashCode() : 0);
         result = 31 * result + eventId;
+        result = 31 * result + (day != null ? day.hashCode() : 0);
         return result;
     }
 }
