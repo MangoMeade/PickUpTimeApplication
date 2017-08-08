@@ -10,6 +10,7 @@ public interface ParentUserDao {
     public void addUser(UsersEntity user);
     public void editUser(UsersEntity user);
     public void deleteUser(UsersEntity user);
+    public String getUser(String username, String password);
 
 
 }
