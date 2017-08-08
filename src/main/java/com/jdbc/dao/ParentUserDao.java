@@ -1,6 +1,5 @@
 package com.jdbc.dao;
 
-import com.jdbc.POJO.User;
 import com.jdbc.models.UsersEntity;
 
 import java.util.ArrayList;

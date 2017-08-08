@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Nathan Saleniuc
@@ -15,47 +16,92 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet'/>
     <%--<style>--%>
-        <%--body {--%>
-            <%--margin: 0;--%>
-            <%--padding: 0;--%>
-        <%--}--%>
+    <%--body {--%>
+    <%--margin: 0;--%>
+    <%--padding: 0;--%>
+    <%--}--%>
 
-        <%--#map {--%>
-            <%--position: fixed;--%>
-            <%--top: 0;--%>
-            <%--bottom: 50%;--%>
-            <%--width: 100%;--%>
-        <%--}--%>
+    <%--#map {--%>
+    <%--position: fixed;--%>
+    <%--top: 0;--%>
+    <%--bottom: 50%;--%>
+    <%--width: 100%;--%>
+    <%--}--%>
     <%--</style>--%>
 </head>
-${eventsEntityList}
+<ul>
+    <c:forEach items="${eventList}" var="num" begin="1" end="${eventList.size()}" step="1" varStatus="status">
+        <li>${num} | First: ${status.first} | Last: ${status.last} | Index: ${status.count}</li>
+    </c:forEach>
+
+</ul>
+${eventList}
 
 <body>
 
 <div id='map'></div>
 <%--<script>--%>
-    <%--mapboxgl.accessToken = 'pk.eyJ1IjoibnNhbGVuaXVjIiwiYSI6ImNqNjJ2dHU0ejFhNnkzM3A4NnhreHp3djgifQ.Gx2JsOag2oHo_ZkcYOGy9A';--%>
-    <%--var map = new mapboxgl.Map({--%>
-        <%--container: 'map', // container id--%>
-        <%--style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location--%>
-        <%--center: [-74.50, 40], // starting position [lng, lat]--%>
-        <%--zoom: 9 // starting zoom--%>
-    <%--});--%>
+<%--mapboxgl.accessToken = 'pk.eyJ1IjoibnNhbGVuaXVjIiwiYSI6ImNqNjJ2dHU0ejFhNnkzM3A4NnhreHp3djgifQ.Gx2JsOag2oHo_ZkcYOGy9A';--%>
+<%--var map = new mapboxgl.Map({--%>
+<%--container: 'map', // container id--%>
+<%--style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location--%>
+<%--center: [-74.50, 40], // starting position [lng, lat]--%>
+<%--zoom: 9 // starting zoom--%>
+<%--});--%>
 
 
+<%--// Add geolocate control to the map.--%>
+<%--map.addControl(new mapboxgl.GeolocateControl({--%>
+<%--positionOptions: {--%>
+<%--enableHighAccuracy: true--%>
+<%--},--%>
+<%--trackUserLocation: true--%>
+<%--}));--%>
 
-    <%--// Add geolocate control to the map.--%>
-    <%--map.addControl(new mapboxgl.GeolocateControl({--%>
-        <%--positionOptions: {--%>
-            <%--enableHighAccuracy: true--%>
-        <%--},--%>
-        <%--trackUserLocation: true--%>
-    <%--}));--%>
-
-    <%--map.addControl(new MapboxGeocoder({--%>
-        <%--accessToken: mapboxgl.accessToken--%>
-    <%--}));--%>
+<%--map.addControl(new MapboxGeocoder({--%>
+<%--accessToken: mapboxgl.accessToken--%>
+<%--}));--%>
 <%--</script>--%>
+<div>
+    <style>
+        div.absolute {
+            position: absolute;
+            bottom: 70px;
+            width: 200px;
+            height: 100px;
+            border: 3px solid #8AC007;
+        }
 
+        <
+        form >
+        Sport:< input type
+
+        =
+        "text"
+        name
+
+        =
+        "Sport"
+        value
+
+        =
+        "sport"
+        >
+        Location:< input type
+
+        =
+        "text"
+        name
+
+        =
+        "location"
+        value
+
+        =
+        "location"
+        >
+    </style>
+    </form>
+</div>
 </body>
 </html>

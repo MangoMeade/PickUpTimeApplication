@@ -1,6 +1,5 @@
 package com.jdbc.dao;
 
-import com.jdbc.POJO.Event;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;

@@ -21,7 +21,7 @@ public class MapController {
     public String map(Model model) {
         ArrayList<EventsEntity> eventList = getAddress();
 
-        model.addAttribute(eventList);
+        model.addAttribute("eventList", eventList);
 
         return "map";
     }
