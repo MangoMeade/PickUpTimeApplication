@@ -3,6 +3,9 @@ package com.jdbc.models;
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * Created by Nathan Saleniuc on 8/8/2017.
+ */
 @Entity
 @Table(name = "events", schema = "pickupdb", catalog = "")
 public class EventsEntity {
