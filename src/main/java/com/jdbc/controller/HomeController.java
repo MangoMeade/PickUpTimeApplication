@@ -76,6 +76,7 @@ public class HomeController {
                              @RequestParam("sport") String sport,
                              @RequestParam("address") String address,
                              @RequestParam("day") Date day,
+                             @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time, Model model) {
 
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
@@ -93,6 +94,7 @@ public class HomeController {
         newEvent.setAddress(address);
         newEvent.setTime(time);
         newEvent.setDay(day);
+        newEvent.setMinNeeded(minNeeded);
 
         session.save(newEvent);
         tx.commit( );

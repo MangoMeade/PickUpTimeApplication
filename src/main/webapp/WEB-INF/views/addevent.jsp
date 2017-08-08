@@ -28,6 +28,7 @@ Add a new event:
         <br>
         Date: (YYYY-MM-DD) <input type = "text" name="day" required>
         <br>
+        Amount of people Needed: <input type = "text" name="min" required>
 
         <br>
         <input type = "submit" value = "Add Event" > </p>

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Nathan Saleniuc on 8/8/2017.
+ * Created by michelhayman on 8/8/17.
  */
 @Entity
 @Table(name = "events", schema = "pickupdb", catalog = "")
@@ -18,6 +18,7 @@ public class EventsEntity {
     private Integer peopleGoing;
     private int eventId;
     private Date day;
+    private Integer minNeeded;
 
     @Basic
     @Column(name = "name", nullable = true, length = 255)
@@ -109,10 +110,20 @@ public class EventsEntity {
         this.day = day;
     }
 
+    @Basic
+    @Column(name = "minNeeded", nullable = true)
+    public Integer getMinNeeded() {
+        return minNeeded;
+    }
+
+    public void setMinNeeded(Integer minNeeded) {
+        this.minNeeded = minNeeded;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass( ) != o.getClass( )) return false;
 
         EventsEntity that = (EventsEntity) o;
 
@@ -125,21 +136,23 @@ public class EventsEntity {
         if (time != null ? !time.equals(that.time) : that.time != null) return false;
         if (peopleGoing != null ? !peopleGoing.equals(that.peopleGoing) : that.peopleGoing != null) return false;
         if (day != null ? !day.equals(that.day) : that.day != null) return false;
+        if (minNeeded != null ? !minNeeded.equals(that.minNeeded) : that.minNeeded != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (sport != null ? sport.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
-        result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
-        result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + (peopleGoing != null ? peopleGoing.hashCode() : 0);
+        int result = name != null ? name.hashCode( ) : 0;
+        result = 31 * result + (sport != null ? sport.hashCode( ) : 0);
+        result = 31 * result + (address != null ? address.hashCode( ) : 0);
+        result = 31 * result + (latitude != null ? latitude.hashCode( ) : 0);
+        result = 31 * result + (longitude != null ? longitude.hashCode( ) : 0);
+        result = 31 * result + (time != null ? time.hashCode( ) : 0);
+        result = 31 * result + (peopleGoing != null ? peopleGoing.hashCode( ) : 0);
         result = 31 * result + eventId;
-        result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + (day != null ? day.hashCode( ) : 0);
+        result = 31 * result + (minNeeded != null ? minNeeded.hashCode( ) : 0);
         return result;
     }
 }
