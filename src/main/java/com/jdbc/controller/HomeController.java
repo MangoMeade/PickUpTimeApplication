@@ -18,6 +18,7 @@ import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.sql.Date;
 
 @Controller
 public class HomeController {
@@ -76,6 +77,48 @@ public class HomeController {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         return new ModelAndView("listEvents", "cList", eventList);
+    }
+
+
+    @RequestMapping("/addNewEvent")
+    public String addnewItem(@RequestParam("name") String name,
+                             @RequestParam("sport") String sport,
+                             @RequestParam("address") String address,
+                             @RequestParam("day") Date day,
+                             @RequestParam("time") String time, Model model) {
+
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
+
+        Session session = sessionFact.openSession( );
+
+        Transaction tx = session.beginTransaction( );
+
+        EventsEntity newEvent = new EventsEntity( );
+
+        newEvent.setName(name);
+        newEvent.setSport(sport);
+        newEvent.setAddress(address);
+        newEvent.setTime(time);
+        newEvent.setDay(day);
+
+        session.save(newEvent);
+        tx.commit( );
+        session.close( );
+
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
+
+        model.addAttribute("eventlist", eventList);
+
+        return "addeventsuccess";
+    }
+
+    @RequestMapping("/addevent")
+    // the String method returns the jsp page that we want to show
+    public String addevent() {
+
+        return "addevent";
     }
 
 
