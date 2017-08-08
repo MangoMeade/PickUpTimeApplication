@@ -16,6 +16,11 @@
 </head>
 <body>
 <form method ="post" action="/listEvents">
+<h1>Welcome</h1>
+<form action="/listevents">
+    <input type="submit" value="See Events" />
+</form>
+<form method ="post" action="/seeEvents">
     Username: <input type = "text" name = "username" id="username" required>
     <br>
     Password: <input type = "password" name = "password" id="password" required>

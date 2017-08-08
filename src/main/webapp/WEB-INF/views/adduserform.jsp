@@ -16,12 +16,13 @@
     First Name: <input type = "text" name = "firstName" id="firstname" required><br>
     Last Name: <input type = "text" name = "lastName" id="lastname" required><br>
     Email: <input type = "email" name = "email" id="email" required><br>
-    Phone Number: <input type="tel" name="phoneNumber" id="phonenum" min="10" max="11" required><br>
+    Phone Number: <input type="tel" name="phoneNumber" id="phonenum" pattern=".{10,11}"><br>
     Gender: <input type = "text" name = "gender" id="gender"><br>
-    Age: <input type="int" name="age" id="age" min="1"><br>
-    Username: <input type = "text" name = "userName" id="username" min="5"  required><br>
+    Age: <input type="int" name="age" id="age" minlength="1"><br>
+    Username: <input type = "text" name = "userName" id="username "pattern=".{5,20}"><br>
+    Password: <input type = "password" name = "password" id="password" pattern=".{5,20}"><br>
 
-    Password: <input type = "password" name = "password" id="password" min="5" required><br>
+
     <br>
     <input type="submit" value = "Register">
 </form>
