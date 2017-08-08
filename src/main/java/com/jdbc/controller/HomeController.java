@@ -108,5 +108,10 @@ public class HomeController {
         return new ModelAndView("eventToEdit", "cList", eventList);
     }
 
+    @RequestMapping("/map")
+    public String map() {
+        return "map";
+    }
+
 
 }
