@@ -2,6 +2,11 @@ package com.jdbc.controller;
 
 import com.jdbc.models.EventsEntity;
 import com.jdbc.models.UsersEntity;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
+import com.sun.jersey.core.util.MultivaluedMapImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +21,8 @@ import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 
 @Controller
@@ -112,6 +119,5 @@ public class HomeController {
     public String map() {
         return "map";
     }
-
 
 }
