@@ -4,14 +4,14 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
     private int age;
     private String gender;
     private String userName;
     private String password;
 
     public User(){}
-    public User(String firstName, String lastName, String email, int phoneNumber, int age, String gender, String userName, String password) {
+    public User(String firstName, String lastName, String email, String phoneNumber, int age, String gender, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -46,11 +46,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
