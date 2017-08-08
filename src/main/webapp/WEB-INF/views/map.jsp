@@ -62,45 +62,7 @@ ${eventList}
 <%--accessToken: mapboxgl.accessToken--%>
 <%--}));--%>
 <%--</script>--%>
-<div>
-    <style>
-        div.absolute {
-            position: absolute;
-            bottom: 70px;
-            width: 200px;
-            height: 100px;
-            border: 3px solid #8AC007;
-        }
 
-        <
-        form >
-        Sport:< input type
-
-        =
-        "text"
-        name
-
-        =
-        "Sport"
-        value
-
-        =
-        "sport"
-        >
-        Location:< input type
-
-        =
-        "text"
-        name
-
-        =
-        "location"
-        value
-
-        =
-        "location"
-        >
-    </style>
     </form>
 </div>
 </body>
