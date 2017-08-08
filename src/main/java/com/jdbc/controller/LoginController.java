@@ -1,5 +1,7 @@
 package com.jdbc.controller;
 
+import com.jdbc.dao.DaoUserFactory;
+import com.jdbc.dao.ParentUserDao;
 import com.jdbc.models.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,15 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+
 
 @Controller
 
 public class LoginController {
+    private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
     public ModelAndView loginPage() {
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView("login", "loginPage", "login");
+    }
+
+    @RequestMapping(value = "/listusers")
+
+    public ModelAndView listUsers() {
+        ArrayList<UsersEntity> userList = userDao.userList();
+
+        return new ModelAndView("listUsers", "cList", userList);
     }
 
     @RequestMapping("/listevents1")
@@ -41,7 +54,6 @@ public class LoginController {
     }
 
     @RequestMapping("/addusersuccess")
-
     public String addNewUser(@RequestParam("firstName") String firstname,
                              @RequestParam("lastName") String lastname,
                              @RequestParam("email") String email,

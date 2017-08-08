@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.sql.Date;
 
+
 @Controller
 public class HomeController {
 
@@ -36,6 +37,13 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
+
+    @RequestMapping(value="/signup")
+    public String signup() {
+
+        return "adduserform";
+
+    }
 
     @RequestMapping(value = "/listevents")
 
