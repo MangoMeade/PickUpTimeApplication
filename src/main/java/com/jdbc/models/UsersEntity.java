@@ -3,7 +3,7 @@ package com.jdbc.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "pickupdb", catalog = "")
+@Table(name = "Users", schema = "pickupdb", catalog = "")
 public class UsersEntity {
     private String firstName;
     private String lastName;
