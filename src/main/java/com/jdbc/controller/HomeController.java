@@ -17,16 +17,11 @@ import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//import javax.ws.rs.core.MediaType;s
 import java.util.ArrayList;
-import java.sql.*;
-import java.io.*;
-//<<<<<<< HEAD
-////import javax.servlet.*;
-//=======
+//import java.sql.*;
+//import java.io.*;
 //import javax.servlet.*;
-//>>>>>>> 866c79219d6ac44f34d5474d077bc3fdba333e6e
-////import javax.servlet.http.*;
+//import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
@@ -44,6 +39,13 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
+
+    @RequestMapping(value="/signup")
+    public String signup() {
+
+        return "adduserform";
+
+    }
 
     @RequestMapping(value = "/listevents")
 

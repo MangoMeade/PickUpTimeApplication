@@ -1,5 +1,7 @@
 package com.jdbc.controller;
 
+import com.jdbc.dao.DaoUserFactory;
+import com.jdbc.dao.ParentUserDao;
 import com.jdbc.models.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,12 +9,17 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+
+
 @Controller
+
 public class LoginController {
+    private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
     public ModelAndView loginPage() {
         return new
@@ -20,14 +27,22 @@ public class LoginController {
                 ModelAndView("login", "loginPage", "login");
     }
 
-    @RequestMapping("/seeEvents")
+    @RequestMapping(value = "/listusers")
+
+    public ModelAndView listUsers() {
+        ArrayList<UsersEntity> userList = userDao.userList();
+
+        return new ModelAndView("listUsers", "cList", userList);
+    }
+
+    @RequestMapping("/listevents1")
     public String function(Model model, @RequestParam("username") String username,
                            @RequestParam("password") String password) {
 
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "seeEvents";
+        return "listEvents1";
     }
 
     @RequestMapping("/getNewUser")
