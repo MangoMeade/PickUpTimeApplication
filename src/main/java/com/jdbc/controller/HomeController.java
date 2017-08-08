@@ -19,14 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 //import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-import java.sql.*;
-import java.io.*;
-<<<<<<< HEAD
+//import java.sql.*;
+//import java.io.*;
 //import javax.servlet.*;
-=======
-import javax.servlet.*;
->>>>>>> 866c79219d6ac44f34d5474d077bc3fdba333e6e
-//import javax.servlet.http.*;
+//import javax.servlet.http.*
 
 @Controller
 public class HomeController {

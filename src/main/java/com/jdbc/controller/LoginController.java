@@ -21,14 +21,14 @@ public class LoginController {
                 ModelAndView("login", "loginPage", "login");
     }
 
-    @RequestMapping("/seeEvents")
+    @RequestMapping("/listevents1")
     public String function(Model model, @RequestParam("username") String username,
                            @RequestParam("password") String password) {
 
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "seeEvents";
+        return "listEvents1";
     }
 
     @RequestMapping("/getNewUser")
