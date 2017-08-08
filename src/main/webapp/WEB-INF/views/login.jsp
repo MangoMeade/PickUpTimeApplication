@@ -15,7 +15,7 @@
     </script>
 </head>
 <body>
-<form method ="post" action="/seeEvents">
+<form method ="post" action="/listEvents">
     Username: <input type = "text" name = "username" id="username" required>
     <br>
     Password: <input type = "password" name = "password" id="password" required>
