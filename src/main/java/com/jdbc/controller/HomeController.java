@@ -26,8 +26,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.sql.*;
 import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+//import javax.servlet.*;
+//import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
