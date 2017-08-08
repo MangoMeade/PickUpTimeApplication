@@ -1,6 +1,5 @@
 package com.jdbc.dao;
 
-import com.jdbc.POJO.Event;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -28,19 +27,26 @@ public class HibernateEventDao implements ParentEventDao{
 
     }
 
-    public void editEvent(EventsEntity event) {
+    public void updateEvent(int eventID, int peopleGoing) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
 
         SessionFactory sessionFact = cfg.buildSessionFactory();
 
-        Session selectEvents = sessionFact.openSession();
+        Session session = sessionFact.openSession();
 
-        Transaction tx = selectEvents.beginTransaction();
+        session.beginTransaction();
 
-        selectEvents.update(event);
+        EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
 
-        selectEvents.close();
+        updateEvent.setEventId(eventID);
+        updateEvent.setPeopleGoing(peopleGoing);
+
+        session.update(updateEvent);
+
+        session.getTransaction().commit();
+        session.close();
+
+
 
     }
 
