@@ -57,15 +57,15 @@
 </head>
 <body>
 <form method="post" action="/addusersuccess"<%--onsubmit="return checkInput()--%>">
-    First Name: <input type = "text" name = "firstName" id="firstname" required>
-    Last Name: <input type = "text" name = "lastName" id="lastname" required>
-    Email: <input type = "email" name = "email" id="email" required>
-    Phone Number: <input type="tel" name="phoneNumber" id="phonenum" minlength="10" maxlength="11" required>
-    Gender: <input type = "text" name = "gender" id="gender">
-    Age: <input type="int" name="age" id="age" minlength="1">
-    Username: <input type = "text" name = "userName" id="username" minlength="5"  required>
-    <br>
-    Password: <input type = "password" name = "password" id="password" minlength="5" required>
+    First Name: <input type = "text" name = "firstName" id="firstname" required><br>
+    Last Name: <input type = "text" name = "lastName" id="lastname" required><br>
+    Email: <input type = "email" name = "email" id="email" required><br>
+    Phone Number: <input type="tel" name="phoneNumber" id="phonenum" minlength="10" maxlength="11" required><br>
+    Gender: <input type = "text" name = "gender" id="gender"><br>
+    Age: <input type="int" name="age" id="age" minlength="1"><br>
+    Username: <input type = "text" name = "userName" id="username" minlength="5"  required><br>
+
+    Password: <input type = "password" name = "password" id="password" minlength="5" required><br>
     <br>
     <input type="submit" value = "Register">
 </form>
