@@ -1,6 +1,7 @@
 package com.jdbc.controller;
 
-
+import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,28 +15,32 @@ import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
-import com.jdbc.models.EventsEntity;
-import com.jdbc.models.UsersEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+//import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.sql.*;
+import java.io.*;
+import javax.servlet.*;
+//import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
-//    private Session getSession() {
-//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//        SessionFactory sessionFact = cfg.buildSessionFactory();
-//        Session selectAll = sessionFact.openSession();
-//        selectAll.beginTransaction();
-//        return selectAll;
-//    }
+
+
+    private Session getSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectAll = sessionFact.openSession();
+        selectAll.beginTransaction();
+        return selectAll;
+    }
 
     @RequestMapping("/")
     public ModelAndView loginPage() {
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("login", "loginPage", "Welcome");
+                ModelAndView("login", "loginPage", "login");
     }
 
     @RequestMapping("/seeEvents")
@@ -131,6 +136,10 @@ public class HomeController {
         return new ModelAndView("listEvents", "cList", eventList);
     }
 
+    @RequestMapping("/map")
+    public String map() {
+        return "map";
+    }
 
 
 }
