@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.test.models.EventsEntity" table="events" schema="pickupdb">
+    <class name="com.jdbc.models.EventsEntity" table="events" schema="pickupdb">
         <id name="eventId">
             <column name="eventID" sql-type="int(11)"/>
         </id>
@@ -28,9 +28,6 @@
         </property>
         <property name="peopleGoing">
             <column name="peopleGoing" sql-type="int(11)" not-null="true"/>
-        </property>
-        <property name="day">
-            <column name="day" sql-type="date" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

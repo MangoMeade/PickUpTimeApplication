@@ -11,9 +11,9 @@ import java.util.List;
 public interface ParentUserDao {
     public int HIBERNATE_DAO = 1;
     public ArrayList<UsersEntity> userList();
-    public void addUser(User user);
-    public void editUser(User user);
-    public void deleteUser(User user);
+    public void addUser(UsersEntity user);
+    public void editUser(UsersEntity user);
+    public void deleteUser(UsersEntity user);
 
 
 }

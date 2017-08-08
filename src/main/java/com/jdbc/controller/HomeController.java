@@ -23,13 +23,13 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
-    private Session getSession() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session selectAll = sessionFact.openSession();
-        selectAll.beginTransaction();
-        return selectAll;
-    }
+//    private Session getSession() {
+//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//        SessionFactory sessionFact = cfg.buildSessionFactory();
+//        Session selectAll = sessionFact.openSession();
+//        selectAll.beginTransaction();
+//        return selectAll;
+//    }
 
     @RequestMapping("/")
     public ModelAndView loginPage() {
@@ -61,7 +61,7 @@ public class HomeController {
     public String addNewUser(@RequestParam("firstName") String firstname,
                              @RequestParam("lastName") String lastname,
                              @RequestParam("email") String email,
-                             @RequestParam("phoneNumber") double phoneNum,
+                             @RequestParam("phoneNumber") String phoneNum,
                              @RequestParam("gender") String gender,
                              @RequestParam("userName") String username,
                              @RequestParam("password") String password,
@@ -97,19 +97,40 @@ public class HomeController {
         return new ModelAndView("listEvents", "cList", eventList);
     }
 
-    @RequestMapping(value = "/editevent", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
 
-    public ModelAndView editEvent(Model model, @RequestParam("id") int eventID) {
-        EventsEntity event = eventDao.getEvent(eventID);
+    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
 
-        model.addAttribute("name", event.getName());
-        model.addAttribute("sport", event.getSport());
-        model.addAttribute("address", event.getAddress());
+        return new ModelAndView("updateEventForm", "eventId", eventId);
+    }
+
+    @RequestMapping("/updateform")
+
+    public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+
+        Session session = sessionFact.openSession();
+
+        session.beginTransaction();
+
+        EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
+
+        updateEvent.setEventId(eventID);
+        updateEvent.setPeopleGoing(peopleGoing);
+
+        session.update(updateEvent);
+
+        session.getTransaction().commit();
+        session.close();
+
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("eventToEdit", "cList", eventList);
+        return new ModelAndView("listEvents", "cList", eventList);
     }
+
 
 
 }
