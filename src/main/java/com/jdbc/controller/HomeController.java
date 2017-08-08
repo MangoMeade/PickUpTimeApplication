@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.sql.*;
 import java.io.*;
-<<<<<<< HEAD
+//<<<<<<< HEAD
+////import javax.servlet.*;
+//=======
 //import javax.servlet.*;
-=======
-import javax.servlet.*;
->>>>>>> 866c79219d6ac44f34d5474d077bc3fdba333e6e
-//import javax.servlet.http.*;
+//>>>>>>> 866c79219d6ac44f34d5474d077bc3fdba333e6e
+////import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
@@ -87,10 +87,7 @@ public class HomeController {
         return new ModelAndView("listEvents", "cList", eventList);
     }
 
-    @RequestMapping("/map")
-    public String map() {
-        return "map";
-    }
+
 
 
 }
