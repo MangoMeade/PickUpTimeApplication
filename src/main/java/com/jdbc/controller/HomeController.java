@@ -24,9 +24,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.sql.*;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
+
     private Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -39,7 +44,7 @@ public class HomeController {
     public ModelAndView loginPage() {
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("login", "loginPage", "Welcome");
+                ModelAndView("login", "loginPage", "login");
     }
 
     @RequestMapping("/seeEvents")

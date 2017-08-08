@@ -12,7 +12,6 @@
     <title>Spring Demo</title>
     <meta charset="utf-8" />
     <script type="text/javascript">
-
     </script>
 </head>
 <body>
@@ -27,5 +26,7 @@
     <input type="submit" value="Sign Up" />
 </form>
 
+
 </body>
+
 </html>
