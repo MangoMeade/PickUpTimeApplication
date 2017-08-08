@@ -62,8 +62,8 @@
     Email: <input type = "email" name = "email" id="email" required>
     Phone Number: <input type="tel" name="phoneNumber" id="phonenum" minlength="10" maxlength="11" required>
     Gender: <input type = "text" name = "gender" id="gender">
-    Age: <input type=""
-    Username:<input type = "text" name = "userName" id="username" minlength="5"  required>
+    Age: <input type="int" name="age" id="age" minlength="1">
+    Username: <input type = "text" name = "userName" id="username" minlength="5"  required>
     <br>
     Password: <input type = "password" name = "password" id="password" minlength="5" required>
     <br>
