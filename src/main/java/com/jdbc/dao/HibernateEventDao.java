@@ -24,15 +24,27 @@ public class HibernateEventDao implements ParentEventDao{
         return (ArrayList<EventsEntity>) c.list();
     }
 
-    public void addEvent(Event event) {
+    public void addEvent(EventsEntity event) {
 
     }
 
-    public void editEvent(Event event) {
+    public void editEvent(EventsEntity event) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+
+        Session selectEvents = sessionFact.openSession();
+
+        Transaction tx = selectEvents.beginTransaction();
+
+        selectEvents.update(event);
+
+        selectEvents.close();
 
     }
 
-    public void deleteEvent(Event event) {
+    public void deleteEvent(EventsEntity event) {
 
     }
 

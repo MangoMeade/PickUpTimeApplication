@@ -29,8 +29,5 @@
         <property name="peopleGoing">
             <column name="peopleGoing" sql-type="int(11)" not-null="true"/>
         </property>
-        <property name="day">
-            <column name="day" sql-type="date" not-null="true"/>
-        </property>
     </class>
 </hibernate-mapping>

@@ -16,14 +16,17 @@ import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+//import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.sql.*;
 import java.io.*;
 import javax.servlet.*;
-import javax.servlet.http.*;
+//import javax.servlet.http.*;
 
 @Controller
 public class HomeController {
+
 
     private Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -46,18 +49,38 @@ public class HomeController {
         return new ModelAndView("listEvents", "cList", eventList);
     }
 
-    @RequestMapping(value = "/editevent", method = RequestMethod.GET)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
 
-    public ModelAndView editEvent(Model model, @RequestParam("id") int eventID) {
-        EventsEntity event = eventDao.getEvent(eventID);
+    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
 
-        model.addAttribute("name", event.getName());
-        model.addAttribute("sport", event.getSport());
-        model.addAttribute("address", event.getAddress());
+        return new ModelAndView("updateEventForm", "eventId", eventId);
+    }
+
+    @RequestMapping("/updateform")
+
+    public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+
+        Session session = sessionFact.openSession();
+
+        session.beginTransaction();
+
+        EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
+
+        updateEvent.setEventId(eventID);
+        updateEvent.setPeopleGoing(peopleGoing);
+
+        session.update(updateEvent);
+
+        session.getTransaction().commit();
+        session.close();
+
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("eventToEdit", "cList", eventList);
+        return new ModelAndView("listEvents", "cList", eventList);
     }
 
     @RequestMapping("/map")

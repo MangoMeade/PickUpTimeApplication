@@ -20,7 +20,8 @@ charset=ISO-8859-1">
     <tr>
         <td> ${myvar.name}</td>
         <td> ${myvar.sport}</td>
-        <td><a href="editevent?id=${myvar.eventId}">Are you Attending?</a></td>
+        <td> ${myvar.peopleGoing}</td>
+        <td><a href="update?id=${myvar.eventId}">Are you Attending?</a></td>
     </tr>
 </c:forEach></table>
 </body> </html>
