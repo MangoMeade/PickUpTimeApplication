@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
 
 public class LoginController {
@@ -48,6 +49,7 @@ public class LoginController {
                              @RequestParam("gender") String gender,
                              @RequestParam("userName") String username,
                              @RequestParam("password") String password,
+                             @RequestParam("age") int age,
                              Model model) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -61,6 +63,7 @@ public class LoginController {
         newUsers.setGender(gender);
         newUsers.setUserName(username);
         newUsers.setPassword(password);
+        newUsers.setAge(age);
         session.save(newUsers);
         tx.commit();
         session.close();

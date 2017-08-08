@@ -17,12 +17,7 @@ import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-//import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-//import java.sql.*;
-//import java.io.*;
-//import javax.servlet.*;
-//import javax.servlet.http.*
 
 @Controller
 public class HomeController {
@@ -83,10 +78,7 @@ public class HomeController {
         return new ModelAndView("listEvents", "cList", eventList);
     }
 
-    @RequestMapping("/map")
-    public String map() {
-        return "map";
-    }
+
 
 
 }
