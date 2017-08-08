@@ -30,7 +30,11 @@
             <column name="peopleGoing" sql-type="int(11)" not-null="true"/>
         </property>
         <property name="day">
+<<<<<<< HEAD
             <column name="day" sql-type="date" not-null="true"/>
+=======
+            <column name="day" sql-type="date" not-null="false"/>
+>>>>>>> 8acb3efb0bc3c007bd9aa915bcef37bd20c07796
         </property>
     </class>
 </hibernate-mapping>

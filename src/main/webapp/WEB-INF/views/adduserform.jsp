@@ -11,7 +11,7 @@
     <title>Registration</title>
 </head>
 <body>
-<form method="post" action="/addusersuccess"<%--onsubmit="return checkInput()--%>">
+<form method="post" action="/addusersuccess">
 
     First Name: <input type = "text" name = "firstName" id="firstname" required><br>
     Last Name: <input type = "text" name = "lastName" id="lastname" required><br>
@@ -21,8 +21,6 @@
     Age: <input type="int" name="age" id="age" minlength="1"><br>
     Username: <input type = "text" name = "userName" id="username "pattern=".{5,20}"><br>
     Password: <input type = "password" name = "password" id="password" pattern=".{5,20}"><br>
-
-
     <br>
     <input type="submit" value = "Register">
 </form>
