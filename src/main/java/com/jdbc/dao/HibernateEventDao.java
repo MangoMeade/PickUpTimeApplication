@@ -62,7 +62,7 @@ public class HibernateEventDao implements ParentEventDao{
 
         Transaction tx = selectEvents.beginTransaction();
 
-        Query query = selectEvents.createQuery("FROM EventsEntity WHERE day < GETDATE(current_date ) - 1");
+        Query query = selectEvents.createQuery("DELETE FROM events WHERE day < (CURDATE() - INTERVAL 2 DAY");
 
         EventsEntity deletedEvent = (EventsEntity) query;
 
