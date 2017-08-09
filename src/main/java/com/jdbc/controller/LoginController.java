@@ -96,7 +96,7 @@ public class LoginController {
         newUsers.setPhoneNumber(phoneNum);
         newUsers.setGender(gender);
         newUsers.setUserName(username);
-        newUsers.setPassword(password);
+        newUsers.setPassword(Utility.encryptWithMD5(password));
         newUsers.setAge(age);
 
         Criteria c = session.createCriteria(UsersEntity.class);
