@@ -41,6 +41,14 @@ Your event has been saved!
     </c:forEach>
 
 <a href="/listevents">Back to the Events</a>
+    <br>
+    <form action="/addevent">
+        <input type="submit" value="Add Another Event">
+    </form>
+    <br>
+    <form action="/listofsports">
+        <input type= "submit" value="Back to Sports">
+    </form>
 </table>
 </body>
 </html>

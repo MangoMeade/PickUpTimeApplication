@@ -27,7 +27,7 @@
             <column name="time" sql-type="varchar(255)" not-null="true"/>
         </property>
         <property name="peopleGoing">
-            <column name="peopleGoing" sql-type="int(11)" not-null="true"/>
+            <column name="peopleGoing" sql-type="int(100)" not-null="false"/>
         </property>
         <property name="day">
             <column name="day" sql-type="date" not-null="true"/>
