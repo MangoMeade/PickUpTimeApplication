@@ -50,14 +50,14 @@ public class HomeController {
     public ModelAndView listEvents() {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("listEvents", "cList", eventList);
+        return new ModelAndView("listevents", "cList", eventList);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
 
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
 
-        return new ModelAndView("updateEventForm", "eventId", eventId);
+        return new ModelAndView("updateeventform", "eventId", eventId);
     }
 
     @RequestMapping("/updateform")
@@ -68,11 +68,11 @@ public class HomeController {
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("listEvents", "cList", eventList);
+        return new ModelAndView("listevents", "cList", eventList);
     }
 
 
-    @RequestMapping("/addNewEvent")
+    @RequestMapping("/addeventsuccess")
     public String addnewItem(@RequestParam("name") String name,
                              @RequestParam("sport") String sport,
                              @RequestParam("address") String address,
@@ -108,15 +108,14 @@ public class HomeController {
 
         return "addeventsuccess";
     }
-
+    @RequestMapping("/listofsports")
+        public ModelAndView listOfSports() {
+            return new ModelAndView("listofsports", "sportlist","SPORTS");
+        }
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
 
         return "addevent";
     }
-
-
-
-
 }

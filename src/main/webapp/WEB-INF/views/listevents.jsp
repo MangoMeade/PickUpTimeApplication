@@ -30,7 +30,14 @@ charset=ISO-8859-1">
         <td> ${myvar.sport}</td>
         <td> ${myvar.peopleGoing}</td>
         <td> ${myvar.minNeeded}</td>
+        <td> ${myvar.day}</td>
         <td><a href="update?id=${myvar.eventId}">Are you Attending?</a></td>
     </tr>
 </c:forEach></table>
+<form action="/addevent">
+    <input type="submit" value="Add New Event">
+</form>
+<form action="/listofsports">
+<input type= "submit" value="Back to Sports">
+</form>
 </body> </html>
