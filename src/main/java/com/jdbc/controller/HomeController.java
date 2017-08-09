@@ -118,4 +118,11 @@ public class HomeController {
 
         return "addevent";
     }
+
+    @RequestMapping("deleteevents")
+        public String deleteEvent(){
+            eventDao.deleteEvent();
+
+            return "login";
+    }
 }
