@@ -6,22 +6,22 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 
-public class HibernateEventDao implements ParentEventDao{
+public class HibernateEventDao implements ParentEventDao {
     public ArrayList<EventsEntity> eventList() {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
 
-        SessionFactory sessionFact = cfg.buildSessionFactory();
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
 
-        Session selectEvents = sessionFact.openSession();
+        Session selectEvents = sessionFact.openSession( );
 
-        selectEvents.beginTransaction();
+        selectEvents.beginTransaction( );
 
         Criteria c = selectEvents.createCriteria(EventsEntity.class);
         //selectEvents.close();
 
-        return (ArrayList<EventsEntity>) c.list();
+        return (ArrayList<EventsEntity>) c.list( );
     }
 
     public void addEvent(EventsEntity event) {
@@ -29,13 +29,13 @@ public class HibernateEventDao implements ParentEventDao{
     }
 
     public void updateEvent(int eventID, int peopleGoing) {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory();
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
 
-        Session session = sessionFact.openSession();
+        Session session = sessionFact.openSession( );
 
-        session.beginTransaction();
+        session.beginTransaction( );
 
         EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
 
@@ -44,53 +44,52 @@ public class HibernateEventDao implements ParentEventDao{
 
         session.update(updateEvent);
 
-        session.getTransaction().commit();
-        session.close();
-
+        session.getTransaction( ).commit( );
+        session.close( );
 
 
     }
 
     public void deleteEvent() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory();
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
 
-        Session selectEvents = sessionFact.openSession();
+        Session selectEvents = sessionFact.openSession( );
 
-        selectEvents.beginTransaction();
+        selectEvents.beginTransaction( );
 
-        Transaction tx = selectEvents.beginTransaction();
+        Transaction tx = selectEvents.beginTransaction( );
 
         Query query = selectEvents.createQuery("FROM EventsEntity WHERE day < subdate(current_date, 1)");
 
 
-        EventsEntity deletedEvent = (EventsEntity) query.setMaxResults(1).uniqueResult();
+        EventsEntity deletedEvent = (EventsEntity) query.setMaxResults(1).uniqueResult( );
 
         selectEvents.delete(deletedEvent);
 
-        tx.commit();
+        tx.commit( );
 
-        selectEvents.close();
+        selectEvents.close( );
     }
 
     public EventsEntity getEvent(int eventID) {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
 
-        SessionFactory sessionFact = cfg.buildSessionFactory();
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
 
-        Session selectEvents = sessionFact.openSession();
+        Session selectEvents = sessionFact.openSession( );
 
-        Transaction tx = selectEvents.beginTransaction();
+        Transaction tx = selectEvents.beginTransaction( );
 
-        Query query = selectEvents.createQuery("FROM EventsEntity WHERE eventId = " +eventID);
+        Query query = selectEvents.createQuery("FROM EventsEntity WHERE eventId = " + eventID);
 
-        EventsEntity event = (EventsEntity) query.setMaxResults(1).uniqueResult();
+        EventsEntity event = (EventsEntity) query.setMaxResults(1).uniqueResult( );
 
-        tx.commit();
+        tx.commit( );
 
-        selectEvents.close();
+        selectEvents.close( );
         return event;
 
     }

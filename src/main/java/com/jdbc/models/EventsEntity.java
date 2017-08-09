@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by michelhayman on 8/8/17.
+ * Created by michelhayman on 8/9/17.
  */
 @Entity
 @Table(name = "events", schema = "pickupdb", catalog = "")
@@ -19,6 +19,7 @@ public class EventsEntity {
     private int eventId;
     private Date day;
     private Integer minNeeded;
+    private String description;
 
     @Basic
     @Column(name = "name", nullable = true, length = 255)
@@ -120,6 +121,16 @@ public class EventsEntity {
         this.minNeeded = minNeeded;
     }
 
+    @Basic
+    @Column(name = "description", nullable = true, length = 255)
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -137,6 +148,7 @@ public class EventsEntity {
         if (peopleGoing != null ? !peopleGoing.equals(that.peopleGoing) : that.peopleGoing != null) return false;
         if (day != null ? !day.equals(that.day) : that.day != null) return false;
         if (minNeeded != null ? !minNeeded.equals(that.minNeeded) : that.minNeeded != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
 
         return true;
     }
@@ -153,6 +165,7 @@ public class EventsEntity {
         result = 31 * result + eventId;
         result = 31 * result + (day != null ? day.hashCode( ) : 0);
         result = 31 * result + (minNeeded != null ? minNeeded.hashCode( ) : 0);
+        result = 31 * result + (description != null ? description.hashCode( ) : 0);
         return result;
     }
 }
