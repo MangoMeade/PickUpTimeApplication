@@ -44,6 +44,7 @@ public class MapController {
         Session selectAll = sessionFactory.openSession();
 
         selectAll.beginTransaction();
+
         return selectAll;
     }
 
