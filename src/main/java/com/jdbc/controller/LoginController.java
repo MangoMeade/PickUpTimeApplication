@@ -29,6 +29,24 @@ public class LoginController {
                 ModelAndView("login", "loginPage", "login");
     }
 
+    @RequestMapping("/loginfailed")
+    public ModelAndView loginFailed() {
+        String loginFailed = "Login Failed. Try Again";
+
+        return new
+                //the type is model and view which brings together model and view
+                ModelAndView("login", "loginFailed", loginFailed);
+    }
+
+    @RequestMapping("/loggedin")
+    public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password) {
+
+        //userDao.getUser(username, password);
+        return new
+                //the type is model and view which brings together model and view
+                ModelAndView(userDao.getUser(username, password), "", "");
+    }
+
     @RequestMapping(value = "/listusers")
 
     public ModelAndView listUsers() {

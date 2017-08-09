@@ -11,7 +11,6 @@ public class HibernateUserDao implements ParentUserDao {
     public ArrayList<UsersEntity> userList() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
-
         SessionFactory sessionFact = cfg.buildSessionFactory();
 
         Session selectUsers = sessionFact.openSession();
@@ -32,6 +31,21 @@ public class HibernateUserDao implements ParentUserDao {
     }
 
     public void deleteUser(UsersEntity user) {
+
+    }
+
+    public String getUser(String username, String password) {
+        ArrayList<UsersEntity> users = userList();
+        for(UsersEntity user : users) {
+            if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
+                return "redirect:listevents";
+            }
+            else if (username.equals(user.getUserName()) || password.equals(user.getPassword())) {
+                return "redirect:loginfailed";
+            }
+        }
+        return null;
+
 
     }
 

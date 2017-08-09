@@ -62,24 +62,8 @@ public class HomeController {
     @RequestMapping("/updateform")
 
     public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-
-        Session session = sessionFact.openSession();
-
-        session.beginTransaction();
-
-        EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
-
-        updateEvent.setEventId(eventID);
-        updateEvent.setPeopleGoing(peopleGoing);
-
-        session.update(updateEvent);
-
-        session.getTransaction().commit();
-        session.close();
-
+        eventDao.updateEvent(eventID, peopleGoing);
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
@@ -92,6 +76,7 @@ public class HomeController {
                              @RequestParam("sport") String sport,
                              @RequestParam("address") String address,
                              @RequestParam("day") Date day,
+                             @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time, Model model) {
 
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
@@ -109,6 +94,7 @@ public class HomeController {
         newEvent.setAddress(address);
         newEvent.setTime(time);
         newEvent.setDay(day);
+        newEvent.setMinNeeded(minNeeded);
 
         session.save(newEvent);
         tx.commit( );

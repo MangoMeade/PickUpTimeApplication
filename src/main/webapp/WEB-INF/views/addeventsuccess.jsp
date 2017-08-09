@@ -29,6 +29,7 @@ Your event has been saved!
         <td> ${myVar.address}</td>
         <td> ${myVar.time}</td>
         <td> ${myVar.day}</td>
+        <td> ${myVar.minNeeded}</td>
 
 
 
