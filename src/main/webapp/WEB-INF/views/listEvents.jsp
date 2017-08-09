@@ -15,7 +15,7 @@
 
 charset=ISO-8859-1">
     <title>ListEvents</title></head>
-<h1>Nearby Events</h1>
+<h3>Events List</h3>
 <table border=1><c:forEach var="myvar" items="${cList}">
     <tr>
         <td> ${myvar.name}</td>

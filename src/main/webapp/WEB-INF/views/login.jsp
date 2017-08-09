@@ -15,6 +15,7 @@
     </script>
 </head>
 <body>
+${loginFailed}
 <h1>Welcome</h1>
 <form action="/listOfSports">
     <input type="submit" value="See Events"/>
