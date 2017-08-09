@@ -1,6 +1,7 @@
 package com.jdbc.controller;
 
 import com.jdbc.models.EventsEntity;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -106,7 +107,10 @@ public class HomeController {
 
         return "addeventsuccess";
     }
-
+    @RequestMapping("/listOfSports")
+        public ModelAndView listOfSports() {
+            return new ModelAndView("listOfSports", "sportlist","SPORTS");
+        }
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {

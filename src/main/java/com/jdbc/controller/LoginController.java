@@ -108,7 +108,7 @@ public class LoginController {
             return new ModelAndView("failed","control",controller);
         }
 
-
+        model.addAttribute("firstname", firstname);
         session.save(newUsers);
         tx.commit();
         session.close();

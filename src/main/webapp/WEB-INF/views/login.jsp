@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1>Welcome</h1>
-<form action="/listevents">
+<form action="/listOfSports">
     <input type="submit" value="See Events"/>
 </form>
 <form method="post" action="/loggedin">

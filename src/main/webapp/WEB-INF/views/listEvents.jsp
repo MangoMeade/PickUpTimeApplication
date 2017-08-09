@@ -15,13 +15,20 @@
 
 charset=ISO-8859-1">
     <title>ListEvents</title></head>
-
+<h1>Nearby Events</h1>
 <table border=1><c:forEach var="myvar" items="${cList}">
     <tr>
         <td> ${myvar.name}</td>
         <td> ${myvar.sport}</td>
         <td> ${myvar.peopleGoing}</td>
+        <td> ${myvar.day}</td>
         <td><a href="update?id=${myvar.eventId}">Are you Attending?</a></td>
     </tr>
 </c:forEach></table>
+<form action="/addevent">
+    <input type="submit" value="Add New Event">
+</form>
+<form action="/listOfSports">
+<input type= "submit" value="Back to Sports">
+</form>
 </body> </html>
