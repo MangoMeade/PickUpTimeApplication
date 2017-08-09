@@ -16,17 +16,19 @@ Add a new event:
 
 
 
-<form action= "addNewEvent" method="post">
+<form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>
         <br>
-        Sport: <input type = "text" name="sport"required >
+        <select name="sport">
+            <option value="Soccer">Soccer</option>
+        </select>
         <br>
         Address: <input type = "text" name="address" required>
         <br>
         Time: <input type = "text" name="time" required>
         <br>
-        Date: (YYYY-MM-DD) <input type = "text" name="day" required>
+        Date: <input type="date" name="day">
         <br>
         Amount of people Needed: <input type = "text" name="min" required>
 

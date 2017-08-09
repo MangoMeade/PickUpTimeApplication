@@ -28,7 +28,7 @@ charset=ISO-8859-1">
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
-<form action="/listOfSports">
+<form action="/listofsports">
 <input type= "submit" value="Back to Sports">
 </form>
 </body> </html>

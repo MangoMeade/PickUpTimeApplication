@@ -20,7 +20,7 @@
 <br>
 ${peopleGoing}
 <form action="updateform" method="post">
-    ${eventId}<input type=hidden name="eventId" value="${eventId}">
+    <input type=hidden name="eventId" value="${eventId}">
     <br>
     People Going: <input type="number" name="peopleGoing" placeholder="${peopleGoing}">
     <br>

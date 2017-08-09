@@ -17,7 +17,7 @@
 <body>
 ${loginFailed}
 <h1>Welcome</h1>
-<form action="/listOfSports">
+<form action="/listofsports">
     <input type="submit" value="See Events"/>
 </form>
 <form method="post" action="/loggedin">
@@ -27,7 +27,7 @@ ${loginFailed}
     <br>
     <input type="submit" value="Login">
 </form>
-<form action="/getNewUser">
+<form action="/getnewuser">
     <input type="submit" value="Sign Up">
 </form>
 </body>

@@ -52,7 +52,7 @@ public class LoginController {
     public ModelAndView listUsers() {
         ArrayList<UsersEntity> userList = userDao.userList();
 
-        return new ModelAndView("listUsers", "cList", userList);
+        return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
     @RequestMapping("/listevents1")
@@ -65,7 +65,7 @@ public class LoginController {
         return "listEvents1";
     }
 
-    @RequestMapping("/getNewUser")
+    @RequestMapping("/getnewuser")
 
     public String newCustomer() {
 

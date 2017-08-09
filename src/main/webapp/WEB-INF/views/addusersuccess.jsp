@@ -15,7 +15,7 @@
 <h1>
     Welcome ${firstname}
 </h1>
-<form action="/listOfSports">
+<form action="/listofsports">
     <input type="submit" value="Sports">
 </form>
 <form action="/listevents">

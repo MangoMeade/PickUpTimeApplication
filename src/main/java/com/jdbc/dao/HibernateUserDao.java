@@ -40,7 +40,7 @@ public class HibernateUserDao implements ParentUserDao {
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 return "redirect:listevents";
             }
-            else if (username.equals(user.getUserName()) || password.equals(user.getPassword())) {
+            else {
                 return "redirect:loginfailed";
             }
         }

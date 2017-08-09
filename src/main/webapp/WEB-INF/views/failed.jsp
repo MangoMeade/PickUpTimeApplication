@@ -12,7 +12,7 @@
 </head>
 <body>
 ${control}
-<form action="/getNewUser">
+<form action="/getnewuser">
     <input type="submit" value="Sign Up" />
 </form>
 </body>
