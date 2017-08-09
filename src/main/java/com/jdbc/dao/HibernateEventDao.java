@@ -19,6 +19,7 @@ public class HibernateEventDao implements ParentEventDao{
         selectEvents.beginTransaction();
 
         Criteria c = selectEvents.createCriteria(EventsEntity.class);
+        //selectEvents.close();
 
         return (ArrayList<EventsEntity>) c.list();
     }
@@ -50,8 +51,26 @@ public class HibernateEventDao implements ParentEventDao{
 
     }
 
-    public void deleteEvent(EventsEntity event) {
+    public void deleteEvent() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+
+        Session selectEvents = sessionFact.openSession();
+
+        selectEvents.beginTransaction();
+
+        Transaction tx = selectEvents.beginTransaction();
+
+        Query query = selectEvents.createQuery("FROM EventsEntity WHERE day < GETDATE(current_date ) - 1");
+
+        EventsEntity deletedEvent = (EventsEntity) query;
+
+        selectEvents.delete(deletedEvent);
+
+        tx.commit();
+
+        selectEvents.close();
     }
 
     public EventsEntity getEvent(int eventID) {
@@ -67,6 +86,8 @@ public class HibernateEventDao implements ParentEventDao{
         Query query = selectEvents.createQuery("FROM EventsEntity WHERE eventId = " +eventID);
 
         EventsEntity event = (EventsEntity) query.setMaxResults(1).uniqueResult();
+
+        tx.commit();
 
         selectEvents.close();
         return event;

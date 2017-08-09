@@ -9,6 +9,6 @@ public interface ParentEventDao {
     public ArrayList<EventsEntity> eventList();
     public void addEvent(EventsEntity event);
     public void updateEvent(int eventID, int peopleGoing);
-    public void deleteEvent(EventsEntity event);
+    public void deleteEvent();
     public EventsEntity getEvent(int eventID);
 }

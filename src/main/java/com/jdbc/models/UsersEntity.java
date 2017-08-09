@@ -141,4 +141,19 @@ public class UsersEntity {
         result = 31 * result + userId;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "UsersEntity{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }
