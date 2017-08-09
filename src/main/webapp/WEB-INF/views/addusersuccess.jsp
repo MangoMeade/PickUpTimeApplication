@@ -11,9 +11,15 @@
     <title>Success</title>
 </head>
 <body>
-<h1>
-    Welcome ${firstName}
-</h1>
 
+<h1>
+    Welcome ${firstname}
+</h1>
+<form action="/listofsports">
+    <input type="submit" value="Sports">
+</form>
+<form action="/listevents">
+    <input type="submit" value="See Events">
+</form>
 </body>
 </html>
