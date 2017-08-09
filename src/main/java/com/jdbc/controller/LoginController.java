@@ -55,15 +55,15 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
-    @RequestMapping("/listevents1")
-    public String function(Model model, @RequestParam("username") String username,
-                           @RequestParam("password") String password) {
-
-        model.addAttribute("username", username);
-        model.addAttribute("password", password);
-
-        return "listEvents1";
-    }
+//    @RequestMapping("/listevents1")
+//    public String function(Model model, @RequestParam("username") String username,
+//                           @RequestParam("password") String password) {
+//
+//        model.addAttribute("username", username);
+//        model.addAttribute("password", password);
+//
+//        return "listEvents1";
+//    }
 
     @RequestMapping("/getnewuser")
 
