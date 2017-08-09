@@ -24,6 +24,8 @@ Your event has been saved!
 
 
     <tr>
+        <th> Event </th>
+
         <td> ${myVar.name}</td>
         <td> ${myVar.sport}</td>
         <td> ${myVar.address}</td>

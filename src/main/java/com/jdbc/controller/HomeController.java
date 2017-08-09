@@ -94,7 +94,7 @@ public class HomeController {
         newEvent.setAddress(address);
         newEvent.setTime(time);
         newEvent.setDay(day);
-        newEvent.setMinNeeded(minNeeded);
+        newEvent.setMinNeeded(0);
 
         session.save(newEvent);
         tx.commit( );
