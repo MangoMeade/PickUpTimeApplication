@@ -40,11 +40,30 @@ public class HibernateUserDao implements ParentUserDao {
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 return "redirect:listevents";
             }
-            else if (username.equals(user.getUserName()) || password.equals(user.getPassword())) {
+            else {
                 return "redirect:loginfailed";
             }
         }
         return null;
+//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//
+//
+//        SessionFactory sessionFact = cfg.buildSessionFactory();
+//
+//        Session selectUsers = sessionFact.openSession();
+//
+//        Transaction tx = selectUsers.beginTransaction();
+//
+//        Query query = selectUsers.createQuery("FROM UsersEntity WHERE userName = " + username + "AND password =" + password);
+//
+//        UsersEntity event = (UsersEntity) query.setMaxResults(1).uniqueResult();
+//
+//        selectUsers.close();
+//
+//        if (event.equals(null)) {
+//            return "redirect:loginfailed";
+//        }
+//        return "redirect:listevents";
 
 
     }

@@ -16,11 +16,20 @@
 charset=ISO-8859-1">
     <title>ListEvents</title></head>
 <h3>Events List</h3>
+<table>
+    <tr>
+        <th>Event Name</th>
+        <th>Sport Played</th>
+        <th>Number of people going</th>
+        <th>Minimum number of people needed</th>
+    </tr>
+</table>
 <table border=1><c:forEach var="myvar" items="${cList}">
     <tr>
         <td> ${myvar.name}</td>
         <td> ${myvar.sport}</td>
         <td> ${myvar.peopleGoing}</td>
+        <td> ${myvar.minNeeded}</td>
         <td><a href="update?id=${myvar.eventId}">Are you Attending?</a></td>
     </tr>
 </c:forEach></table>
