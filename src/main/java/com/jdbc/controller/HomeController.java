@@ -38,13 +38,6 @@ public class HomeController {
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
 
-    @RequestMapping(value="/signup")
-    public String signup() {
-
-        return "adduserform";
-
-    }
-
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
