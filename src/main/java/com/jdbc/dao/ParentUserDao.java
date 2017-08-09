@@ -13,4 +13,5 @@ public interface ParentUserDao {
     public String getUser(String username, String password);
 
 
+    boolean isValid(String username, String password);
 }

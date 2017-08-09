@@ -12,14 +12,16 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 
 
 @Controller
-
+@SessionAttributes("loggedinuser")
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
@@ -41,13 +43,18 @@ public class LoginController {
                 ModelAndView("login", "loginFailed", loginFailed);
     }
 
-    @RequestMapping("/loggedin")
+    @RequestMapping(value="/loggedin", method= RequestMethod.POST)
     public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password) {
+        boolean isValid = userDao.isValid(username, password);
+        String url = "redirect:loginfailed";
+        if(isValid){//has account or authemticated
+            //add to session
+            url = "redirect:listevents";
+        }
 
-        //userDao.getUser(username, password);
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView(userDao.getUser(username, password), "", "");
+                ModelAndView(url, "", "");
     }
 
     @RequestMapping(value = "/listusers")

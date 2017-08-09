@@ -36,16 +36,15 @@ public class HibernateUserDao implements ParentUserDao {
     }
 
     public String getUser(String username, String password) {
-
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
+            System.out.println(username + " " + password + " " + user);
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 return "redirect:listevents";
-            } else {
-                return "redirect:loginfailed";
             }
+
         }
-        return null;
+        return "redirect:loginfailed";
 //        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 //
 //
@@ -67,6 +66,18 @@ public class HibernateUserDao implements ParentUserDao {
 //        return "redirect:listevents";
 
 
+    }
+
+    public boolean isValid(String username, String password) {
+        ArrayList<UsersEntity> users = userList();
+        for(UsersEntity user : users) {
+            System.out.println(username + " " + password + " " + user);
+            if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
+                return true;
+            }
+
+        }
+        return false;
     }
 
 

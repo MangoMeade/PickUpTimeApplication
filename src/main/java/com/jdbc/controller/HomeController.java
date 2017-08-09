@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
@@ -21,6 +22,7 @@ import java.sql.Date;
 
 
 @Controller
+@SessionAttributes("loggedinuser")
 public class HomeController {
 
 
