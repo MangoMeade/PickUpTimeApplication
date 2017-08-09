@@ -44,7 +44,6 @@ public class LoginController {
     @RequestMapping("/loggedin")
     public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password) {
 
-        //userDao.getUser(username, password);
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView(userDao.getUser(username, password), "", "");
