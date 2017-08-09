@@ -17,7 +17,7 @@
     <input type="submit" value="Add New Event">
 </form>
 <form action="/">
-    <input type="submit" value="Back to Home">
+    <input type="submit" value="Back to Login">
 </form>
 </body>
 </html>
