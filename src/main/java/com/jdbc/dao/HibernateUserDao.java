@@ -38,10 +38,10 @@ public class HibernateUserDao implements ParentUserDao {
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
-                return "listevents";
+                return "redirect:listevents";
             }
             else if (username.equals(user.getUserName()) || password.equals(user.getPassword())) {
-                return "/";
+                return "redirect:loginfailed";
             }
         }
         return null;
