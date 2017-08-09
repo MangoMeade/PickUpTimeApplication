@@ -19,6 +19,7 @@ public class HibernateEventDao implements ParentEventDao{
         selectEvents.beginTransaction();
 
         Criteria c = selectEvents.createCriteria(EventsEntity.class);
+        selectEvents.close();
 
         return (ArrayList<EventsEntity>) c.list();
     }
@@ -39,7 +40,7 @@ public class HibernateEventDao implements ParentEventDao{
         EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
 
         updateEvent.setEventId(eventID);
-        updateEvent.setPeopleGoing(peopleGoing);
+        updateEvent.setPeopleGoing(0);
 
         session.update(updateEvent);
 

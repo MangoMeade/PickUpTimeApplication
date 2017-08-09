@@ -29,6 +29,7 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session selectAll = sessionFact.openSession();
         selectAll.beginTransaction();
+        selectAll.close();
         return selectAll;
 
     }
