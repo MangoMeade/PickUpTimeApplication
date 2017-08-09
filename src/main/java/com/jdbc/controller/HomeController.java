@@ -97,7 +97,6 @@ public class HomeController {
         newEvent.setAddress(address);
         newEvent.setTime(time);
         newEvent.setDay(day);
-        newEvent.setPeopleGoing(0);
         newEvent.setMinNeeded(minNeeded);
 
         session.save(newEvent);

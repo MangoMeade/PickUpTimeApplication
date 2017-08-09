@@ -20,6 +20,7 @@ ${loginFailed}
 <form action="/listofsports">
     <input type="submit" value="See Events"/>
 </form>
+
 <form method="post" action="/loggedin">
     Username: <input type="text" name="username" id="username" required>
     <br>

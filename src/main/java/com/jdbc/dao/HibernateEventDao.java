@@ -40,7 +40,7 @@ public class HibernateEventDao implements ParentEventDao{
         EventsEntity updateEvent = (EventsEntity) session.get(EventsEntity.class, eventID);
 
         updateEvent.setEventId(eventID);
-        updateEvent.setPeopleGoing(0);
+        updateEvent.setPeopleGoing(peopleGoing);
 
         session.update(updateEvent);
 
