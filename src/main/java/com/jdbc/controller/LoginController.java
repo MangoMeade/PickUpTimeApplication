@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
-    public ModelAndView loginPage() {
+    public ModelAndView loginPage(@RequestParam("password") String password, ) {
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView("login", "loginPage", "login");
