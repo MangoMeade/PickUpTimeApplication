@@ -1,5 +1,6 @@
 package com.jdbc.dao;
 
+import com.jdbc.controller.Utility;
 import com.jdbc.models.UsersEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
@@ -35,12 +36,12 @@ public class HibernateUserDao implements ParentUserDao {
     }
 
     public String getUser(String username, String password) {
+
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 return "redirect:listevents";
-            }
-            else {
+            } else {
                 return "redirect:loginfailed";
             }
         }
