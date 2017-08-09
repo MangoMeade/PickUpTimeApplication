@@ -23,7 +23,10 @@ import java.util.ArrayList;
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
-    public ModelAndView loginPage() {
+    public ModelAndView loginPage(/*@RequestParam("password") String password, Model model*/) {
+
+//        model.addAttribute("")
+
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView("login", "loginPage", "login");
@@ -96,7 +99,7 @@ public class LoginController {
         newUsers.setPhoneNumber(phoneNum);
         newUsers.setGender(gender);
         newUsers.setUserName(username);
-        newUsers.setPassword(Utility.encryptWithMD5(password));
+        newUsers.setPassword(/*Utility.encryptWithMD5*/(password));
         newUsers.setAge(age);
 
         Criteria c = session.createCriteria(UsersEntity.class);
