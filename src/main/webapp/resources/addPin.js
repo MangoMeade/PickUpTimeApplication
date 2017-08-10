@@ -25,14 +25,16 @@ function initMap() {
             position: event.latLng,
             map: map
         });
+        document.getElementById('lat').value=marker.getPosition().lat();
+        document.getElementById('lng').value=marker.getPosition().lng();
         //infowindow opens when a marker is clicked
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-            var getter = document.getElementById("form");
-            getter.setAttribute("style", "display:block");
-            document.getElementById('lat').value=marker.getPosition().lat();
-            document.getElementById('lng').value=marker.getPosition().lng();
-        });
+        // google.maps.event.addListener(map, 'click', function() {
+        //     infowindow.open(map, marker);
+        //     // var getter = document.getElementById("form");
+        //     // getter.setAttribute("style", "display:block");
+        //     document.getElementById('lat').value=marker.getPosition().lat();
+        //     document.getElementById('lng').value=marker.getPosition().lng();
+        // });
     });
 }
 
@@ -52,3 +54,10 @@ button.addEventListener("click", function() {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
     }
 });
+
+function myFunction() {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "time");
+    x.setAttribute("value", "24:00:00");
+    document.body.appendChild(x);
+}
