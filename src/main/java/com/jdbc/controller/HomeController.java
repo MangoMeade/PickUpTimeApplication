@@ -56,34 +56,18 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
+                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
 
-    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
-        
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
-
-        Session session = sessionFact.openSession();
-
-        Transaction tx = session.beginTransaction();
-
-        EventsEntity newEvent = new EventsEntity();
-
-        newEvent.setEventId(eventId);
-        int addAttendees = (newEvent.getPeopleGoing() + 1);
-        newEvent.setPeopleGoing(addAttendees);
+        EventsEntity editEvent = eventDao.getEvent(eventId);
+        System.out.println(peopleGoing);
+        model.addAttribute("eventId", eventId);
+        model.addAttribute("peopleGoing", peopleGoing);
+        model.addAttribute("latitude", latitude);
+        model.addAttribute("longitude", longitude);
 
 
-        session.update(newEvent);
-        tx.commit();
-        session.close();
-
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
-
-        model.addAttribute("eventlist", eventList);
-
-
-        return new ModelAndView("updateeventform", "eventId", eventId);
+        return new ModelAndView("updateeventform", "", "");
     }
 
     @RequestMapping("/updateform")
@@ -92,9 +76,14 @@ public class HomeController {
 
         eventDao.updateEvent(eventID, peopleGoing);
 
+        EventsEntity editEvent = eventDao.getEvent(eventID);
+        System.out.println(editEvent.getName());
+        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
+            System.out.println("It worked!");
+        }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("listevents", "cList", eventList);
+        return new ModelAndView("redirect:listevents", "cList", eventList);
     }
 
 
@@ -105,7 +94,10 @@ public class HomeController {
                              @RequestParam("day") Date day,
                              @RequestParam("description") String description,
                              @RequestParam("min") int minNeeded,
-                             @RequestParam("time") String time, Model model) {
+                             @RequestParam("time") String time,
+                             @RequestParam("lat") double lat,
+                             @RequestParam("lng") double lng,
+                             Model model) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
@@ -124,6 +116,8 @@ public class HomeController {
         newEvent.setDay(day);
         newEvent.setDescription(description);
         newEvent.setMinNeeded(minNeeded);
+        newEvent.setLatitude(lat);
+        newEvent.setLongitude(lng);
 
         session.save(newEvent);
         tx.commit();
@@ -133,7 +127,7 @@ public class HomeController {
 
         model.addAttribute("eventlist", eventList);
 
-        return "addeventsuccess";
+        return "redirect:listevents";
     }
 
     @RequestMapping("/listofsports")
