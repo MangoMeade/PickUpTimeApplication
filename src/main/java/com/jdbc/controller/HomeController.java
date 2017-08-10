@@ -64,6 +64,7 @@ public class HomeController {
         model.addAttribute("address", address);
         model.addAttribute("description",description);
         model.addAttribute("time", time);
+
         return new ModelAndView("updateeventform", "", "");
     }
 
