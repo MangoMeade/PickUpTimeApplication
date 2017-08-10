@@ -49,7 +49,7 @@ public class LoginController {
         String url = "redirect:loginfailed";
         if(isValid){//has account or authemticated
             //add to session
-            url = "redirect:listevents";
+            url = "redirect:listofsports";
         }
 
         return new
@@ -65,15 +65,12 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
-//    @RequestMapping("/listevents1")
-//    public String function(Model model, @RequestParam("username") String username,
-//                           @RequestParam("password") String password) {
-//
-//        model.addAttribute("username", username);
-//        model.addAttribute("password", password);
-//
-//        return "listEvents1";
-//    }
+    @RequestMapping(value="/signup")
+    public String signup() {
+
+        return "adduserform";
+
+    }
 
     @RequestMapping("/getnewuser")
 
@@ -106,7 +103,7 @@ public class LoginController {
         newUsers.setPhoneNumber(phoneNum);
         newUsers.setGender(gender);
         newUsers.setUserName(username);
-        newUsers.setPassword(/*Utility.encryptWithMD5*/(password));
+        newUsers.setPassword(Utility.encryptWithMD5(password));
         newUsers.setAge(age);
 
         Criteria c = session.createCriteria(UsersEntity.class);

@@ -39,14 +39,6 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-
-    @RequestMapping(value="/signup")
-    public String signup() {
-
-        return "adduserform";
-
-    }
-
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
@@ -56,9 +48,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
-                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
+                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("name") String name,
+                                    @RequestParam("sport") String sport, @RequestParam("address") String address,
+                                    @RequestParam("description") String description, @RequestParam("time") String time) {
 
         EventsEntity editEvent = eventDao.getEvent(eventId);
         System.out.println(peopleGoing);
@@ -66,8 +59,11 @@ public class HomeController {
         model.addAttribute("peopleGoing", peopleGoing);
         model.addAttribute("latitude", latitude);
         model.addAttribute("longitude", longitude);
-
-
+        model.addAttribute("name", name);
+        model.addAttribute("sport", sport);
+        model.addAttribute("address", address);
+        model.addAttribute("description",description);
+        model.addAttribute("time", time);
 
         return new ModelAndView("updateeventform", "", "");
     }
@@ -80,7 +76,7 @@ public class HomeController {
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
-        if (peopleGoing == editEvent.getMinNeeded()|| peopleGoing > editEvent.getMinNeeded()) {
+        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
         }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
@@ -101,15 +97,15 @@ public class HomeController {
                              @RequestParam("lng") double lng,
                              Model model) {
 
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
+        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
 
-        Session session = sessionFact.openSession( );
+        Session session = sessionFact.openSession();
 
-        Transaction tx = session.beginTransaction( );
+        Transaction tx = session.beginTransaction();
 
-        EventsEntity newEvent = new EventsEntity( );
+        EventsEntity newEvent = new EventsEntity();
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -122,8 +118,8 @@ public class HomeController {
         newEvent.setLongitude(lng);
 
         session.save(newEvent);
-        tx.commit( );
-        session.close( );
+        tx.commit();
+        session.close();
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
@@ -131,21 +127,26 @@ public class HomeController {
 
         return "redirect:listevents";
     }
+
     @RequestMapping("/listofsports")
-        public ModelAndView listOfSports() {
-            return new ModelAndView("listofsports", "sportlist","SPORTS");
-        }
+    public ModelAndView listOfSports() {
+        return new ModelAndView("listofsports", "sportlist", "SPORTS");
+    }
+
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
-
         return "addevent";
     }
 
     @RequestMapping("deleteevents")
-        public String deleteEvent(){
-            eventDao.deleteEvent();
+    public String deleteEvent() {
+        eventDao.deleteEvent();
 
-            return "login";
+        return "login";
+    }
+    @RequestMapping("/confirmation")
+    public String confirmation(){
+            return "confirmation";
     }
 }
