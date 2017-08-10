@@ -27,11 +27,11 @@ public class HomeController {
 
 
     private Session getSession() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session selectAll = sessionFact.openSession();
-        selectAll.beginTransaction();
-        selectAll.close();
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
+        Session selectAll = sessionFact.openSession( );
+        selectAll.beginTransaction( );
+        selectAll.close( );
         return selectAll;
 
     }
@@ -40,7 +40,7 @@ public class HomeController {
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
 
-    @RequestMapping(value="/signup")
+    @RequestMapping(value = "/signup")
     public String signup() {
 
         return "adduserform";
@@ -50,7 +50,7 @@ public class HomeController {
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
         return new ModelAndView("listevents", "cList", eventList);
     }
@@ -68,7 +68,8 @@ public class HomeController {
 
         eventDao.updateEvent(eventID, peopleGoing);
 
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
+
 
         return new ModelAndView("listevents", "cList", eventList);
     }
@@ -105,16 +106,18 @@ public class HomeController {
         tx.commit( );
         session.close( );
 
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
         model.addAttribute("eventlist", eventList);
 
         return "addeventsuccess";
     }
+
     @RequestMapping("/listofsports")
-        public ModelAndView listOfSports() {
-            return new ModelAndView("listofsports", "sportlist","SPORTS");
-        }
+    public ModelAndView listOfSports() {
+        return new ModelAndView("listofsports", "sportlist", "SPORTS");
+    }
+
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
@@ -123,9 +126,11 @@ public class HomeController {
     }
 
     @RequestMapping("deleteevents")
-        public String deleteEvent(){
-            eventDao.deleteEvent();
+    public String deleteEvent() {
+        eventDao.deleteEvent( );
 
-            return "login";
+        return "login";
     }
+
+
 }

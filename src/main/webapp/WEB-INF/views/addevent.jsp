@@ -43,8 +43,8 @@ Add a new event:
         Description: <input type="text" name="description">
         <br>
         Amount of people Needed: <input type = "text" name="min" value = "0" required>
-
         <br>
+
         <input type = "submit" value = "Add Event" > </p>
 </form>
 <form action="/listofsports">
