@@ -55,12 +55,12 @@ Add a new event:
         <br>
         Amount of people Needed: <input type = "text" name="min" value = "0" required>
         <br>
-<<<<<<< HEAD
 
-=======
+
+
         <input id="lat" name="lat" type="textbox"/>
         <input  id="lng" name="lng" type="textbox"/>
->>>>>>> 6f6f175a2d8140dc8b95ae3626cacaec0a2f33b4
+
         <input type = "submit" value = "Add Event" > </p>
 </form>
 </div>

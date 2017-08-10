@@ -68,17 +68,14 @@ public class HomeController {
 
         eventDao.updateEvent(eventID, peopleGoing);
 
-<<<<<<< HEAD
-        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
-=======
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded()|| peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
         }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
->>>>>>> 6f6f175a2d8140dc8b95ae3626cacaec0a2f33b4
+
 
         return new ModelAndView("redirect:listevents", "cList", eventList);
     }
