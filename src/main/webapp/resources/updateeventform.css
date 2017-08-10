@@ -1,6 +1,12 @@
 #peopleGoing {
     display:none;
 }
+#latitude {
+    display:none;
+}
+#longitude{
+    display:none;
+}
 .info {
     text-align: center;
 }
