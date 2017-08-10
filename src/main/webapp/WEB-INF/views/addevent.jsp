@@ -45,9 +45,7 @@ Add a new event:
         <br>
         Address: <input type = "text" name="address" required>
         <br>
-        Time: <input type = "time" name="time" required>
-        <%--<button onclick="myFunction()" name="time">Set Time</button>--%>
-        <input type="time" name="time" placeholder="hrs:mins" pattern="[0-9]{4}-[0-1][0-9]-[0-3][0-9] (1[012]|0[1-9]):[0-5][0-9] (am|pm|AM|PM)"required>
+        Time: <input type="time" name="time" placeholder="hrs:mins" pattern="[0-9]{4}-[0-1][0-9]-[0-3][0-9] (1[012]|0[1-9]):[0-5][0-9] (am|pm|AM|PM)"required>
         <br>
         Date: <input type="date" name="day">
         <br>
