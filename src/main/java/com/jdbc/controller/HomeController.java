@@ -56,7 +56,6 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
                                     @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
 
@@ -66,8 +65,6 @@ public class HomeController {
         model.addAttribute("peopleGoing", peopleGoing);
         model.addAttribute("latitude", latitude);
         model.addAttribute("longitude", longitude);
-
-
 
 
         return new ModelAndView("updateeventform", "", "");
@@ -82,7 +79,7 @@ public class HomeController {
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
-        if (peopleGoing == editEvent.getMinNeeded()|| peopleGoing > editEvent.getMinNeeded()) {
+        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
         }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
@@ -104,15 +101,15 @@ public class HomeController {
                              @RequestParam("lng") double lng,
                              Model model) {
 
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
+        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
 
-        Session session = sessionFact.openSession( );
+        Session session = sessionFact.openSession();
 
-        Transaction tx = session.beginTransaction( );
+        Transaction tx = session.beginTransaction();
 
-        EventsEntity newEvent = new EventsEntity( );
+        EventsEntity newEvent = new EventsEntity();
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -125,8 +122,8 @@ public class HomeController {
         newEvent.setLongitude(lng);
 
         session.save(newEvent);
-        tx.commit( );
-        session.close( );
+        tx.commit();
+        session.close();
 
         ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
@@ -149,7 +146,9 @@ public class HomeController {
 
     @RequestMapping("deleteevents")
     public String deleteEvent() {
+
         eventDao.deleteEvent( );
+
 
         return "login";
     }

@@ -23,7 +23,7 @@
 <h2>${latitude}</h2>
 <h2>${longitude}</h2>
 <form action="updateform" method="post">
-    <input type=hidden name="eventId" value="${eventId}">
+    <input type="hidden" name="eventId" value="${eventId}">
     <br>
     People Going: ${peopleGoing}
     <input type="number" id="peopleGoing" name="peopleGoing" value = "${peopleGoing}" placeholder="${peopleGoing}">
