@@ -34,9 +34,6 @@ Your event has been saved!
         <td> ${myVar.description}</td>
         <td> ${myVar.minNeeded}</td>
 
-
-
-
     </tr>
 
     </c:forEach>

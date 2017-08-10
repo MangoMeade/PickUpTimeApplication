@@ -26,6 +26,8 @@ import java.sql.Date;
 public class HomeController {
 
 
+    private int eventId;
+
     private Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -50,9 +52,28 @@ public class HomeController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
 
-    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
-
-        return new ModelAndView("updateeventform", "eventId", eventId);
+    public String updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("name") String name,
+                              @RequestParam("sport") String sport,
+                              @RequestParam("address") String address,
+                              @RequestParam("day") Date day,
+                              @RequestParam("description") String description,
+                              @RequestParam("min") int minNeeded,
+                              @RequestParam("time") String time,
+                              @RequestParam("lat") double lat,
+                              @RequestParam("lng") double lng) {
+        this.eventId = eventId; // this.eventid = eventid;
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
+        Session session = sessionFact.openSession( );
+        session.beginTransaction( );
+        EventsEntity editItem = (EventsEntity) session.get(EventsEntity.class, eventId); //eventid
+        model.addAttribute("name", name); //peoplegoing
+        model.addAttribute("sport", sport);
+        model.addAttribute("address", address);
+        model.addAttribute("time", time);
+        model.addAttribute("day", day);
+        model.addAttribute("description", description);
+        return "listevents"; // listevents
     }
 
     @RequestMapping("/updateform")
