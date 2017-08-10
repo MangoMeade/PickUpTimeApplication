@@ -23,6 +23,7 @@ import java.util.ArrayList;
 @SessionAttributes("loggedinuser")
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
+
     @RequestMapping("/")
     public ModelAndView loginPage() {
 
@@ -40,11 +41,11 @@ public class LoginController {
                 ModelAndView("login", "loginFailed", loginFailed);
     }
 
-    @RequestMapping(value="/loggedin", method= RequestMethod.POST)
+    @RequestMapping(value = "/loggedin", method = RequestMethod.POST)
     public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password) {
         boolean isValid = userDao.isValid(username, password);
         String url = "redirect:loginfailed";
-        if(isValid){//has account or authemticated
+        if (isValid) {//has account or authemticated
             //add to session
             url = "redirect:listofsports";
         }
@@ -57,7 +58,7 @@ public class LoginController {
     @RequestMapping(value = "/listusers")
 
     public ModelAndView listUsers() {
-        ArrayList<UsersEntity> userList = userDao.userList();
+        ArrayList<UsersEntity> userList = userDao.userList( );
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
@@ -66,6 +67,24 @@ public class LoginController {
 //    public String signup() {
 //        return "signup";
 //    }
+
+//    @RequestMapping("/listevents1")
+//    public String function(Model model, @RequestParam("username") String username,
+//                           @RequestParam("password") String password) {
+//
+//        model.addAttribute("username", username);
+//        model.addAttribute("password", password);
+//
+//        return "listEvents1";
+//    }
+
+//    @RequestMapping(value="/signup")
+//    public String signup() {
+//
+//        return "signup";
+//
+//    }
+
 
     @RequestMapping("/getnewuser")
 
