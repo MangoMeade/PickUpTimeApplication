@@ -32,6 +32,7 @@ charset=ISO-8859-1">
         <td> ${myvar.minNeeded}</td>
         <td> ${myvar.day}</td>
         <td><a href="update?id=${myvar.eventId}">Attending</a></td>
+        <td><input type="radio" name="vote" value="vote"><br></td>
     </tr>
 
 </c:forEach></table>
