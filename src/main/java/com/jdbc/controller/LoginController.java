@@ -49,7 +49,7 @@ public class LoginController {
         String url = "redirect:loginfailed";
         if(isValid){//has account or authemticated
             //add to session
-            url = "redirect:listevents";
+            url = "redirect:listofsports";
         }
 
         return new

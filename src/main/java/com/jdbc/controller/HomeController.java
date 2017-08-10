@@ -109,7 +109,6 @@ public class HomeController {
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
-
         return "addevent";
     }
 
@@ -118,5 +117,9 @@ public class HomeController {
             eventDao.deleteEvent();
 
             return "login";
+    }
+    @RequestMapping("/confirmation")
+    public String confirmation(){
+            return "confirmation";
     }
 }
