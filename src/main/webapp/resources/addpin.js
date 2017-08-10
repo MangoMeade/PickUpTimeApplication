@@ -27,14 +27,6 @@ function initMap() {
         });
         document.getElementById('lat').value=marker.getPosition().lat();
         document.getElementById('lng').value=marker.getPosition().lng();
-        //infowindow opens when a marker is clicked
-        // google.maps.event.addListener(map, 'click', function() {
-        //     infowindow.open(map, marker);
-        //     // var getter = document.getElementById("form");
-        //     // getter.setAttribute("style", "display:block");
-        //     document.getElementById('lat').value=marker.getPosition().lat();
-        //     document.getElementById('lng').value=marker.getPosition().lng();
-        // });
     });
 }
 
