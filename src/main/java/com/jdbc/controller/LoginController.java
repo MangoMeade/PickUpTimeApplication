@@ -66,7 +66,7 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
-<<<<<<< HEAD
+
 
 //    @RequestMapping("/listevents1")
 //    public String function(Model model, @RequestParam("username") String username,
@@ -78,9 +78,12 @@ public class LoginController {
 //        return "listEvents1";
 //    }
 
-    @RequestMapping(value="/signup")
-    public String signup() {
-    }
+//    @RequestMapping(value="/signup")
+//    public String signup() {
+//
+//        return "signup";
+//
+//    }
 
 
     @RequestMapping("/getnewuser")
