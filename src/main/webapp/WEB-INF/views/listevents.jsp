@@ -41,7 +41,6 @@ charset=ISO-8859-1">
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}
         ">Are you Attending?</a></td>
-        <td><input type="radio" name="vote" value="vote"><br></td>
     </tr>
 
 </c:forEach></table>
@@ -51,7 +50,7 @@ charset=ISO-8859-1">
 <form action="/listofsports">
 <input type= "submit" value="Back to Sports">
 </form>
-</body> 
+</body>
 
 
 

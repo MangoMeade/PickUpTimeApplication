@@ -74,12 +74,12 @@ public class LoginController {
 //
 //        return "listEvents1";
 //    }
-    @RequestMapping(value="/signup")
-    public String signup() {
-
-        return "adduserform";
-
-    }
+//    @RequestMapping(value="/signup")
+//    public String signup() {
+//
+//        return "adduserform";
+//
+//    }
 
     @RequestMapping("/getnewuser")
 
