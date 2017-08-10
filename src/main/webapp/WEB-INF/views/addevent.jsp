@@ -10,12 +10,12 @@
 <head>
     <title>Add Event</title>
     <%--<script>--%>
-        <%--function myFunction() {--%>
-            <%--var x = document.createElement("INPUT");--%>
-            <%--x.setAttribute("type", "time");--%>
-            <%--x.setAttribute("value", "24:00:00");--%>
-            <%--document.body.appendChild(x);--%>
-        <%--}--%>
+    <%--function myFunction() {--%>
+    <%--var x = document.createElement("INPUT");--%>
+    <%--x.setAttribute("type", "time");--%>
+    <%--x.setAttribute("value", "24:00:00");--%>
+    <%--document.body.appendChild(x);--%>
+    <%--}--%>
     <%--</script>--%>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -35,6 +35,7 @@ Add a new event:
 
 
 <div id="form" class="overlay">
+<<<<<<< HEAD
 <form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>
@@ -63,6 +64,7 @@ Add a new event:
 
         <input type = "submit" value = "Add Event" > </p>
 </form>
+
 </div>
 <form action="/listofsports">
     <input type= "submit" value="Back to Sports">

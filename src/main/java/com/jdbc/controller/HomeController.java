@@ -62,7 +62,7 @@ public class HomeController {
         model.addAttribute("name", name);
         model.addAttribute("sport", sport);
         model.addAttribute("address", address);
-        model.addAttribute("description",description);
+        model.addAttribute("description", description);
         model.addAttribute("time", time);
 
         return new ModelAndView("updateeventform", "", "");
@@ -76,11 +76,12 @@ public class HomeController {
 
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
-        System.out.println(editEvent.getName());
-        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
+        System.out.println(editEvent.getName( ));
+        if (peopleGoing == editEvent.getMinNeeded( ) || peopleGoing > editEvent.getMinNeeded( )) {
             System.out.println("It worked!");
+            /*Notification.sendNotification();*/
         }
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
 
         return new ModelAndView("redirect:listevents", "cList", eventList);
@@ -93,21 +94,22 @@ public class HomeController {
                              @RequestParam("address") String address,
                              @RequestParam("day") Date day,
                              @RequestParam("description") String description,
+                             @RequestParam("peopleGoing") int peopleGoing,
                              @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time,
                              @RequestParam("lat") double lat,
                              @RequestParam("lng") double lng,
                              Model model) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
+        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
 
-        Session session = sessionFact.openSession();
+        Session session = sessionFact.openSession( );
 
-        Transaction tx = session.beginTransaction();
+        Transaction tx = session.beginTransaction( );
 
-        EventsEntity newEvent = new EventsEntity();
+        EventsEntity newEvent = new EventsEntity( );
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -115,13 +117,14 @@ public class HomeController {
         newEvent.setTime(time);
         newEvent.setDay(day);
         newEvent.setDescription(description);
+        newEvent.setPeopleGoing(peopleGoing);
         newEvent.setMinNeeded(minNeeded);
         newEvent.setLatitude(lat);
         newEvent.setLongitude(lng);
 
         session.save(newEvent);
-        tx.commit();
-        session.close();
+        tx.commit( );
+        session.close( );
 
         ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
@@ -151,8 +154,7 @@ public class HomeController {
     }
 
     @RequestMapping("/confirmation")
-    public String confirmation(){
-            return "confirmation";
+    public String confirmation() {
+        return "confirmation";
     }
-
 }
