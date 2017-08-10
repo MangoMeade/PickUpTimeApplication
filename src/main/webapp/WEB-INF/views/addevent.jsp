@@ -35,7 +35,6 @@ Add a new event:
 
 
 <div id="form" class="overlay">
-<<<<<<< HEAD
 <form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>

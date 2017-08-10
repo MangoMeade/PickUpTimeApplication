@@ -29,7 +29,7 @@
     <h3>${description}</h3>
     <input type="number" id="latitude" value="${latitude}">
     <input type="number" id="longitude" value="${longitude}">
-    <form action="/confirmation" method="post">
+    <form action="updateform" method="post">
         <input type=hidden name="eventId" value="${eventId}">
         <br>
         People Going: ${peopleGoing}
