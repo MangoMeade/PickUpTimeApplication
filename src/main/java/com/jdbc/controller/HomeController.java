@@ -78,6 +78,7 @@ public class HomeController {
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
+            /*Notification.sendNotification();*/
         }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
@@ -91,6 +92,7 @@ public class HomeController {
                              @RequestParam("address") String address,
                              @RequestParam("day") Date day,
                              @RequestParam("description") String description,
+                             @RequestParam("peopleGoing") int peopleGoing,
                              @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time,
                              @RequestParam("lat") double lat,
@@ -113,6 +115,7 @@ public class HomeController {
         newEvent.setTime(time);
         newEvent.setDay(day);
         newEvent.setDescription(description);
+        newEvent.setPeopleGoing(peopleGoing);
         newEvent.setMinNeeded(minNeeded);
         newEvent.setLatitude(lat);
         newEvent.setLongitude(lng);
@@ -147,6 +150,6 @@ public class HomeController {
     }
     @RequestMapping("/confirmation")
     public String confirmation(){
-            return "confirmation";
+        return "confirmation";
     }
 }

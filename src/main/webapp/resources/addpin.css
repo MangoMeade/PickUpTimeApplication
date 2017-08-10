@@ -1,4 +1,3 @@
-
 #map {
     height: 50%;
 }
@@ -6,5 +5,8 @@
     display:none;
 }
 #lng {
+    display:none;
+}
+#peopleGoing{
     display:none;
 }
