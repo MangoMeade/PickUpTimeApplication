@@ -17,14 +17,20 @@ charset=ISO-8859-1">
     <title>ListEvents</title></head>
 <h3>Events List</h3>
 <table>
-    <th>Event Name</th>
-    <th>Sport</th>
-    <th>Players Going</th>
-    <th>Players Needed</th>
-    <th>Date</th>
+
 </table>
-<table border=1><c:forEach var="myvar" items="${cList}">
-    
+<table border=1>
+
+    <tr>
+        <th>Event Name</th>
+        <th>Sport</th>
+        <th>Players Going</th>
+        <th>Players Needed</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    <c:forEach var="myvar" items="${cList}">
+
     <tr>
         <td> ${myvar.name}</td>
         <td> ${myvar.sport}</td>
