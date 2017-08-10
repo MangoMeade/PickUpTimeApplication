@@ -27,11 +27,11 @@ public class HomeController {
 
 
     private Session getSession() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session selectAll = sessionFact.openSession();
-        selectAll.beginTransaction();
-        selectAll.close();
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
+        Session selectAll = sessionFact.openSession( );
+        selectAll.beginTransaction( );
+        selectAll.close( );
         return selectAll;
 
     }
@@ -42,7 +42,7 @@ public class HomeController {
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
         return new ModelAndView("listevents", "cList", eventList);
     }
@@ -62,7 +62,7 @@ public class HomeController {
         model.addAttribute("name", name);
         model.addAttribute("sport", sport);
         model.addAttribute("address", address);
-        model.addAttribute("description",description);
+        model.addAttribute("description", description);
         model.addAttribute("time", time);
 
         return new ModelAndView("updateeventform", "", "");
@@ -74,13 +74,15 @@ public class HomeController {
 
         eventDao.updateEvent(eventID, peopleGoing);
 
+
         EventsEntity editEvent = eventDao.getEvent(eventID);
-        System.out.println(editEvent.getName());
-        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
+        System.out.println(editEvent.getName( ));
+        if (peopleGoing == editEvent.getMinNeeded( ) || peopleGoing > editEvent.getMinNeeded( )) {
             System.out.println("It worked!");
             /*Notification.sendNotification();*/
         }
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
+
 
         return new ModelAndView("redirect:listevents", "cList", eventList);
     }
@@ -99,15 +101,15 @@ public class HomeController {
                              @RequestParam("lng") double lng,
                              Model model) {
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
+        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
 
-        Session session = sessionFact.openSession();
+        Session session = sessionFact.openSession( );
 
-        Transaction tx = session.beginTransaction();
+        Transaction tx = session.beginTransaction( );
 
-        EventsEntity newEvent = new EventsEntity();
+        EventsEntity newEvent = new EventsEntity( );
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -121,10 +123,10 @@ public class HomeController {
         newEvent.setLongitude(lng);
 
         session.save(newEvent);
-        tx.commit();
-        session.close();
+        tx.commit( );
+        session.close( );
 
-        ArrayList<EventsEntity> eventList = eventDao.eventList();
+        ArrayList<EventsEntity> eventList = eventDao.eventList( );
 
         model.addAttribute("eventlist", eventList);
 
@@ -144,12 +146,15 @@ public class HomeController {
 
     @RequestMapping("deleteevents")
     public String deleteEvent() {
-        eventDao.deleteEvent();
+
+        eventDao.deleteEvent( );
+
 
         return "login";
     }
+
     @RequestMapping("/confirmation")
-    public String confirmation(){
+    public String confirmation() {
         return "confirmation";
     }
 }
