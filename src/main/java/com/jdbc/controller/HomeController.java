@@ -57,9 +57,20 @@ public class HomeController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
 
-    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
+    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
+                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
 
-        return new ModelAndView("updateeventform", "eventId", eventId);
+        EventsEntity editEvent = eventDao.getEvent(eventId);
+        System.out.println(peopleGoing);
+        model.addAttribute("eventId", eventId);
+        model.addAttribute("peopleGoing", peopleGoing);
+        model.addAttribute("latitude", latitude);
+        model.addAttribute("longitude", longitude);
+
+
+
+
+        return new ModelAndView("updateeventform", "", "");
     }
 
     @RequestMapping("/updateform")
@@ -121,7 +132,7 @@ public class HomeController {
 
         model.addAttribute("eventlist", eventList);
 
-        return "addeventsuccess";
+        return "redirect:listevents";
     }
 
     @RequestMapping("/listofsports")
