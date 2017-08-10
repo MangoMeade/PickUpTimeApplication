@@ -65,12 +65,7 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
-    @RequestMapping(value="/signup")
-    public String signup() {
 
-        return "adduserform";
-
-    }
 
     @RequestMapping("/getnewuser")
 
