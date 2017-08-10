@@ -39,14 +39,12 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-
     @RequestMapping(value = "/signup")
     public String signup() {
 
         return "adduserform";
 
     }
-
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
@@ -57,7 +55,9 @@ public class HomeController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
-                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude) {
+                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("name") String name,
+                                    @RequestParam("sport") String sport, @RequestParam("address") String address,
+                                    @RequestParam("description") String description, @RequestParam("time") String time) {
 
         EventsEntity editEvent = eventDao.getEvent(eventId);
         System.out.println(peopleGoing);
@@ -65,8 +65,11 @@ public class HomeController {
         model.addAttribute("peopleGoing", peopleGoing);
         model.addAttribute("latitude", latitude);
         model.addAttribute("longitude", longitude);
-
-
+        model.addAttribute("name", name);
+        model.addAttribute("sport", sport);
+        model.addAttribute("address", address);
+        model.addAttribute("description",description);
+        model.addAttribute("time", time);
         return new ModelAndView("updateeventform", "", "");
     }
 
@@ -140,7 +143,6 @@ public class HomeController {
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
-
         return "addevent";
     }
 
@@ -153,5 +155,9 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping("/confirmation")
+    public String confirmation(){
+            return "confirmation";
+    }
 
 }
