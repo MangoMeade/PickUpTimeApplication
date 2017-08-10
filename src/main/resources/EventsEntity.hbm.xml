@@ -27,13 +27,16 @@
             <column name="time" sql-type="varchar(255)" not-null="true"/>
         </property>
         <property name="peopleGoing">
-            <column name="peopleGoing" sql-type="int(100)" not-null="false"/>
+            <column name="peopleGoing" sql-type="int(10) unsigned" not-null="true"/>
         </property>
         <property name="day">
             <column name="day" sql-type="date" not-null="true"/>
         </property>
         <property name="minNeeded">
-            <column name="minNeeded" sql-type="int(10) unsigned" not-null="true"/>
+            <column name="minNeeded" sql-type="int(100) unsigned" not-null="true"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(255)" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

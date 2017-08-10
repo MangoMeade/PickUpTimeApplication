@@ -72,6 +72,7 @@ public class HomeController {
                              @RequestParam("sport") String sport,
                              @RequestParam("address") String address,
                              @RequestParam("day") Date day,
+                             @RequestParam("description") String description,
                              @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time, Model model) {
 
@@ -90,6 +91,7 @@ public class HomeController {
         newEvent.setAddress(address);
         newEvent.setTime(time);
         newEvent.setDay(day);
+        newEvent.setDescription(description);
         newEvent.setMinNeeded(minNeeded);
 
         session.save(newEvent);
