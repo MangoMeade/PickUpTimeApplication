@@ -49,7 +49,7 @@ public class LoginController {
         String url = "redirect:loginfailed";
         if(isValid){//has account or authemticated
             //add to session
-            url = "redirect:listevents";
+            url = "redirect:listofsports";
         }
 
         return new
@@ -74,6 +74,12 @@ public class LoginController {
 //
 //        return "listEvents1";
 //    }
+    @RequestMapping(value="/signup")
+    public String signup() {
+
+        return "adduserform";
+
+    }
 
     @RequestMapping("/getnewuser")
 
