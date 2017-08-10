@@ -52,28 +52,23 @@ public class HomeController {
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
 
-    public String updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("name") String name,
-                              @RequestParam("sport") String sport,
-                              @RequestParam("address") String address,
-                              @RequestParam("day") Date day,
-                              @RequestParam("description") String description,
-                              @RequestParam("min") int minNeeded,
-                              @RequestParam("time") String time,
-                              @RequestParam("lat") double lat,
-                              @RequestParam("lng") double lng) {
-        this.eventId = eventId; // this.eventid = eventid;
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
-        Session session = sessionFact.openSession( );
-        session.beginTransaction( );
-        EventsEntity editItem = (EventsEntity) session.get(EventsEntity.class, eventId); //eventid
-        model.addAttribute("name", name); //peoplegoing
+    public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
+                                    @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("name") String name,
+                                    @RequestParam("sport") String sport, @RequestParam("address") String address,
+                                    @RequestParam("description") String description, @RequestParam("time") String time) {
+
+        EventsEntity editEvent = eventDao.getEvent(eventId);
+        System.out.println(peopleGoing);
+        model.addAttribute("eventId", eventId);
+        model.addAttribute("peopleGoing", peopleGoing);
+        model.addAttribute("latitude", latitude);
+        model.addAttribute("longitude", longitude);
+        model.addAttribute("name", name);
         model.addAttribute("sport", sport);
         model.addAttribute("address", address);
+        model.addAttribute("description",description);
         model.addAttribute("time", time);
-        model.addAttribute("day", day);
-        model.addAttribute("description", description);
-        return "listevents"; // listevents
+        return new ModelAndView("updateeventform", "", "");
     }
 
     @RequestMapping("/updateform")
@@ -133,7 +128,7 @@ public class HomeController {
 
         model.addAttribute("eventlist", eventList);
 
-        return "addeventsuccess";
+        return "redirect:listevents";
     }
     @RequestMapping("/listofsports")
         public ModelAndView listOfSports() {
