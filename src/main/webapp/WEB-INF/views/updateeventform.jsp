@@ -28,7 +28,7 @@
 <h3>Time: ${time}</h3>
 <h3>${description}</h3>
 </div>
-<form action="updateform" method="post" class = "going">
+<form action="/confirmation" method="post" class = "going">
     <input type=hidden name="eventId" value="${eventId}">
     <br>
     People Going: ${peopleGoing}

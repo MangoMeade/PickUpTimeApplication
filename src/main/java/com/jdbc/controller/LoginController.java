@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
 
 
@@ -25,9 +24,7 @@ import java.util.ArrayList;
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     @RequestMapping("/")
-    public ModelAndView loginPage(/*@RequestParam("password") String password, Model model*/) {
-
-//        model.addAttribute("")
+    public ModelAndView loginPage() {
 
         return new
                 //the type is model and view which brings together model and view
@@ -64,16 +61,6 @@ public class LoginController {
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
-
-//    @RequestMapping("/listevents1")
-//    public String function(Model model, @RequestParam("username") String username,
-//                           @RequestParam("password") String password) {
-//
-//        model.addAttribute("username", username);
-//        model.addAttribute("password", password);
-//
-//        return "listEvents1";
-//    }
     @RequestMapping(value="/signup")
     public String signup() {
 
