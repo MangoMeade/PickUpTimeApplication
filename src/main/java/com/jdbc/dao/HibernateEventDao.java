@@ -47,8 +47,8 @@ public class HibernateEventDao implements ParentEventDao {
         session.getTransaction( ).commit( );
         session.close( );
 
-
     }
+
 
     public void deleteEvent() {
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
