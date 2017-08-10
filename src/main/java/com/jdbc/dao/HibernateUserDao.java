@@ -72,7 +72,7 @@ public class HibernateUserDao implements ParentUserDao {
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
             System.out.println(username + " " + password + " " + user);
-            if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
+            if (username.equals(user.getUserName()) && Utility.encryptWithMD5(password).equals(user.getPassword())) {
                 return true;
             }
 

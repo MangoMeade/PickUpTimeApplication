@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1> ${sportlist}</h1>
-<a href="/listevents">Soccer</a>
+<h2><a href="/listevents">Soccer</a></h2>
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
