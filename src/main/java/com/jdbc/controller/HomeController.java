@@ -39,12 +39,6 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-    @RequestMapping(value = "/signup")
-    public String signup() {
-
-        return "adduserform";
-
-    }
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
@@ -70,6 +64,7 @@ public class HomeController {
         model.addAttribute("address", address);
         model.addAttribute("description",description);
         model.addAttribute("time", time);
+
         return new ModelAndView("updateeventform", "", "");
     }
 
