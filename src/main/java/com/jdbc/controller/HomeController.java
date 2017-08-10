@@ -61,9 +61,14 @@ public class HomeController {
 
         eventDao.updateEvent(eventID, peopleGoing);
 
+        EventsEntity editEvent = eventDao.getEvent(eventID);
+        System.out.println(editEvent.getName());
+        if (peopleGoing == editEvent.getMinNeeded()|| peopleGoing > editEvent.getMinNeeded()) {
+            System.out.println("It worked!");
+        }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
-        return new ModelAndView("listevents", "cList", eventList);
+        return new ModelAndView("redirect:listevents", "cList", eventList);
     }
 
 
@@ -74,7 +79,10 @@ public class HomeController {
                              @RequestParam("day") Date day,
                              @RequestParam("description") String description,
                              @RequestParam("min") int minNeeded,
-                             @RequestParam("time") String time, Model model) {
+                             @RequestParam("time") String time,
+                             @RequestParam("lat") double lat,
+                             @RequestParam("lng") double lng,
+                             Model model) {
 
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
 
@@ -93,6 +101,8 @@ public class HomeController {
         newEvent.setDay(day);
         newEvent.setDescription(description);
         newEvent.setMinNeeded(minNeeded);
+        newEvent.setLatitude(lat);
+        newEvent.setLongitude(lng);
 
         session.save(newEvent);
         tx.commit( );

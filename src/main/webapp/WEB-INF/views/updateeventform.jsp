@@ -24,6 +24,7 @@ ${peopleGoing}
     <br>
     People Going: <input type="number" name="peopleGoing" value = "0" placeholder="${peopleGoing}">
     <br>
+    <%--<input type="hidden" name="minNeeded" value="${minNeeded}">--%>
     <input type="submit" value="Submit">
 </form>
 </body>
