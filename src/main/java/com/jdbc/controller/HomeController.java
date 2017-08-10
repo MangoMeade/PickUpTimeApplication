@@ -40,7 +40,7 @@ public class HomeController {
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
 
-    @RequestMapping(value="/signup")
+    @RequestMapping(value = "/signup")
     public String signup() {
 
         return "adduserform";
@@ -58,6 +58,30 @@ public class HomeController {
     @RequestMapping(value = "/update", method = RequestMethod.GET)
 
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId) {
+        
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
+
+        Session session = sessionFact.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+        EventsEntity newEvent = new EventsEntity();
+
+        newEvent.setEventId(eventId);
+        int addAttendees = (newEvent.getPeopleGoing() + 1);
+        newEvent.setPeopleGoing(addAttendees);
+
+
+        session.update(newEvent);
+        tx.commit();
+        session.close();
+
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
+
+        model.addAttribute("eventlist", eventList);
+
 
         return new ModelAndView("updateeventform", "eventId", eventId);
     }
@@ -82,15 +106,15 @@ public class HomeController {
                              @RequestParam("min") int minNeeded,
                              @RequestParam("time") String time, Model model) {
 
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
-        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
+        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
 
-        Session session = sessionFact.openSession( );
+        Session session = sessionFact.openSession();
 
-        Transaction tx = session.beginTransaction( );
+        Transaction tx = session.beginTransaction();
 
-        EventsEntity newEvent = new EventsEntity( );
+        EventsEntity newEvent = new EventsEntity();
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -100,8 +124,8 @@ public class HomeController {
         newEvent.setMinNeeded(minNeeded);
 
         session.save(newEvent);
-        tx.commit( );
-        session.close( );
+        tx.commit();
+        session.close();
 
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
@@ -109,10 +133,12 @@ public class HomeController {
 
         return "addeventsuccess";
     }
+
     @RequestMapping("/listofsports")
-        public ModelAndView listOfSports() {
-            return new ModelAndView("listofsports", "sportlist","SPORTS");
-        }
+    public ModelAndView listOfSports() {
+        return new ModelAndView("listofsports", "sportlist", "SPORTS");
+    }
+
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
@@ -121,9 +147,9 @@ public class HomeController {
     }
 
     @RequestMapping("deleteevents")
-        public String deleteEvent(){
-            eventDao.deleteEvent();
+    public String deleteEvent() {
+        eventDao.deleteEvent();
 
-            return "login";
+        return "login";
     }
 }
