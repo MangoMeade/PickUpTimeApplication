@@ -35,7 +35,6 @@ Add a new event:
 
 
 <div id="form" class="overlay">
-<<<<<<< HEAD
 <form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>
@@ -57,14 +56,14 @@ Add a new event:
         Amount of people Needed: <input type = "text" name="min" value = "0" required>
         <br>
 
+        <input type = "text" id="peopleGoing" name="peopleGoing" value = "0" required>
 
-
-        <input id="lat" name="lat" type="textbox"/>
-        <input  id="lng" name="lng" type="textbox"/>
+        <input id="lat" name="lat" type="textbox" required/>
+        <input  id="lng" name="lng" type="textbox" required/>
 
         <input type = "submit" value = "Add Event" > </p>
 </form>
-
+<h2>Click on the map where your event will take place</h2>
 </div>
 <form action="/listofsports">
     <input type= "submit" value="Back to Sports">

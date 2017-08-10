@@ -1,11 +1,14 @@
 #peopleGoing {
     display:none;
 }
-#latitude {
+#lat{
     display:none;
 }
-#longitude{
+#lng{
     display:none;
+}
+#map {
+    height: 100%;
 }
 .info {
     text-align: center;
