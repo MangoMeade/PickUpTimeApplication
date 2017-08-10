@@ -9,21 +9,32 @@
 <html>
 <head>
     <title>Add Event</title>
-    <script>
-        function myFunction() {
-            var x = document.createElement("INPUT");
-            x.setAttribute("type", "time");
-            x.setAttribute("value", "24:00:00");
-            document.body.appendChild(x);
-        }
+    <%--<script>--%>
+        <%--function myFunction() {--%>
+            <%--var x = document.createElement("INPUT");--%>
+            <%--x.setAttribute("type", "time");--%>
+            <%--x.setAttribute("value", "24:00:00");--%>
+            <%--document.body.appendChild(x);--%>
+        <%--}--%>
+    <%--</script>--%>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/addPin.css">
+    <script src="resources/addPin.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?callback=initMap">
     </script>
 </head>
 <body>
+
 Add a new event:
 <br>
 
 
-
+<div id="form" class="overlay">
 <form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>
@@ -44,11 +55,18 @@ Add a new event:
         <br>
         Amount of people Needed: <input type = "text" name="min" value = "0" required>
         <br>
+<<<<<<< HEAD
 
+=======
+        <input id="lat" name="lat" type="textbox"/>
+        <input  id="lng" name="lng" type="textbox"/>
+>>>>>>> 6f6f175a2d8140dc8b95ae3626cacaec0a2f33b4
         <input type = "submit" value = "Add Event" > </p>
 </form>
+</div>
 <form action="/listofsports">
     <input type= "submit" value="Back to Sports">
 </form>
+<div id="map" height="460px" width="100%"></div>
 </body>
 </html>
