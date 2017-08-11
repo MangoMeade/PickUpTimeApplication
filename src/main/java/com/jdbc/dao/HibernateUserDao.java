@@ -45,29 +45,7 @@ public class HibernateUserDao implements ParentUserDao {
 
         }
         return "redirect:loginfailed";
-//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//
-//
-//        SessionFactory sessionFact = cfg.buildSessionFactory();
-//
-//        Session selectUsers = sessionFact.openSession();
-//
-//        Transaction tx = selectUsers.beginTransaction();
-//
-//        Query query = selectUsers.createQuery("FROM UsersEntity WHERE userName = " + username + "AND password =" + password);
-//
-//        UsersEntity event = (UsersEntity) query.setMaxResults(1).uniqueResult();
-//
-//        selectUsers.close();
-//
-//        if (event.equals(null)) {
-//            return "redirect:loginfailed";
-//        }
-//        return "redirect:listevents";
-
-
     }
-
     public boolean isValid(String username, String password) {
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
@@ -75,7 +53,6 @@ public class HibernateUserDao implements ParentUserDao {
             if (username.equals(user.getUserName()) && Utility.encryptWithMD5(password).equals(user.getPassword())) {
                 return true;
             }
-
         }
         return false;
     }

@@ -17,7 +17,12 @@
     Last Name: <input type = "text" name = "lastName" id="lastname" required><br>
     Email: <input type = "email" name = "email" id="email" required><br>
     Phone Number: <input type="tel" name="phoneNumber" id="phonenum" pattern=".{10,11}"><br>
-    Gender: <input type = "text" name = "gender" id="gender"><br>
+    <select name="gender">
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Prefer not to answer">Prefer not to answer</option>
+    </select>
+    <br>
     Age: <input type="int" name="age" id="age" minlength="1"><br>
     Username: <input type = "text" name = "userName" id="username "pattern=".{5,20}"><br>
     Password: <input type = "password" name = "password" id="password" pattern=".{5,20}"><br>
@@ -26,3 +31,4 @@
 </form>
 </body>
 </html>
+
