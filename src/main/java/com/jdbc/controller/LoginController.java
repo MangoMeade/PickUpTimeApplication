@@ -20,9 +20,7 @@ public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
 
     @RequestMapping("/")
-    public ModelAndView loginPage(/*@RequestParam("password") String password, Model model*/) {
-
-//        model.addAttribute("")
+    public ModelAndView loginPage() {
 
         return new
                 //the type is model and view which brings together model and view
@@ -59,7 +57,7 @@ public class LoginController {
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
-
+    
 
     @RequestMapping("/getnewuser")
 
