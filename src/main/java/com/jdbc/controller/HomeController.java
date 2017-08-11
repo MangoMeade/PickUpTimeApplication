@@ -3,7 +3,6 @@ package com.jdbc.controller;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +26,11 @@ public class HomeController {
 
 
     private Session getSession() {
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory( );
-        Session selectAll = sessionFact.openSession( );
-        selectAll.beginTransaction( );
-        selectAll.close( );
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectAll = sessionFact.openSession();
+        selectAll.beginTransaction();
+        selectAll.close();
         return selectAll;
 
     }
@@ -42,7 +41,7 @@ public class HomeController {
     @RequestMapping(value = "/listevents")
 
     public ModelAndView listEvents() {
-        ArrayList<EventsEntity> eventList = eventDao.eventList( );
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         return new ModelAndView("listevents", "cList", eventList);
     }
@@ -53,7 +52,6 @@ public class HomeController {
                                     @RequestParam("sport") String sport, @RequestParam("address") String address,
                                     @RequestParam("description") String description, @RequestParam("time") String time) {
 
-        EventsEntity editEvent = eventDao.getEvent(eventId);
         System.out.println(peopleGoing);
         model.addAttribute("eventId", eventId);
         model.addAttribute("peopleGoing", peopleGoing);
@@ -76,15 +74,15 @@ public class HomeController {
 
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
-        System.out.println(editEvent.getName( ));
-        if (peopleGoing == editEvent.getMinNeeded( ) || peopleGoing > editEvent.getMinNeeded( )) {
+        System.out.println(editEvent.getName());
+        if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
             /*Notification.sendNotification();*/
         }
-        ArrayList<EventsEntity> eventList = eventDao.eventList( );
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
 
 
-        return new ModelAndView("redirect:listevents", "cList", eventList);
+        return new ModelAndView("redirect:confirmation", "cList", eventList);
     }
 
 
@@ -101,36 +99,7 @@ public class HomeController {
                              @RequestParam("lng") double lng,
                              Model model) {
 
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
-
-        SessionFactory sessionFact = cfg.buildSessionFactory( ); // design pattern
-
-        Session session = sessionFact.openSession( );
-
-        Transaction tx = session.beginTransaction( );
-
-        EventsEntity newEvent = new EventsEntity( );
-
-        newEvent.setName(name);
-        newEvent.setSport(sport);
-        newEvent.setAddress(address);
-        newEvent.setTime(time);
-        newEvent.setDay(day);
-        newEvent.setDescription(description);
-        newEvent.setPeopleGoing(peopleGoing);
-        newEvent.setMinNeeded(minNeeded);
-        newEvent.setLatitude(lat);
-        newEvent.setLongitude(lng);
-
-        session.save(newEvent);
-        tx.commit( );
-        session.close( );
-
-        ArrayList<EventsEntity> eventList = eventDao.eventList( );
-
-        model.addAttribute("eventlist", eventList);
-
-        return "redirect:listevents";
+        return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, model);
     }
 
     @RequestMapping("/listofsports")
@@ -147,7 +116,7 @@ public class HomeController {
     @RequestMapping("deleteevents")
     public String deleteEvent() {
 
-        eventDao.deleteEvent( );
+        eventDao.deleteEvent();
 
 
         return "login";

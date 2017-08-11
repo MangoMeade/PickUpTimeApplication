@@ -3,12 +3,6 @@ package com.jdbc.controller;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentUserDao;
 import com.jdbc.models.UsersEntity;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,11 +53,15 @@ public class LoginController {
     @RequestMapping(value = "/listusers")
 
     public ModelAndView listUsers() {
-        ArrayList<UsersEntity> userList = userDao.userList( );
+        ArrayList<UsersEntity> userList = userDao.userList();
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8b89f3f7e4bb31e8acd973328aff2d060ab0d9a4
 
     @RequestMapping("/getnewuser")
 
@@ -83,6 +81,7 @@ public class LoginController {
                                    @RequestParam("password") String password,
                                    @RequestParam("age") int age,
                                    Model model) {
+<<<<<<< HEAD
 
 
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
@@ -123,5 +122,11 @@ public class LoginController {
         session.close( );
         model.addAttribute("NewUsers", newUsers);
         return new ModelAndView("addusersuccess", "", "");
+=======
+
+
+        return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
+>>>>>>> 8b89f3f7e4bb31e8acd973328aff2d060ab0d9a4
     }
+
 }
