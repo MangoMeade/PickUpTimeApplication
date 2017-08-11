@@ -57,11 +57,6 @@ public class LoginController {
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 8b89f3f7e4bb31e8acd973328aff2d060ab0d9a4
 
     @RequestMapping("/getnewuser")
 
@@ -81,7 +76,6 @@ public class LoginController {
                                    @RequestParam("password") String password,
                                    @RequestParam("age") int age,
                                    Model model) {
-<<<<<<< HEAD
 
 
         Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
@@ -122,11 +116,11 @@ public class LoginController {
         session.close( );
         model.addAttribute("NewUsers", newUsers);
         return new ModelAndView("addusersuccess", "", "");
-=======
+
 
 
         return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
->>>>>>> 8b89f3f7e4bb31e8acd973328aff2d060ab0d9a4
+
     }
 
 }
