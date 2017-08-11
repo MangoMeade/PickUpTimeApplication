@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.ArrayList;
 
 
@@ -63,28 +64,6 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
-//    @RequestMapping(value="/signup")
-//    public String signup() {
-//        return "signup";
-//    }
-
-//    @RequestMapping("/listevents1")
-//    public String function(Model model, @RequestParam("username") String username,
-//                           @RequestParam("password") String password) {
-//
-//        model.addAttribute("username", username);
-//        model.addAttribute("password", password);
-//
-//        return "listEvents1";
-//    }
-
-//    @RequestMapping(value="/signup")
-//    public String signup() {
-//
-//        return "signup";
-//
-//    }
-
 
     @RequestMapping("/getnewuser")
 
@@ -96,21 +75,21 @@ public class LoginController {
 
     @RequestMapping("/addusersuccess")
     public ModelAndView addNewUser(@RequestParam("firstName") String firstname,
-                             @RequestParam("lastName") String lastname,
-                             @RequestParam("email") String email,
-                             @RequestParam("phoneNumber") String phoneNum,
-                             @RequestParam("gender") String gender,
-                             @RequestParam("userName") String username,
-                             @RequestParam("password") String password,
-                             @RequestParam("age") int age,
-                             Model model) {
+                                   @RequestParam("lastName") String lastname,
+                                   @RequestParam("email") String email,
+                                   @RequestParam("phoneNumber") String phoneNum,
+                                   @RequestParam("gender") String gender,
+                                   @RequestParam("userName") String username,
+                                   @RequestParam("password") String password,
+                                   @RequestParam("age") int age,
+                                   Model model) {
 
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        Transaction tx = session.beginTransaction();
-        UsersEntity newUsers = new UsersEntity();
+        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory( );
+        Session session = sessionFact.openSession( );
+        Transaction tx = session.beginTransaction( );
+        UsersEntity newUsers = new UsersEntity( );
         newUsers.setFirstName(firstname);
         newUsers.setLastName(lastname);
         newUsers.setEmail(email);
@@ -122,27 +101,27 @@ public class LoginController {
 
         Criteria c = session.createCriteria(UsersEntity.class);
         c.add(Restrictions.like("userName", username));
-        ArrayList<UsersEntity> userList = (ArrayList<UsersEntity>) c.list();
+        ArrayList<UsersEntity> userList = (ArrayList<UsersEntity>) c.list( );
 
         String controller = "";
-        if (!(userList.isEmpty())) {
+        if (!(userList.isEmpty( ))) {
             controller = "Username already taken";
-            return new ModelAndView("failed","control",controller);
+            return new ModelAndView("failed", "control", controller);
         }
         Criteria d = session.createCriteria(UsersEntity.class);
         d.add(Restrictions.like("email", email));
-        ArrayList<UsersEntity> userList2 = (ArrayList<UsersEntity>) d.list();
+        ArrayList<UsersEntity> userList2 = (ArrayList<UsersEntity>) d.list( );
 
-        if (!(userList2.isEmpty())) {
-           controller = "Email already taken";
-            return new ModelAndView("failed","control",controller);
+        if (!(userList2.isEmpty( ))) {
+            controller = "Email already taken";
+            return new ModelAndView("failed", "control", controller);
         }
 
         model.addAttribute("firstname", firstname);
         session.save(newUsers);
-        tx.commit();
-        session.close();
+        tx.commit( );
+        session.close( );
         model.addAttribute("NewUsers", newUsers);
-        return new ModelAndView("addusersuccess","","");
+        return new ModelAndView("addusersuccess", "", "");
     }
 }
