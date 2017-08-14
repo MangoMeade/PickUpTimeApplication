@@ -9,7 +9,7 @@ public class Notification {
     public static final String ACCOUNT_SID = "AC2794bc8fc91673912b21a57f6eb41e1c";
 
     public static final String AUTH_TOKEN = "auth token goes here";
-    
+
 
 
     public static void sendNotification() {
