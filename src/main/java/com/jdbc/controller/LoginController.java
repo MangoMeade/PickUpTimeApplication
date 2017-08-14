@@ -24,7 +24,7 @@ public class LoginController {
 
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("index", "loginPage", "login");
+                ModelAndView("login", "loginPage", "login");
     }
 
     @RequestMapping("/loginfailed")
@@ -58,6 +58,7 @@ public class LoginController {
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
 
+
     @RequestMapping("/getnewuser")
 
     public String newCustomer() {
@@ -76,7 +77,7 @@ public class LoginController {
                                    @RequestParam("password") String password,
                                    @RequestParam("age") int age,
                                    Model model) {
-        
+
 
         return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
 
