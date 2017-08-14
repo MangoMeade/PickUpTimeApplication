@@ -15,7 +15,6 @@ import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -38,8 +37,16 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-    @RequestMapping(value = "/listevents")
+    @RequestMapping(value = "/listeventsfiltered")
+//added string parameter
+    //list should be filtered, added jsp file to show filtered list
+    public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
+        ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
 
+        return new ModelAndView("listeventsfiltered", "cList", eventList);
+    }
+    @RequestMapping(value = "/listevents")
+    //original list with no filters
     public ModelAndView listEvents() {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
@@ -76,9 +83,10 @@ public class HomeController {
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
-            System.out.println("It worked!");
-            /*Notification.sendNotification();*/
+            //System.out.println("It worked!");
+            Notification.sendNotification();
         }
+        //added request param and sport argument
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
 

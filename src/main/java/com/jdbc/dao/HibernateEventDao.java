@@ -3,29 +3,35 @@ package com.jdbc.dao;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.ui.Model;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class HibernateEventDao implements ParentEventDao {
-    public ArrayList<EventsEntity> eventList() {
-
+    //made changes to this method. added method and a c.list
+    //renamed it eventListFiltered
+    public ArrayList<EventsEntity> eventListFiltered(String sport) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
-
         SessionFactory sessionFact = cfg.buildSessionFactory();
-
         Session selectEvents = sessionFact.openSession();
-
         selectEvents.beginTransaction();
-
         Criteria c = selectEvents.createCriteria(EventsEntity.class);
         //selectEvents.close();
-
+        c.add(Restrictions.like("sport", "%" + sport + "%"));
+        ArrayList<EventsEntity> eventsEntityArrayList = (ArrayList<EventsEntity>) c.list();
         return (ArrayList<EventsEntity>) c.list();
     }
-
+    public ArrayList<EventsEntity> eventList() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectEvents = sessionFact.openSession();
+        selectEvents.beginTransaction();
+        Criteria c = selectEvents.createCriteria(EventsEntity.class);
+        ArrayList<EventsEntity> eventsEntityArrayList = (ArrayList<EventsEntity>) c.list();
+        return (ArrayList<EventsEntity>) c.list();
+    }
     public String addEvent(String name, String sport, String address, Date day, String description,
                            int peopleGoing, int minNeeded, String time, double lat, double lng, Model model) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -52,7 +58,7 @@ public class HibernateEventDao implements ParentEventDao {
         session.save(newEvent);
         tx.commit();
         session.close();
-
+        //sport parameter in eventlist
         ArrayList<EventsEntity> eventList = eventList();
 
         model.addAttribute("eventlist", eventList);

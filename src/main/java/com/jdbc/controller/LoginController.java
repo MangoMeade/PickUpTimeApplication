@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 
 @Controller
+//To limit the use of the page to registered users
+//Hibernate reduces the risk of code injection
 @SessionAttributes("loggedinuser")
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);

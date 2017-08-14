@@ -7,7 +7,7 @@ import com.twilio.type.PhoneNumber;
 public class Notification {
     // Find your Account Sid and Token at twilio.com/user/account
     public static final String ACCOUNT_SID = "AC2794bc8fc91673912b21a57f6eb41e1c";
-    public static final String AUTH_TOKEN = "put api key here";
+    public static final String AUTH_TOKEN = "9e1cd1c5e07fae54324b426274681fe6";
 
     public static void sendNotification() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

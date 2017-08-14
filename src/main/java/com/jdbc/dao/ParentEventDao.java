@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 public interface ParentEventDao {
     public int HIBERNATE_DAO = 1;
+    //Made changes to eventList method, added parameter
+    //Added new method called evenListFiltered
+    public ArrayList<EventsEntity> eventListFiltered(String sport);
     public ArrayList<EventsEntity> eventList();
     public String addEvent(String name, String sport, String address, Date day, String description,
                            int peopleGoing, int minNeeded, String time, double lat, double lng, Model model);

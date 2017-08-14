@@ -76,6 +76,7 @@ public class HibernateUserDao implements ParentUserDao {
 
     }
 
+    //May delete later
     public String getUser(String username, String password) {
         ArrayList<UsersEntity> users = userList();
         for(UsersEntity user : users) {
