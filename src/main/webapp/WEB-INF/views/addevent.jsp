@@ -35,12 +35,17 @@ Add a new event:
 
 
 <div id="form" class="overlay">
+    <!-- Changed /addeventsuccess to /listevents -->
 <form action= "/addeventsuccess" method="post">
     <p>
         Name : <input type = "text" name="name" required>
         <br>
         <select name="sport">
-            <option value="Soccer">Soccer</option>
+            <option value="soccer">Soccer</option>
+            <option value="basketball">Basketball</option>
+            <option value="football">Football</option>
+            <option value="baseball">Basketbal</option>
+            <option value="volleyball">Volleyball</option>
         </select>
         <br>
         Address: <input type = "text" name="address" required>
@@ -61,7 +66,8 @@ Add a new event:
         <input id="lat" name="lat" type="textbox" required/>
         <input  id="lng" name="lng" type="textbox" required/>
 
-        <input type = "submit" value = "Add Event" > </p>
+        <input type = "submit" value = "Add Event">
+    </p>
 </form>
 <h2>Click on the map where your event will take place</h2>
 </div>

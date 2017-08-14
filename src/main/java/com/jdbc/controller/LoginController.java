@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 
 @Controller
+//To limit the use of the page to registered users
+//Hibernate reduces the risk of code injection
 @SessionAttributes("loggedinuser")
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
@@ -24,7 +26,7 @@ public class LoginController {
 
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("index", "loginPage", "login");
+                ModelAndView("login", "loginPage", "login");
     }
 
     @RequestMapping("/loginfailed")
