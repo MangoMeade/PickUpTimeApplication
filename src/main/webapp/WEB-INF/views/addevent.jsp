@@ -23,10 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/addpin.css">
-    <script src="resources/addpin.js"></script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-    </script>
+
 </head>
 <body>
 
@@ -54,7 +51,7 @@ Add a new event:
         Time: <input type="time" name="time" placeholder="hrs:mins" pattern="[0-9]{4}-[0-1][0-9]-[0-3][0-9] (1[012]|0[1-9]):[0-5][0-9] (am|pm|AM|PM)"required>
 
         <br>
-        Date: <input type="date" name="day">
+        Date: <input id="date" type="date" name="day">
         <br>
         Description: <input type="text" name="description">
         <br>
@@ -75,5 +72,9 @@ Add a new event:
     <input type= "submit" value="Back to Sports">
 </form>
 <div id="map" height="460px" width="100%"></div>
+<script src="resources/addpin.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+</script>
 </body>
 </html>
