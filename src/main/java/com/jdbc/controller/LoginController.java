@@ -59,7 +59,7 @@ public class LoginController {
 
         return new ModelAndView("/WEB-INF/views/listusers.jsp", "cList", userList);
     }
-    
+
 
     @RequestMapping("/getnewuser")
 
@@ -82,6 +82,7 @@ public class LoginController {
 
 
         return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
+
     }
 
 }

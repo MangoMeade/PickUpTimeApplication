@@ -1,5 +1,6 @@
 package com.jdbc.controller;
 
+import com.google.gson.Gson;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,14 +38,29 @@ public class HomeController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
+
     @RequestMapping(value = "/listeventsfiltered")
 //added string parameter
     //list should be filtered, added jsp file to show filtered list
     public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
         ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
-
         return new ModelAndView("listeventsfiltered", "cList", eventList);
     }
+    @RequestMapping(value = "/data")
+    public ModelAndView data(){
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
+
+        String jsonArray = new Gson().toJson(eventList);
+        //System.out.println(jsonArray);
+
+        return new ModelAndView("data", "json", jsonArray);
+    }
+
+    @RequestMapping(value="/allmarkers")
+    public String allMarkers(){
+        return "allmarkers";
+    }
+
     @RequestMapping(value = "/listevents")
     //original list with no filters
     public ModelAndView listEvents() {
@@ -83,7 +99,7 @@ public class HomeController {
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
-            //System.out.println("It worked!");
+            System.out.println("It worked!");
             Notification.sendNotification();
         }
         //added request param and sport argument
