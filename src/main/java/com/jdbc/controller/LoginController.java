@@ -24,7 +24,7 @@ public class LoginController {
 
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("login", "loginPage", "login");
+                ModelAndView("index", "loginPage", "login");
     }
 
     @RequestMapping("/loginfailed")
@@ -80,6 +80,7 @@ public class LoginController {
 
 
         return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
+
     }
 
 }
