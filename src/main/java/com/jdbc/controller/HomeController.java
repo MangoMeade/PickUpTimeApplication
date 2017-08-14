@@ -1,5 +1,6 @@
 package com.jdbc.controller;
 
+import com.google.gson.Gson;
 import com.jdbc.models.EventsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,6 +38,21 @@ public class HomeController {
 
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
+
+    @RequestMapping(value = "/data")
+    public ModelAndView data(){
+        ArrayList<EventsEntity> eventList = eventDao.eventList();
+
+        String jsonArray = new Gson().toJson(eventList);
+        //System.out.println(jsonArray);
+
+        return new ModelAndView("data", "json", jsonArray);
+    }
+
+    @RequestMapping(value="/allmarkers")
+    public String allMarkers(){
+        return "allmarkers";
+    }
 
     @RequestMapping(value = "/listevents")
 
