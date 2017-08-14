@@ -33,9 +33,10 @@
             color: aliceblue;
             font-family: "Britannic Bold", serif;
         }
-        .center_div{
+
+        .center_div {
             margin: 0 auto;
-            width:30% /* value of your choice which suits your alignment */
+            width: 30% /* value of your choice which suits your alignment */
         }
     </style>
 </head>
@@ -43,7 +44,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -53,11 +55,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">See Events</a></li>
+                <li class="active"><a href="/listevents">See Events</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sports <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Sports <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -78,48 +81,30 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante
         dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.
         Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
-    <input type="submit" value="submit" class="btn btn-danger">
-    <input type="submit" value="link" class="btn btn-lg btn-link">
 </div>
+${loginFailed}
 
 <div class="container center_div">
 
 
-    <form class="form-signin">
+    <form class="form-signin" method="post" action="/loggedin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputUsername" class="sr-only">Email address</label>
+        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required
+               autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-</div> <!-- /container -->
-
-    ${loginFailed}
-    <h1>Welcome</h1>
-    <form class="form-signin" action="/listofsports">
-        <input type="submit" value="See Events" class="btn btn-primary"/>
+        New User? <a href="/getnewuser">Sign up here</a>
     </form>
 
-    <form class="form-signin" method="post" action="/loggedin">
-        Username: <input type="text" name="username" id="username" required>
-        <br>
-        Password: <input type="password" name="password" id="password" required>
-        <br>
-        <input type="submit" value="Login" class="btn btn-primary">
-    </form>
-    <form class="form-signin" action="/getnewuser">
-        <input type="submit" value="Sign Up" class="btn btn-primary">
-    </form>
-
-</div>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </body>
 
 </html>
