@@ -49,7 +49,7 @@
             <option value="soccer">Soccer</option>
             <option value="basketball">Basketball</option>
             <option value="football">Football</option>
-            <option value="baseball">Basketbal</option>
+            <option value="baseball">Baseball</option>
             <option value="volleyball">Volleyball</option>
         </select>
 
