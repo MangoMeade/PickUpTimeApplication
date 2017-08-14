@@ -24,7 +24,7 @@ public class LoginController {
 
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("index", "loginPage", "login");
+                ModelAndView("login", "loginPage", "login");
     }
 
     @RequestMapping("/loginfailed")
