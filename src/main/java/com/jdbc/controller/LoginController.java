@@ -24,7 +24,7 @@ public class LoginController {
 
         return new
                 //the type is model and view which brings together model and view
-                ModelAndView("login", "loginPage", "login");
+                ModelAndView("index", "loginPage", "login");
     }
 
     @RequestMapping("/loginfailed")
@@ -76,48 +76,7 @@ public class LoginController {
                                    @RequestParam("password") String password,
                                    @RequestParam("age") int age,
                                    Model model) {
-
-
-        Configuration cfg = new Configuration( ).configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory( );
-        Session session = sessionFact.openSession( );
-        Transaction tx = session.beginTransaction( );
-        UsersEntity newUsers = new UsersEntity( );
-        newUsers.setFirstName(firstname);
-        newUsers.setLastName(lastname);
-        newUsers.setEmail(email);
-        newUsers.setPhoneNumber(phoneNum);
-        newUsers.setGender(gender);
-        newUsers.setUserName(username);
-        newUsers.setPassword(Utility.encryptWithMD5(password));
-        newUsers.setAge(age);
-
-        Criteria c = session.createCriteria(UsersEntity.class);
-        c.add(Restrictions.like("userName", username));
-        ArrayList<UsersEntity> userList = (ArrayList<UsersEntity>) c.list( );
-
-        String controller = "";
-        if (!(userList.isEmpty( ))) {
-            controller = "Username already taken";
-            return new ModelAndView("failed", "control", controller);
-        }
-        Criteria d = session.createCriteria(UsersEntity.class);
-        d.add(Restrictions.like("email", email));
-        ArrayList<UsersEntity> userList2 = (ArrayList<UsersEntity>) d.list( );
-
-        if (!(userList2.isEmpty( ))) {
-            controller = "Email already taken";
-            return new ModelAndView("failed", "control", controller);
-        }
-
-        model.addAttribute("firstname", firstname);
-        session.save(newUsers);
-        tx.commit( );
-        session.close( );
-        model.addAttribute("NewUsers", newUsers);
-        return new ModelAndView("addusersuccess", "", "");
-
-
+        
 
         return userDao.addUser(firstname, lastname, email, phoneNum, gender, username, password, age, model);
 

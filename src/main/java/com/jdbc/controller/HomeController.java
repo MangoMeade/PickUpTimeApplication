@@ -77,7 +77,7 @@ public class HomeController {
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
             System.out.println("It worked!");
-            /*Notification.sendNotification();*/
+            Notification.sendNotification();
         }
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
