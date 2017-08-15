@@ -58,7 +58,11 @@
 
     }
     body {
-        background-color: red;
+        background: url("http://www.atpworldtour.com/-/media/images/news/2017/08/09/22/02/montreal-2017-wednesday-shapovalov1.jpg") no-repeat center center;
+        height: 100%;
+        margin:0px;
+        background-size: cover;
+        background-attachment: fixed;
     }
 
 </style>

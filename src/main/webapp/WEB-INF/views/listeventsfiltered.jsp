@@ -10,15 +10,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+    <style>
+        body {
+            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
     <body>
 
     <meta http-equiv="Content-Type" content="text/html;
-<<style>
-    .table {
-
-</style>
-
-charset=ISO-8859-1">
+<charset=ISO-8859-1">
     <title>ListEvents</title></head>
 <h3>Events List</h3>
 <table>
@@ -32,6 +38,8 @@ charset=ISO-8859-1">
         <th>Players Going</th>
         <th>Players Needed</th>
         <th>Date</th>
+        <th>Description</th>
+        <th>Attend</th>
         <th></th>
     </tr>
     <c:forEach var="myvar" items="${cList}">
@@ -42,6 +50,7 @@ charset=ISO-8859-1">
             <td> ${myvar.peopleGoing}</td>
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
+            <td>${myvar.description}</td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}

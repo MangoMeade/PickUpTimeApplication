@@ -57,6 +57,9 @@
 
 <html>
 <style>
+    .jumbotron {
+        opacity: 0.8;
+    }
     .sportmenu {
         width: 200px;
     }
@@ -84,7 +87,11 @@
     }
 
     body {
-        background-color: red;
+        background: url("https://s-media-cache-ak0.pinimg.com/originals/8e/64/fb/8e64fbddeeb2a2356ba2361733010ad2.jpg") no-repeat center center;
+        height: 100%;
+        margin:0px;
+        background-size: cover;
+        background-attachment: fixed;
     }
 </style>
 <div class="container">

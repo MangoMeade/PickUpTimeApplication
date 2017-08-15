@@ -53,6 +53,14 @@
         .filterable .filters input[disabled]:-ms-input-placeholder {
             color: #333;
         }
+        body {
+            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
     </style>
     <title>ListEvents</title>
 
@@ -79,6 +87,7 @@
             <td> ${myvar.peopleGoing}</td>
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
+            <td> ${myvar.description}</td>
             <td><a href="/attendees?=${myvar.eventId}">See who's attending</a></td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
