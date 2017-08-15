@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Confirmation Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,6 +31,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
                 <li class="active"><a href="/listevents">See Events</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -65,7 +66,7 @@
 <div class="container">
 <div class="jumbotron">
     <h1>Submitted </h1> <span class="glyphicon glyphicon-ok"></span></p>    </h1>
-    <p>You will recieve a notification soon!</p>
+    <p>You will receive a notification soon!</p>
 
     <form action="/listofsports">
         <input type= "submit" value="Back to Sports"></form>

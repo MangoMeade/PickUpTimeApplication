@@ -52,10 +52,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Pickup Time</a>
+            <a class="navbar-brand" href="#"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
                 <li class="active"><a href="/listevents">See Events</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -87,7 +88,7 @@ ${loginFailed}
 <div class="container center_div">
 
 
-    <form class="form-signin" method="post" action="/loggedin">
+    <form class="form-signin" method="get" action="/loggedin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUsername" class="sr-only">Email address</label>
         <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required

@@ -147,6 +147,8 @@ public class HomeController {
         return "login";
     }
 
+
+
     @RequestMapping("/confirmation")
     public String confirmation() {
         return "confirmation";

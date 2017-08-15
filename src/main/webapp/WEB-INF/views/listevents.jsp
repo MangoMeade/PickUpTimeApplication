@@ -7,51 +7,72 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-    <style>
-        .table, tr, th, td {
-            /*border: 1px solid black;*/
-            border-collapse: collapse;
-            padding: 4px;
-            text-align: left;
-
-        }
-        tr:nth-child(even) {background-color: #f2f2f2}
-        .filterable {
-            margin-top: 15px;
-        }
-        .filterable .panel-heading .pull-right {
-            margin-top: -20px;
-        }
-        .filterable .filters input[disabled] {
-            background-color: transparent;
-            border: none;
-            cursor: auto;
-            box-shadow: none;
-            padding: 0;
-            height: auto;
-        }
-        .filterable .filters input[disabled]::-webkit-input-placeholder {
-            color: #333;
-        }
-        .filterable .filters input[disabled]::-moz-placeholder {
-            color: #333;
-        }
-        .filterable .filters input[disabled]:-ms-input-placeholder {
-            color: #333;
-        }
-    </style>
-    <title>ListEvents</title>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<h3>Events List</h3>
-<table class="table table-hover table-bordered">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li class="active"><a href="/listevents">See Events</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Sports <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<title>Events Page</title>
+<style>
+    div {
+        text-align: center;
+
+    }
+    body {
+        background-color: red;
+    }
+
+</style>
+<div class="container">
+    <div class="jumbotron">
+
+<h1>Events List</h1>
+
+        <table class="table table-bordered">
 
     <tr>
         <th>Event Name</th>
@@ -82,6 +103,9 @@
 <form action="/listofsports">
     <input type="submit" value="Back to Sports">
 </form>
+    </div>
+
+</div>
 
 </body>
 
