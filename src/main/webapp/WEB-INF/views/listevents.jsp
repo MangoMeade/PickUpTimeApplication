@@ -37,6 +37,7 @@ charset=ISO-8859-1">
         <td> ${myvar.peopleGoing}</td>
         <td> ${myvar.minNeeded}</td>
         <td> ${myvar.day}</td>
+        <td><a href="/attendees?=${myvar.eventId}">See who's attending</a></td>
         <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}

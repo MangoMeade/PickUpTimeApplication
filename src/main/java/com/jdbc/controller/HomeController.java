@@ -168,6 +168,12 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping("attendees")
+    public ModelAndView attendees(@RequestParam("id") int eventId){
+
+        return new ModelAndView("", "", "");
+    }
+
     @RequestMapping("/confirmation")
     public String confirmation() {
         return "confirmation";
