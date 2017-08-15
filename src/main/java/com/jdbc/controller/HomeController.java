@@ -99,6 +99,7 @@ public class HomeController {
         eventDao.updateEvent(eventID, peopleGoing);
 
 
+
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
