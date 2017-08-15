@@ -41,6 +41,7 @@
     </style>
 </head>
 <body>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -75,7 +76,6 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
 
 <div class="jumbotron">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante

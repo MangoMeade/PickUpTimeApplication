@@ -11,7 +11,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;
+<<style>
+    .table {
 
+</style>
 
 charset=ISO-8859-1">
     <title>ListEvents</title></head>
