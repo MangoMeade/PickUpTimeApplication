@@ -49,6 +49,7 @@
 
 </head>
 <body>
+
 <h3>Events List</h3>
 <table class="table table-hover table-bordered">
 
