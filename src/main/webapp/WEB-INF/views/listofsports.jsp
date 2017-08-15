@@ -42,7 +42,7 @@
     <%--<a href="/listevents">Volleyball</a>--%>
     <%--<a href="/listevents">Baseball</a>--%>
 <%--</div>--%>
-<form action= "/listeventsfiltered" method="post">
+<form action= "/listeventsfiltered" method="get">
     <p>
         Choose a Sport
         <select name="sport">

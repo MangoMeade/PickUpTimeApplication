@@ -7,15 +7,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -46,8 +48,9 @@ public class HomeController {
         ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
         return new ModelAndView("listeventsfiltered", "cList", eventList);
     }
+
     @RequestMapping(value = "/data")
-    public ModelAndView data(){
+    public ModelAndView data() {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         String jsonArray = new Gson().toJson(eventList);
@@ -56,8 +59,8 @@ public class HomeController {
         return new ModelAndView("data", "json", jsonArray);
     }
 
-    @RequestMapping(value="/allmarkers")
-    public String allMarkers(){
+    @RequestMapping(value = "/allmarkers")
+    public String allMarkers() {
         return "allmarkers";
     }
 
@@ -127,8 +130,27 @@ public class HomeController {
     }
 
     @RequestMapping("/listofsports")
-    public ModelAndView listOfSports() {
-        return new ModelAndView("listofsports", "sportlist", "SPORTS");
+    public ModelAndView listOfSports(HttpServletRequest request) {
+        String userID = "";
+        Cookie[] cookies = request.getCookies();
+        userID = getString(userID, cookies);
+
+        if (userID != "") {
+            return new ModelAndView("listofsports", "sportlist", "SPORTS");
+        }
+
+        String loginFailed = "Log in to see this webpage";
+        return new ModelAndView("login", "loginFailed", loginFailed);
+
+    }
+
+    private String getString(String userID, Cookie[] cookies) {
+        for (Cookie cookie : cookies){
+            if (cookie.getName().equalsIgnoreCase("userID")){
+                userID = cookie.getValue();
+            }
+        }
+        return userID;
     }
 
     @RequestMapping("/addevent")
@@ -149,5 +171,14 @@ public class HomeController {
     @RequestMapping("/confirmation")
     public String confirmation() {
         return "confirmation";
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logOut(HttpServletResponse response) {
+        Cookie userCookie = new Cookie("userID", "");
+        userCookie.setMaxAge(0);
+        response.addCookie(userCookie);
+
+        return new ModelAndView("logout", "", "");
     }
 }
