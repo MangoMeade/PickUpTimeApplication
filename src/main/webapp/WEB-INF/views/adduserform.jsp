@@ -83,36 +83,39 @@
         Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
     <input type="submit" value="submit" class="btn btn-danger">
     <input type="submit" value="link" class="btn btn-lg btn-link">
-</div>
+
+</div> <!-- /container -->
 
 <div class="container center_div">
 
 
-    <form method="post" action="/addusersuccess">
+    <form class="form-signin" method="post" action="/addusersuccess">
         <h2 class="form-signin-heading">Register here!</h2>
 
-        <input type = "text" name = "firstName" id="firstname"placeholder="first Name" required><br>
-        <input type = "text" name = "lastName" id="lastname" placeholder="Last Name"required><br>
-        <input type = "email" name = "email" id="email" placeholder="Email"required><br>
-        <input type="tel" name="phoneNumber" id="phonenum"placeholder="Phone Number" pattern=".{10,11}"><br>
-        <select name="gender">
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Prefer not to answer">Prefer not to answer</option>
-        </select>
-        <br>
-        <input type="int" name="age" id="age" placeholder="Age"minlength="1"><br>
-        <input type = "text" name = "userName" id="username "placeholder="Username"pattern=".{5,20}"><br>
-        <input type = "password" name = "password" id="password" placeholder="Password"pattern=".{5,20}"><br>
-        <br>
+        <input type="text" name="firstName" id="inputfirstName" class="form-control" placeholder="First Name" required
+               autofocus>
+        <input type="text" name="lastName" id="inputlastName" class="form-control" placeholder="Last Name" required>
+        <input type="text" name="email" id="inputemail" class="form-control" placeholder="Email" required>
+        <input type="text" name="phoneNumber" id="inputphoneNumber" class="form-control" placeholder="Phone Number" required>
 
+        <input type="text" name="age" id="inputage" class="form-control" placeholder="Age" required>
+        <input type="text" name="userName" id="inputuserName" class="form-control" placeholder="username" required>
+        <input type="password" name="password" id="inputpassword" class="form-control" placeholder="password" required>
+
+        <div class="container">
+            <label class="radio-inline">
+                <input type="radio" name="gender">Female
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender">Male
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender">Prefer not to answer
+            </label>
+        </div>
+        <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     </form>
-</div> <!-- /container -->
-
-
-
-
 
 </div>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

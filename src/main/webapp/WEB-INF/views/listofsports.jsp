@@ -6,10 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Sports</title>
-    <style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<html>
+<style>
         .sportmenu {
             width: 200px;
         }
@@ -30,18 +42,20 @@
             background-color: darkcyan;
             color: white;
         }
+        div {
+            text-align: center;
+
+        }
+        body {
+            background-color: red;
+        }
     </style>
-</head>
-<body>
+<div class="container">
+    <div class="jumbotron">
+
+
 <h1> ${sportlist}</h1>
-<%--<div class="sportmenu">--%>
-    <%--<a href="#" class="active">Pickup Sports</a>--%>
-    <%--<a href="/listevents">Soccer</a>--%>
-    <%--<a href="/listevents">Basketball</a>--%>
-    <%--<a href="/listevents">Football</a>--%>
-    <%--<a href="/listevents">Volleyball</a>--%>
-    <%--<a href="/listevents">Baseball</a>--%>
-<%--</div>--%>
+
 <form action= "/listeventsfiltered" method="post">
     <p>
         Choose a Sport
@@ -60,8 +74,21 @@
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
+
+        <br>
 <form action="/">
     <input type="submit" value="Back to Login">
 </form>
-</body>
+
+
+    </div>
+
+</div>
 </html>
+</body>
+
+
+
+
+
+
