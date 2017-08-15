@@ -9,28 +9,6 @@
 <html>
 <head>
     <title>Sports</title>
-    <style>
-        .sportmenu {
-            width: 200px;
-        }
-
-        .sportmenu a {
-            background-color: palegreen;
-            color: black;
-            display: block;
-            padding: 12px;
-            text-decoration: none;
-        }
-
-        .sportmenu a:hover {
-            background-color: cadetblue;
-        }
-
-        .sportmenu a.active {
-            background-color: darkcyan;
-            color: white;
-        }
-    </style>
 </head>
 <body>
 <h1> ${sportlist}</h1>
