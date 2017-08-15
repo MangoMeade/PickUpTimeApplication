@@ -26,7 +26,7 @@ import java.sql.Date;
 @SessionAttributes("loggedinuser")
 public class HomeController {
 
-
+    //QUESTION: What is a getSession method and what does it do? Explain each line of code.
     private Session getSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -36,7 +36,7 @@ public class HomeController {
         return selectAll;
 
     }
-
+    //QUESTION: What is 
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
