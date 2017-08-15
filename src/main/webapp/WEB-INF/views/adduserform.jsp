@@ -29,13 +29,20 @@
 
     <style>
         .jumbotron {
-            background-color: darkslategray;
+            background-color: purple;
             color: aliceblue;
             font-family: "Britannic Bold", serif;
         }
         .center_div{
             margin: 0 auto;
             width:30% /* value of your choice which suits your alignment */
+        }
+        body {
+            background: url("https://obrazky.4ever.sk/data/download/ludia/preteky,-gepardy-161476.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
         }
 
 

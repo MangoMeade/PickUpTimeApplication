@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Confirmation Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,6 +79,24 @@ charset=ISO-8859-1">
 </style>
 <div class="container">
     <div class="jumbotron">
+
+    <style>
+        body {
+            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+
+
+    <meta http-equiv="Content-Type" content="text/html;
+<charset=ISO-8859-1">
+    <title>ListEvents</title></head>
+
 <h3>Events List</h3>
 
 
@@ -90,6 +109,8 @@ charset=ISO-8859-1">
         <th>Players Going</th>
         <th>Players Needed</th>
         <th>Date</th>
+        <th>Description</th>
+        <th>Attend</th>
         <th></th>
     </tr>
     <c:forEach var="myvar" items="${cList}">
@@ -100,6 +121,7 @@ charset=ISO-8859-1">
             <td> ${myvar.peopleGoing}</td>
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
+            <td>${myvar.description}</td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}

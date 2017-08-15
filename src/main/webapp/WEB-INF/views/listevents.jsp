@@ -11,6 +11,61 @@
 <html lang="en">
 <head>
 
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+    <style>
+        .table, tr, th, td {
+            /*border: 1px solid black;*/
+            border-collapse: collapse;
+            padding: 4px;
+            text-align: left;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        .filterable {
+            margin-top: 15px;
+        }
+
+        .filterable .panel-heading .pull-right {
+            margin-top: -20px;
+        }
+
+        .filterable .filters input[disabled] {
+            background-color: transparent;
+            border: none;
+            cursor: auto;
+            box-shadow: none;
+            padding: 0;
+            height: auto;
+        }
+
+        .filterable .filters input[disabled]::-webkit-input-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]::-moz-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]:-ms-input-placeholder {
+            color: #333;
+        }
+        body {
+            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+    </style>
+    <title>ListEvents</title>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -84,12 +139,15 @@
     </tr>
     <c:forEach var="myvar" items="${cList}">
 
+
         <tr>
             <td> ${myvar.name}</td>
             <td> ${myvar.sport}</td>
             <td> ${myvar.peopleGoing}</td>
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
+            <td> ${myvar.description}</td>
+            <td><a href="/attendees?=${myvar.eventId}">See who's attending</a></td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}

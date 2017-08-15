@@ -29,14 +29,25 @@
 
     <style>
         .jumbotron {
-            background-color: darkslategray;
+            background-color: cadetblue;
+            opacity: 0.7;
             color: aliceblue;
             font-family: "Britannic Bold", serif;
         }
 
         .center_div {
+            opacity: 0.7;
+            border: #ff7253;
+            background-color: #d9534f;
             margin: 0 auto;
             width: 30% /* value of your choice which suits your alignment */
+        }
+        body {
+            background: url("https://wallpapershome.com/images/wallpapers/allyson-felix-3840x2160-nike-running-athlete-women-red-10572.jpg") no-repeat center center;
+            height: 100%;
+            margin:0px;
+            background-size: cover;
+            background-attachment: fixed;
         }
     </style>
 </head>
@@ -88,7 +99,7 @@ ${loginFailed}
 <div class="container center_div">
 
 
-    <form class="form-signin" method="get" action="/loggedin">
+    <form class="form-signin" method="post" action="/loggedin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUsername" class="sr-only">Email address</label>
         <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required
