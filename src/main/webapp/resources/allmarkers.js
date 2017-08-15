@@ -78,56 +78,66 @@ function loadMarker(map) {
             }
         }
     }
-};
+
 
 //callback database of markers within the current viewport
-// var bounds = map.getBounds();
-// var NE = bounds.getNorthEast();
-// var SW = bounds.getSouthWest();
-//
-// var neLat = NE.lat()
-// var neLng = NE.lng()
-// var swLat = SW.lat()
-// var swLng = SW.lng()
+    var bounds = map.getBounds();
+    var NE = bounds.getNorthEast();
+    var SW = bounds.getSouthWest();
 
-downloadUrl('/data', function (results) {
-    var customIcon = {
-        //specifies the color of the markers of photos taken in a given decade
-        "Soccer": {
-            style: {
-                path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
-                fillColor: '#448D7A',
-                fillOpacity: .6,
-                anchor: new google.maps.Point(0, 0),
-                strokeWeight: 0,
+    var neLat = NE.lat();
+    var neLng = NE.lng();
+    var swLat = SW.lat();
+    var swLng = SW.lng();
+
+    downloadUrl('/data', function (results) {
+        var customIcon = {
+            //specifies the color of the markers of photos taken in a given decade
+            "Soccer": {
+                style: {
+                    path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
+                    fillColor: '#448D7A',
+                    fillOpacity: .6,
+                    anchor: new google.maps.Point(0, 0),
+                    strokeWeight: 0,
+                }
+            },
+            "basketball": {
+                style: {
+                    path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
+                    fillColor: '#b43b08',
+                    fillOpacity: .6,
+                    anchor: new google.maps.Point(0, 0),
+                    strokeWeight: 0,
+                }
             }
         }
-    }
-    console.log(results.responseText.trim());
-    var resultsJSON = JSON.parse(results.responseText.trim());
-    console.log(resultsJSON);
-    for (var i = 0; i < resultsJSON.length; i++) {
-        var lat = resultsJSON[i].latitude;
-        var lng = resultsJSON[i].longitude;
-        var latLng = new google.maps.LatLng(lat, lng);
-        var name = resultsJSON[i].name;
-        var sport = resultsJSON[i].sport;
-        var address = resultsJSON[i].address;
-        var description = resultsJSON[i].description;
-        var time = resultsJSON[i].time;
-        var day = resultsJSON[i].day;
-        var peopleGoing = resultsJSON[i].peopleGoing;
-        var minNeeded = resultsJSON[i].minNeeded;
-        var icon = customIcon[sport] || {};
-        var marker = new google.maps.Marker({
-            position: latLng,
-            category: sport,
-            icon: icon.style,
-            scale: 2
-        });
-        markers.push(marker);
-    }
-})
+        console.log(results.responseText.trim());
+        var resultsJSON = JSON.parse(results.responseText.trim());
+        console.log(resultsJSON);
+        for (var i = 0; i < resultsJSON.length; i++) {
+            var lat = resultsJSON[i].latitude;
+            var lng = resultsJSON[i].longitude;
+            var latLng = new google.maps.LatLng(lat, lng);
+            var name = resultsJSON[i].name;
+            var sport = resultsJSON[i].sport;
+            var address = resultsJSON[i].address;
+            var description = resultsJSON[i].description;
+            var time = resultsJSON[i].time;
+            var day = resultsJSON[i].day;
+            var peopleGoing = resultsJSON[i].peopleGoing;
+            var minNeeded = resultsJSON[i].minNeeded;
+            var icon = customIcon[sport] || {};
+            var marker = new google.maps.Marker({
+                position: latLng,
+                category: sport,
+                icon: icon.style,
+                scale: 2
+            });
+            markers.push(marker);
+        }
+    })
+};
 
 function showVisibleMarkers(map) {
     var zoom = map.getZoom();

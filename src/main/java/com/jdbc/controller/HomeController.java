@@ -99,7 +99,7 @@ public class HomeController {
         EventsEntity editEvent = eventDao.getEvent(eventID);
         System.out.println(editEvent.getName());
         if (peopleGoing == editEvent.getMinNeeded() || peopleGoing > editEvent.getMinNeeded()) {
-            System.out.println("It worked!");
+
             Notification.sendNotification();
         }
         //added request param and sport argument
