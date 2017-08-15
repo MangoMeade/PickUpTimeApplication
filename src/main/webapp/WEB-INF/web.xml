@@ -24,4 +24,12 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/spring-servlet.xml</param-value>
     </context-param>
+    <!--<filter>-->
+        <!--<filter-name>JspFilter</filter-name>-->
+        <!--<filter-class>my.JspFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>JspFilter</filter-name>-->
+        <!--<url-pattern>/addevent</url-pattern>-->
+    <!--</filter-mapping>-->
 </web-app>

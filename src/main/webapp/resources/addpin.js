@@ -238,9 +238,26 @@ function downloadUrl(url, callback) {
 }
 
 
+//people going counter
 function myFunction() {
     var x = document.createElement("INPUT");
     x.setAttribute("type", "time");
     x.setAttribute("value", "24:00:00");
     document.body.appendChild(x);
 }
+
+//restricts event scheduling to 2 days from current day
+var day = new Date();
+day.setDate(day.getDate()+2);
+var dd = day.getDate();
+var mm = day.getMonth()+1; //January is 0!
+var yyyy = day.getFullYear();
+if(dd<10){
+    dd='0'+dd
+}
+if(mm<10){
+    mm='0'+mm
+}
+
+day = yyyy+'-'+mm+'-'+dd;
+document.getElementById("date").setAttribute("max", day);
