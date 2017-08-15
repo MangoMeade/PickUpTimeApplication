@@ -28,13 +28,23 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
 
-    @RequestMapping("/")
-    public ModelAndView loginPage() {
 
+    @RequestMapping("/login")
+    public ModelAndView loginPage() {
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView("login", "loginPage", "login");
     }
+
+
+    @RequestMapping("/")
+    public String welcomePage() {
+
+        return "welcome";
+    }
+
+
+
 
     @RequestMapping("/loginfailed")
     public ModelAndView loginFailed() {
