@@ -90,21 +90,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li class="active"><a href="/listevents">See Events</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Sports <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+                <li class="active"><a href="/listofsports">Sport List</a></li>
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -135,7 +122,9 @@
         <th>Players Going</th>
         <th>Players Needed</th>
         <th>Date</th>
-        <th></th>
+        <th>Description</th>
+        <th>Attendance</th>
+        <th>Join</th>
     </tr>
     <c:forEach var="myvar" items="${cList}">
 
@@ -147,11 +136,11 @@
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
             <td> ${myvar.description}</td>
-            <td><a href="/attendees?=${myvar.eventId}">See who's attending</a></td>
+            <td><a href="/attendees?=${myvar.eventId}">Attendees</a></td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}
-        ">Are you Attending?</a></td>
+        "> + </a></td>
         </tr>
 
     </c:forEach></table>
@@ -159,7 +148,7 @@
     <input type="submit" value="Add New Event">
 </form>
 <form action="/listofsports">
-    <input type="submit" value="Back to Sports">
+    <input type="submit" value="View Sport List">
 </form>
     </div>
 

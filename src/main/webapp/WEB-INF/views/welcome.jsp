@@ -99,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Surfer a Sports Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>Pick up Time</title>
     <!-- mobile apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -172,14 +172,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <span>See Events</span>
                                 </a>
                             </li>
-                            <%--<li>--%>
-                                <%--<a href="#services" class="scroll">--%>
-										<%--<span class="icon">--%>
-											<%--<i aria-hidden="true" class="icon-portfolio glyphicon glyphicon-cog"></i>--%>
-										<%--</span>--%>
-                                    <%--<span>Services</span>--%>
-                                <%--</a>--%>
-                            <%--</li>--%>
+
                             <li>
                                 <a href="/login" >
 										<span class="icon">
@@ -204,9 +197,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <!-- //top-navigation -->
         </div>
-        <!-- //banner-text -->
-        <%--<div class="clearfix"> </div>--%>
-        <%--<p class="w3-agilephn"><span class="glyphicon glyphicon-earphone"></span> +11 999 8888 7777 </p>--%>
+
     </div>
 </div>
 <!-- //banner -->
