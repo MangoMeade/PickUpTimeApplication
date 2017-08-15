@@ -21,6 +21,13 @@ public class EventsEntity {
     private Integer minNeeded;
     private String description;
 
+    @Column(name = "userID", nullable = false)
+    private Integer userId;
+
+    @ManyToOne
+    private UsersEntity userEntity;
+
+
     @Basic
     @Column(name = "name", nullable = true, length = 255)
     public String getName() {
@@ -131,10 +138,18 @@ public class EventsEntity {
         this.description = description;
     }
 
+    public UsersEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UsersEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass( ) != o.getClass( )) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         EventsEntity that = (EventsEntity) o;
 
@@ -155,17 +170,28 @@ public class EventsEntity {
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode( ) : 0;
-        result = 31 * result + (sport != null ? sport.hashCode( ) : 0);
-        result = 31 * result + (address != null ? address.hashCode( ) : 0);
-        result = 31 * result + (latitude != null ? latitude.hashCode( ) : 0);
-        result = 31 * result + (longitude != null ? longitude.hashCode( ) : 0);
-        result = 31 * result + (time != null ? time.hashCode( ) : 0);
-        result = 31 * result + (peopleGoing != null ? peopleGoing.hashCode( ) : 0);
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (sport != null ? sport.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
+        result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+        result = 31 * result + (time != null ? time.hashCode() : 0);
+        result = 31 * result + (peopleGoing != null ? peopleGoing.hashCode() : 0);
         result = 31 * result + eventId;
-        result = 31 * result + (day != null ? day.hashCode( ) : 0);
-        result = 31 * result + (minNeeded != null ? minNeeded.hashCode( ) : 0);
-        result = 31 * result + (description != null ? description.hashCode( ) : 0);
+        result = 31 * result + (day != null ? day.hashCode() : 0);
+        result = 31 * result + (minNeeded != null ? minNeeded.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "userID", nullable = true)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

@@ -13,7 +13,7 @@ public interface ParentEventDao {
     public ArrayList<EventsEntity> eventListFiltered(String sport);
     public ArrayList<EventsEntity> eventList();
     public String addEvent(String name, String sport, String address, Date day, String description,
-                           int peopleGoing, int minNeeded, String time, double lat, double lng, Model model);
+                           int peopleGoing, int minNeeded, String time, double lat, double lng, String username, Model model);
     public void updateEvent(int eventID, int peopleGoing);
     public void deleteEvent();
     public EventsEntity getEvent(int eventID);

@@ -1,6 +1,8 @@
 package com.jdbc.dao;
 
 import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UserEventsEntity;
+import com.jdbc.models.UsersEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
@@ -33,7 +35,7 @@ public class HibernateEventDao implements ParentEventDao {
         return (ArrayList<EventsEntity>) c.list();
     }
     public String addEvent(String name, String sport, String address, Date day, String description,
-                           int peopleGoing, int minNeeded, String time, double lat, double lng, Model model) {
+                           int peopleGoing, int minNeeded, String time, double lat, double lng, String username, Model model) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
 
         SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
@@ -43,6 +45,20 @@ public class HibernateEventDao implements ParentEventDao {
         Transaction tx = session.beginTransaction();
 
         EventsEntity newEvent = new EventsEntity();
+
+
+        //cookie statements
+        int foreingKey = 0;
+        ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
+        ArrayList<UsersEntity> users = userDao.userList();
+        for (UsersEntity user: users) {
+            if (user.getUserName().equalsIgnoreCase(username)){
+                foreingKey = user.getUserId();
+            }
+        }
+
+        newEvent.setUserId(foreingKey);
+
 
         newEvent.setName(name);
         newEvent.setSport(sport);
@@ -54,6 +70,7 @@ public class HibernateEventDao implements ParentEventDao {
         newEvent.setMinNeeded(minNeeded);
         newEvent.setLatitude(lat);
         newEvent.setLongitude(lng);
+
 
         session.save(newEvent);
         tx.commit();
