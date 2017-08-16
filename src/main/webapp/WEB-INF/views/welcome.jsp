@@ -133,16 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <h1>Pickup  <span>Time</span></h1>
                     </a>
                 </div>
-                <div class="banner-top-right">
-                    <div class="agileinfo-social-grids">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div class="clearfix"> </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
     <%--*IMPORTANT*: sets the page to width of the device and sets the zoom level (Ex. tablet, mobile, web)--%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Pick up Time</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -67,8 +67,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li class="active"><a href="/listevents">See Events</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a href="/listofsports">Sport List</a></li>
 
             </ul>
         </div><!--/.nav-collapse -->
