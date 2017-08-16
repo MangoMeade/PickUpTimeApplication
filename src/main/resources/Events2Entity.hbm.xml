@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
+<!-- QUESTION, What is precision? -->
     <class name="com.jdbc.models.Events2Entity" table="events2" schema="pickupdb">
         <id name="eventId">
             <column name="eventID" sql-type="int(11)"/>

@@ -6,9 +6,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import java.util.ArrayList;
-
+//Dao is where you declare the methods
 public interface ParentUserDao {
+    //QUESTION: Why is this set to 1? What is this for and what does it do?
     public int HIBERNATE_DAO = 1;
+    //This is all the methods that will be implemented by the child classes
     public ArrayList<UsersEntity> userList();
     public ModelAndView addUser(String firstname, String lastname, String email, String phoneNum, String gender,
                                 String username, String password, int age, Model model);

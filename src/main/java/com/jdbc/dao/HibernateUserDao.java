@@ -14,14 +14,32 @@ import java.util.ArrayList;
 public class HibernateUserDao implements ParentUserDao {
 
     public ArrayList<UsersEntity> userList() {
+        //An instance of Configuration allows the application to specify properties and mapping
+        // documents to be used when creating a SessionFactory. Usually an application will
+        // create a single Configuration, build a single instance of SessionFactory and then
+        // instantiate Sessions in threads servicing client requests.
+        // The Configuration is meant only as an initialization-time object.
+        // SessionFactorys are immutable and do not retain any association back to the
+        // Configuration
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-
+        //A Session is used to get a physical connection with a database. The Session
+        // object is lightweight and designed to be instantiated each time an interaction is
+        // needed with the database. Persistent objects are saved and retrieved through a Session
+        // object.
         SessionFactory sessionFact = cfg.buildSessionFactory();
+        //The lifecycle of a Session is bounded by the beginning and end of a logical transaction.
+        // (Long transactions might span several database transactions.)
+        //The main function of the Session is to offer create, read and delete
+        // operations for instances of mapped entity classes
 
         Session selectUsers = sessionFact.openSession();
+        //It begins a transaction, a transaction is a atomic unit of work
+        // which should succeed or fail entirely.
 
         selectUsers.beginTransaction();
-
+        //The Hibernate Session interface provides createCriteria() method which can be used to create
+        // a Criteria object that returns instances of the persistence object's class when your
+        // application executes a criteria query.
         Criteria c = selectUsers.createCriteria(UsersEntity.class);
 
         return (ArrayList<UsersEntity>) c.list();
@@ -40,6 +58,7 @@ public class HibernateUserDao implements ParentUserDao {
         newUsers.setPhoneNumber(phoneNum);
         newUsers.setGender(gender);
         newUsers.setUserName(username);
+        //encrypts the password
         newUsers.setPassword(Utility.encryptWithMD5(password));
         newUsers.setAge(age);
 
@@ -60,8 +79,9 @@ public class HibernateUserDao implements ParentUserDao {
             controller = "Email already taken";
             return new ModelAndView("failed", "control", controller);
         }
-
+        //To say hello (firstname) when they are successfully signed up
         model.addAttribute("firstname", firstname);
+        //saves and commits new users to database
         session.save(newUsers);
         tx.commit();
         session.close();
@@ -90,8 +110,9 @@ public class HibernateUserDao implements ParentUserDao {
         return "redirect:loginfailed";
     }
 
-
+    //password encryption
     public boolean isValid(String username, String password) {
+        //passwords are encrypted when signing up and logging in, this is to match the two.
         ArrayList<UsersEntity> users = userList();
         for (UsersEntity user : users) {
             System.out.println(username + " " + password + " " + user);

@@ -137,6 +137,7 @@
             <td> ${myvar.day}</td>
             <td> ${myvar.description}</td>
             <td><a href="/attendees?=${myvar.eventId}">Attendees</a></td>
+            <!-- This is passing the parameters onto the page to show that info -->
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}
