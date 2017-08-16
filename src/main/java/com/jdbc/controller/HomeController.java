@@ -36,13 +36,13 @@ public class HomeController {
         return selectAll;
 
     }
-    //QUESTION: What is 
+    //QUESTION: What is the getDaoInstance method and what is the point?
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-
+    
     @RequestMapping(value = "/listeventsfiltered")
-//added string parameter
+    //added string parameter
     //list should be filtered, added jsp file to show filtered list
     public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
         ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
