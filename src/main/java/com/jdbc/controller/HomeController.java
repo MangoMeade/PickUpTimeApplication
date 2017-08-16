@@ -16,6 +16,7 @@ import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -46,8 +47,9 @@ public class HomeController {
         ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
         return new ModelAndView("listeventsfiltered", "cList", eventList);
     }
+
     @RequestMapping(value = "/data")
-    public ModelAndView data(){
+    public ModelAndView data() {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         String jsonArray = new Gson().toJson(eventList);
@@ -56,8 +58,8 @@ public class HomeController {
         return new ModelAndView("data", "json", jsonArray);
     }
 
-    @RequestMapping(value="/allmarkers")
-    public String allMarkers(){
+    @RequestMapping(value = "/allmarkers")
+    public String allMarkers() {
         return "allmarkers";
     }
 
@@ -94,7 +96,6 @@ public class HomeController {
     public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
 
         eventDao.updateEvent(eventID, peopleGoing);
-
 
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
