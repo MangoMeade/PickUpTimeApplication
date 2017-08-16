@@ -4,6 +4,7 @@ import com.jdbc.models.UsersEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import java.util.ArrayList;
 
 public interface ParentUserDao {
@@ -16,7 +17,6 @@ public interface ParentUserDao {
     public void editUser(UsersEntity user);
     public void deleteUser(UsersEntity user);
     public String getUser(String username, String password);
-
 
     boolean isValid(String username, String password);
 }

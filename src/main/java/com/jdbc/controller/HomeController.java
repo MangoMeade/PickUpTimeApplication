@@ -76,20 +76,28 @@ public class HomeController {
     public ModelAndView updateEvent(Model model, @RequestParam("id") int eventId, @RequestParam("peopleGoing") int peopleGoing,
                                     @RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("name") String name,
                                     @RequestParam("sport") String sport, @RequestParam("address") String address,
-                                    @RequestParam("description") String description, @RequestParam("time") String time) {
+                                    @RequestParam("description") String description, @RequestParam("time") String time, HttpServletRequest request) {
 
-        System.out.println(peopleGoing);
-        model.addAttribute("eventId", eventId);
-        model.addAttribute("peopleGoing", peopleGoing);
-        model.addAttribute("latitude", latitude);
-        model.addAttribute("longitude", longitude);
-        model.addAttribute("name", name);
-        model.addAttribute("sport", sport);
-        model.addAttribute("address", address);
-        model.addAttribute("description", description);
-        model.addAttribute("time", time);
+        String userID = "";
+        Cookie[] cookies = request.getCookies();
+        userID = checkCookie(userID, cookies);
 
-        return new ModelAndView("updateeventform", "", "");
+        if (userID != "") {
+            model.addAttribute("eventId", eventId);
+            model.addAttribute("peopleGoing", peopleGoing);
+            model.addAttribute("latitude", latitude);
+            model.addAttribute("longitude", longitude);
+            model.addAttribute("name", name);
+            model.addAttribute("sport", sport);
+            model.addAttribute("address", address);
+            model.addAttribute("description", description);
+            model.addAttribute("time", time);
+
+            return new ModelAndView("updateeventform", "", "");
+        }
+        String loginFailed = "Log in to see this webpage";
+        return new ModelAndView("login", "loginFailed", loginFailed);
+
     }
 
     @RequestMapping("/updateform")
@@ -97,7 +105,6 @@ public class HomeController {
     public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
 
         eventDao.updateEvent(eventID, peopleGoing);
-
 
 
         EventsEntity editEvent = eventDao.getEvent(eventID);
@@ -125,34 +132,23 @@ public class HomeController {
                              @RequestParam("time") String time,
                              @RequestParam("lat") double lat,
                              @RequestParam("lng") double lng,
+                             HttpServletRequest request,
                              Model model) {
 
-        return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, model);
+        //get cookie statements(the first three) don't forget to pass the parameter(HTTPServletRequest request)
+        String usernameCookie = "";
+        Cookie[] cookies = request.getCookies();
+        usernameCookie = checkCookie(usernameCookie, cookies);
+        return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, usernameCookie, model);
     }
 
     @RequestMapping("/listofsports")
-    public ModelAndView listOfSports(HttpServletRequest request) {
-        String userID = "";
-        Cookie[] cookies = request.getCookies();
-        userID = getString(userID, cookies);
+    public ModelAndView listOfSports() {
 
-        if (userID != "") {
-            return new ModelAndView("listofsports", "sportlist", "SPORTS");
-        }
-
-        String loginFailed = "Log in to see this webpage";
-        return new ModelAndView("login", "loginFailed", loginFailed);
+        return new ModelAndView("listofsports", "sportlist", "SPORTS");
 
     }
 
-    private String getString(String userID, Cookie[] cookies) {
-        for (Cookie cookie : cookies){
-            if (cookie.getName().equalsIgnoreCase("userID")){
-                userID = cookie.getValue();
-            }
-        }
-        return userID;
-    }
 
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
@@ -170,7 +166,9 @@ public class HomeController {
     }
 
     @RequestMapping("attendees")
-    public ModelAndView attendees(@RequestParam("id") int eventId){
+    public ModelAndView attendees(@RequestParam("id") int eventId) {
+        EventsEntity event = new EventsEntity();
+        //event.getUserID();
 
         return new ModelAndView("", "", "");
     }
@@ -187,5 +185,14 @@ public class HomeController {
         response.addCookie(userCookie);
 
         return new ModelAndView("logout", "", "");
+    }
+
+    private String checkCookie(String userID, Cookie[] cookies) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equalsIgnoreCase("userID")) {
+                userID = cookie.getValue();
+            }
+        }
+        return userID;
     }
 }

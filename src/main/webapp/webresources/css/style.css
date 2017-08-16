@@ -20,6 +20,7 @@ body a{
 h1,h2,h3,h4,h5,h6{
 	margin:0;	
 	font-family: 'Buda', cursive;
+
 }
 p{
 	margin:0;
@@ -34,7 +35,7 @@ body a:hover,body a:focus{
 } 
 /*-- banner--*/
 .banner {
-	background:url(../images/1.jpg)no-repeat center;
+	background:url(https://files.slack.com/files-tmb/T04UPFZ31-F6NEE7Q9X-112d6bffaa/website_background1_1024.jpg)no-repeat center;
 	-webkit-background-size:cover;
 	background-size:cover;
 	-moz-background-size:cover;  
