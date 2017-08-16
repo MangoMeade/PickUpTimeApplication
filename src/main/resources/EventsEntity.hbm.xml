@@ -29,6 +29,9 @@
         <property name="peopleGoing">
             <column name="peopleGoing" sql-type="int(10) unsigned" not-null="true"/>
         </property>
+        <property name="userId">
+            <column name="userID" sql-type="int(11)" not-null="true"/>
+        </property>
         <property name="day">
             <column name="day" sql-type="date" not-null="true"/>
         </property>

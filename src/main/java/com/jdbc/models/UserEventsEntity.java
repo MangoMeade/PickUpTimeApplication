@@ -1,9 +1,6 @@
 package com.jdbc.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by michelhayman on 8/15/17.
@@ -12,6 +9,8 @@ import javax.persistence.Table;
 @Table(name = "userEvents", schema = "pickupdb", catalog = "")
 public class UserEventsEntity {
     private int userEventscol;
+    private Integer userId;
+    private Integer eventId;
 
     @Id
     @Column(name = "userEventscol", nullable = false)
@@ -38,5 +37,25 @@ public class UserEventsEntity {
     @Override
     public int hashCode() {
         return userEventscol;
+    }
+
+    @Basic
+    @Column(name = "userID", nullable = true)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "eventID", nullable = true)
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
     }
 }

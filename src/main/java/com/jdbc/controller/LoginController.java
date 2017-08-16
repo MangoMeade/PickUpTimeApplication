@@ -13,6 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 
+import org.springframework.ui.Model;
+
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 //To limit the use of the page to registered users
@@ -21,13 +28,23 @@ import java.util.ArrayList;
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
 
-    @RequestMapping("/")
-    public ModelAndView loginPage() {
 
+    @RequestMapping("/login")
+    public ModelAndView loginPage() {
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView("login", "loginPage", "login");
     }
+
+
+    @RequestMapping("/")
+    public String welcomePage() {
+
+        return "welcome";
+    }
+
+
+
 
     @RequestMapping("/loginfailed")
     public ModelAndView loginFailed() {
@@ -39,11 +56,13 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.POST)
-    public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) {
         boolean isValid = userDao.isValid(username, password);
         String url = "redirect:loginfailed";
         if (isValid) {//has account or authemticated
             //add to session
+            Cookie userID = new Cookie("userID", username);
+            response.addCookie(userID);
             url = "redirect:listofsports";
         }
 

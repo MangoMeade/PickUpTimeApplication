@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import java.util.ArrayList;
 
 public class HibernateUserDao implements ParentUserDao {
@@ -49,7 +50,7 @@ public class HibernateUserDao implements ParentUserDao {
         String controller = "";
         if (!(userList.isEmpty())) {
             controller = "Username already taken";
-            return new ModelAndView("failed","control",controller);
+            return new ModelAndView("failed", "control", controller);
         }
         Criteria d = session.createCriteria(UsersEntity.class);
         d.add(Restrictions.like("email", email));
@@ -57,7 +58,7 @@ public class HibernateUserDao implements ParentUserDao {
 
         if (!(userList2.isEmpty())) {
             controller = "Email already taken";
-            return new ModelAndView("failed","control",controller);
+            return new ModelAndView("failed", "control", controller);
         }
 
         model.addAttribute("firstname", firstname);
@@ -65,7 +66,7 @@ public class HibernateUserDao implements ParentUserDao {
         tx.commit();
         session.close();
         model.addAttribute("NewUsers", newUsers);
-        return new ModelAndView("addusersuccess","","");
+        return new ModelAndView("addusersuccess", "", "");
     }
 
     public void editUser(UsersEntity user) {
@@ -79,7 +80,7 @@ public class HibernateUserDao implements ParentUserDao {
     //May delete later
     public String getUser(String username, String password) {
         ArrayList<UsersEntity> users = userList();
-        for(UsersEntity user : users) {
+        for (UsersEntity user : users) {
             System.out.println(username + " " + password + " " + user);
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 return "redirect:listevents";
@@ -88,9 +89,11 @@ public class HibernateUserDao implements ParentUserDao {
         }
         return "redirect:loginfailed";
     }
+
+
     public boolean isValid(String username, String password) {
         ArrayList<UsersEntity> users = userList();
-        for(UsersEntity user : users) {
+        for (UsersEntity user : users) {
             System.out.println(username + " " + password + " " + user);
             if (username.equals(user.getUserName()) && Utility.encryptWithMD5(password).equals(user.getPassword())) {
                 return true;
@@ -98,8 +101,6 @@ public class HibernateUserDao implements ParentUserDao {
         }
         return false;
     }
-
-
 
 
 }
