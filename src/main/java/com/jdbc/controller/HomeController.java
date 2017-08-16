@@ -44,7 +44,7 @@ public class HomeController {
 
     @RequestMapping(value = "/listeventsfiltered")
 //added string parameter
-    //list should be filtered, added jsp file to show filtered list
+//list should be filtered, added jsp file to show filtered list
     public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
         ArrayList<EventsEntity> eventList = eventDao.eventListFiltered(sport);
         return new ModelAndView("listeventsfiltered", "cList", eventList);
