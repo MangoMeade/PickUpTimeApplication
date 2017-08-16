@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 //To limit the use of the page to registered users
 //Hibernate reduces the risk of code injection
-@SessionAttributes("loggedinuser")
+
 public class LoginController {
     private ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
 
@@ -45,7 +45,7 @@ public class LoginController {
 
 
 
-
+//Displays on the page "login failed"
     @RequestMapping("/loginfailed")
     public ModelAndView loginFailed() {
         String loginFailed = "Login Failed. Try Again";
@@ -57,15 +57,17 @@ public class LoginController {
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.POST)
     public ModelAndView loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletResponse response) {
+       //if username and password match in the database it will go to list of sports
         boolean isValid = userDao.isValid(username, password);
         String url = "redirect:loginfailed";
         if (isValid) {//has account or authemticated
             //add to session
-            Cookie userID = new Cookie("userID", username);
-            response.addCookie(userID);
+            //Adds a cookie to keep the user logged in and extracts your information
+            Cookie usernameCookie = new Cookie("username", username);
+            response.addCookie(usernameCookie);
             url = "redirect:listofsports";
         }
-
+        //else it will redirect you to loginfailed
         return new
                 //the type is model and view which brings together model and view
                 ModelAndView(url, "", "");
