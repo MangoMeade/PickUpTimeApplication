@@ -105,8 +105,13 @@
         <br>
         <input onclick="counter()" type="submit" value="I'm Coming">
     </form>
+    <form action="/listevents">
+        <input type="submit" value="Back">
+    </form>
 </div>
 <div id="map"></div>
 <script src="resources/updateeventform.js"></script>
+
+
 </body>
 </html>
