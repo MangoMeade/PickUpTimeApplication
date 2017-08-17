@@ -23,7 +23,7 @@
 </body>
 <script src="/resources/allmarkers.js"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvKqhil3mHJLwXdM7n7pHFgSXZ2Px5oGw&callback=initMap">
 </script>
 </body>
 </html>
