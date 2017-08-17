@@ -2,6 +2,7 @@ package com.jdbc.controller;
 
 import com.google.gson.Gson;
 import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UserEventsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -34,7 +35,7 @@ public class HomeController {
 
     private ParentEventDao eventDao = DaoEventFactory.getDaoInstance(ParentEventDao.HIBERNATE_DAO);
 
-    
+
     @RequestMapping(value = "/listeventsfiltered")
     //Displays the listeventsfiltered JSP
     //added string parameter
@@ -48,6 +49,7 @@ public class HomeController {
         //enters will be the sport in the array.
         return new ModelAndView("listeventsfiltered", "cList", eventList);
     }
+
     //Returns the /data class which contains a json controller object.
     //JSON, or JavaScript Object Notation, is a minimal, readable format
     // for structuring data. It is used primarily to transmit data between
@@ -63,12 +65,14 @@ public class HomeController {
 
         return new ModelAndView("data", "json", jsonArray);
     }
+
     //Returns allmarkers jsp
     //Returns the map with all the pins, this will eventually be implemented into list events
     @RequestMapping(value = "/allmarkers")
     public String allMarkers() {
         return "allmarkers";
     }
+
     //Lists the events by showing the listevents page. Not filtered.
     @RequestMapping(value = "/listevents")
     //original list with no filters
@@ -79,6 +83,7 @@ public class HomeController {
 
         return new ModelAndView("listevents", "cList", eventList);
     }
+
     //The GET method means retrieve whatever information (in the form of an entity) is
     // identified by the Request-URI, the POST method allows users to insert data
     //This method shows the information about the event the user clicks on the screen
@@ -92,9 +97,11 @@ public class HomeController {
         //This is used to determine if someone is logged in.
         String username = "";
         Cookie[] cookies = request.getCookies();
+
         username = checkCookie(username, cookies);
         //if theres no one logged in it will redirect you to the login page
         if (username != "") {
+            eventDao.addUserEvent(eventId, username);
             model.addAttribute("eventId", eventId);
             model.addAttribute("peopleGoing", peopleGoing);
             model.addAttribute("latitude", latitude);
@@ -112,7 +119,7 @@ public class HomeController {
 
     }
 
-//This sends on the notification if the number of people is equal to the amount needed
+    //This sends on the notification if the number of people is equal to the amount needed
     @RequestMapping("/updateform")
     public ModelAndView updateForm(Model model, @RequestParam("eventId") int eventID, @RequestParam("peopleGoing") int peopleGoing) {
         //Calls the updateEvent method from the HibernateEventDay class
@@ -149,7 +156,7 @@ public class HomeController {
                              @RequestParam("lat") double lat,
                              @RequestParam("lng") double lng,
                              HttpServletRequest request // used to gets the cookie
-                             ,
+            ,
                              Model model) {
 
         //get cookie statements(the first three) don't forget to pass the parameter(HTTPServletRequest request)
@@ -161,7 +168,8 @@ public class HomeController {
         usernameCookie = checkCookie(usernameCookie, cookies);
         return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, usernameCookie, model);
     }
- // Returns list of sports
+
+    // Returns list of sports
     @RequestMapping("/listofsports")
     public ModelAndView listOfSports() {
 
@@ -169,7 +177,7 @@ public class HomeController {
 
     }
 
-//returns addevent
+    //returns addevent
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
     public String addevent() {
@@ -185,20 +193,24 @@ public class HomeController {
 
         return "login";
     }
-//not finished method
-    @RequestMapping("attendees")
-    public ModelAndView attendees(@RequestParam("id") int eventId) {
-        EventsEntity event = new EventsEntity();
-        //event.getUserID();
 
-        return new ModelAndView("", "", "");
+    //not finished method
+    @RequestMapping("attendees")
+    public ModelAndView attendees(@RequestParam("id") Integer eventID) {
+
+        ArrayList<UserEventsEntity> userEventList = eventDao.userEventListFiltered(eventID);
+        //ArrayList<UserEventsEntity> userEventList = eventDao.userEventList();
+
+        return new ModelAndView("attendees", "cList", userEventList);
     }
-//returns confirmation page
+
+    //returns confirmation page
     @RequestMapping("/confirmation")
     public String confirmation() {
         return "confirmation";
     }
-//will log you out
+
+    //will log you out
     //QUESTION: Explain
     @RequestMapping("/logout")
     public ModelAndView logOut(HttpServletResponse response) {
@@ -208,7 +220,8 @@ public class HomeController {
 
         return new ModelAndView("logout", "", "");
     }
- //Checks the list of cookies, gets the name and checks if it's equal to the username. If it is,
+
+    //Checks the list of cookies, gets the name and checks if it's equal to the username. If it is,
     // username will be set equal to cookie.getValue then return username
     //Getting username, and the stored cookies and checking through the list to see if
     //they're equal. Sets username equal to the value of the cookie

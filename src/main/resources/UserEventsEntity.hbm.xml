@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.jdbc.models.UserEventsEntity" table="userEvents" schema="pickupdb">
@@ -9,7 +9,9 @@
             <column name="userEventscol" sql-type="int(11)"/>
         </id>
         <property name="username">
+
             <column name="username" sql-type="varchar(44)" not-null="true"/>
+
         </property>
         <property name="eventId">
             <column name="eventID" sql-type="int(11)" not-null="true"/>
