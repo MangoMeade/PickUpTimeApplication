@@ -4,7 +4,7 @@ function initMap() {
     //initialize map
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(42.3314, -83.0458),
-        zoom: 16
+        zoom: 9
     });
     var geocoder = new google.maps.Geocoder();
     //go to viewport specified in the search box. else go to default google maps location
@@ -59,6 +59,33 @@ function loadMarker(map) {
                     anchor: new google.maps.Point(0, 0),
                     strokeWeight: 0,
                 }
+            },
+            "football": {
+                style: {
+                    path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
+                    fillColor: '#00FFFF',
+                    fillOpacity: .6,
+                    anchor: new google.maps.Point(0, 0),
+                    strokeWeight: 0,
+                }
+            },
+            "baseball": {
+                style: {
+                    path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
+                    fillColor: '#006400',
+                    fillOpacity: .6,
+                    anchor: new google.maps.Point(0, 0),
+                    strokeWeight: 0,
+                }
+            },
+            "volleyball": {
+                style: {
+                    path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
+                    fillColor: '#E9967A',
+                    fillOpacity: .6,
+                    anchor: new google.maps.Point(0, 0),
+                    strokeWeight: 0,
+                }
             }
         }
         console.log(results.responseText.trim());
@@ -82,6 +109,7 @@ function loadMarker(map) {
             strong.textContent = name
             infowincontent.appendChild(strong);
             infowincontent.appendChild(document.createElement('br'));
+
 
             var text = document.createElement('text');
             text.textContent = "People attending: " + peopleGoing;
@@ -108,11 +136,11 @@ function loadMarker(map) {
 function showVisibleMarkers(map) {
     var zoom = map.getZoom();
     for (var i = 0; i < markers.length; i++) {
-        if (zoom >= 14) {
+        if (zoom >= 6) {
             console.log("It worked");
             markers[i].setMap(map);
         }
-        else if (zoom < 14) {
+        else if (zoom < 6) {
             markers[i].setMap(null);
         }
     }
