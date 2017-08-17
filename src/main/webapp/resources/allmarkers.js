@@ -9,21 +9,16 @@ function initMap() {
     var geocoder = new google.maps.Geocoder();
     //go to viewport specified in the search box. else go to default google maps location
 
-    // geocodeAddress(geocoder, map);
-
+    loadMarker(map)
     google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
         //this part runs when the mapobject is created and rendered
-        google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
-            //this part runs when the mapobject shown for the first time
-            loadMarker(map)
-        });
+        loadMarker(map)
+
     });
     google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
         //this part runs when the mapobject is created and rendered
-        google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
-            //this part runs when the mapobject shown for the first time
-            showVisibleMarkers(map)
-        });
+        showVisibleMarkers(map)
+
     });
     //load markers in current viewport
     google.maps.event.addListener(map, "idle", function () {
@@ -37,63 +32,17 @@ function initMap() {
     google.maps.event.addListener(map, "bounds_changed", function () {
         clearMarkers(map)
     });
-    //geocode address of search box
-    // document.getElementById('submit').addEventListener('click', function () {
-    //     geocodeAddress2(geocoder, map);
-    //     console.log("click");
-    // });
+
 }
 
-// function geocodeAddress(geocoder, resultsMap) {
-//     geocoder.geocode({'address': searchRedirect.innerHTML}, function (results, status) {
-//         if (status === 'OK') {
-//             resultsMap.setCenter(results[0].geometry.location);
-//         } else {
-//             alert('Geocode was not successful for the following reason: ' + status);
-//         }
-//     });
-// }
-//
-// function geocodeAddress2(geocoder, resultsMap) {
-//     var address = document.getElementById("address").value;
-//     geocoder.geocode({'address': address}, function (results, status) {
-//         if (status === 'OK') {
-//             resultsMap.setCenter(results[0].geometry.location);
-//         } else {
-//             alert('Geocode was not successful for the following reason: ' + status);
-//         }
-//     });
-// }
 
 function loadMarker(map) {
-    var customIcon = {
-        //specifies the color of the markers of photos taken in a given decade
-        "Soccer": {
-            style: {
-                path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
-                fillColor: '#448D7A',
-                fillOpacity: .6,
-                anchor: new google.maps.Point(0, 0),
-                strokeWeight: 0,
-            }
-        }
-    }
 
-
-//callback database of markers within the current viewport
-    var bounds = map.getBounds();
-    var NE = bounds.getNorthEast();
-    var SW = bounds.getSouthWest();
-
-    var neLat = NE.lat();
-    var neLng = NE.lng();
-    var swLat = SW.lat();
-    var swLng = SW.lng();
 
     downloadUrl('/data', function (results) {
         var customIcon = {
             //specifies the color of the markers of photos taken in a given decade
-            "Soccer": {
+            "soccer": {
                 style: {
                     path: "M-5,0a5,5 0 0.25,0 10,0a5,5 0 0.25,0 -10,0",
                     fillColor: '#448D7A',
@@ -127,6 +76,22 @@ function loadMarker(map) {
             var day = resultsJSON[i].day;
             var peopleGoing = resultsJSON[i].peopleGoing;
             var minNeeded = resultsJSON[i].minNeeded;
+
+            var infowincontent = document.createElement('div');
+            var strong = document.createElement('strong');
+            strong.textContent = name
+            infowincontent.appendChild(strong);
+            infowincontent.appendChild(document.createElement('br'));
+
+            var text = document.createElement('text');
+            text.textContent = "People attending: " + peopleGoing;
+            infowincontent.appendChild(text);
+            infowincontent.appendChild(document.createElement('br'));
+            var text2 = document.createElement('text');
+            text2.textContent = "Minimum attendance needed:" + minNeeded;
+            infowincontent.appendChild(text2);
+
+
             var icon = customIcon[sport] || {};
             var marker = new google.maps.Marker({
                 position: latLng,
@@ -135,6 +100,7 @@ function loadMarker(map) {
                 scale: 2
             });
             markers.push(marker);
+            attachInfoWindow(marker, infowincontent);
         }
     })
 };
@@ -159,6 +125,14 @@ function clearMarkers(map) {
         }
     }
 
+}
+
+function attachInfoWindow(marker, infowincontent) {
+    var infoWindow = new google.maps.InfoWindow;
+    marker.addListener('click', function () {
+        infoWindow.setContent(infowincontent);
+        infoWindow.open(map, marker);
+    })
 }
 
 function doNothing() {
