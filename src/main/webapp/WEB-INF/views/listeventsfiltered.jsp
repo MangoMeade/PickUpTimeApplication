@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
 
-    <title>Confirmation Page</title>
+    <title>Pick up Time</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,11 +20,11 @@
 </head>
 
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -34,9 +34,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/welcome">Pickup Time</a></li>
-                <li class="active"><a href="/listevents">See Events</a></li>
-                <li class="active"><a href="/listofsports">Sport List</a></li>
+
+                <li><a href="/">Home</a></li>
+                <li><a href="/listofsports">Sport List</a></li>
+                <li><a href="/listevents">See Events</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout">Logout</a></li>
 
             </ul>
         </div><!--/.nav-collapse -->
@@ -97,7 +101,8 @@ charset=ISO-8859-1">
         <th>Players Needed</th>
         <th>Date</th>
         <th>Description</th>
-        <th>Attend</th>
+        <th>Attendance</th>
+        <th>Join</th>
         <th></th>
     </tr>
     <c:forEach var="myvar" items="${cList}">
@@ -109,19 +114,18 @@ charset=ISO-8859-1">
             <td> ${myvar.minNeeded}</td>
             <td> ${myvar.day}</td>
             <td>${myvar.description}</td>
+            <td><a href="/attendees?=${myvar.eventId}">Attendees</a></td>
             <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}
-        ">Are you Attending?</a></td>
+        "> + </a></td>
         </tr>
 
     </c:forEach></table>
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
-<form action="/listofsports">
-    <input type= "submit" value="Back to Sports">
-</form>
+
     </div>
 
 </div>

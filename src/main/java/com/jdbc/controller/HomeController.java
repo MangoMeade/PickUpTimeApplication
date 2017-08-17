@@ -14,11 +14,12 @@ import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -37,9 +38,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/listeventsfiltered")
-    //Displays the listeventsfiltered JSP
-    //added string parameter
-    //list should be filtered, added jsp file to show filtered list
+
     public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
 
         //Array of EventsEntity objects, calling a method from the eventdao which was then implemented in
@@ -74,7 +73,7 @@ public class HomeController {
     }
 
     //Lists the events by showing the listevents page. Not filtered.
-    @RequestMapping(value = "/listevents")
+    @RequestMapping(value = "/listevents") //controller
     //original list with no filters
     public ModelAndView listEvents() {
         //Explain the structure of this array list
@@ -82,7 +81,7 @@ public class HomeController {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         return new ModelAndView("listevents", "cList", eventList);
-    }
+    } // clist is the object you use to display the list
 
     //The GET method means retrieve whatever information (in the form of an entity) is
     // identified by the Request-URI, the POST method allows users to insert data
