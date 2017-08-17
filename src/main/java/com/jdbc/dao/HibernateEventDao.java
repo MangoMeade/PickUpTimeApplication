@@ -55,7 +55,8 @@ public class HibernateEventDao implements ParentEventDao {
         Criteria c = selectEvents.createCriteria(EventsEntity.class);
         ArrayList<EventsEntity> eventsEntityArrayList = (ArrayList<EventsEntity>) c.list();
         return (ArrayList<EventsEntity>) c.list();
-    }
+    } // connecting to the database and getting the queries you want- which is eventlist
+    // returning c.list-
 
     public String addEvent(String name, String sport, String address, Date day, String description,
                            int peopleGoing, int minNeeded, String time, double lat, double lng, String username, Model model) {

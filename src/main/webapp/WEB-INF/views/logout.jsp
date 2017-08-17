@@ -60,5 +60,7 @@
 <div class="container">
     <div class="jumbotron">
 <h2>You are logged out</h2>
+    </div>
+</div>
 </body>
 </html>

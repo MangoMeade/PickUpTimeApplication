@@ -43,6 +43,10 @@ public class LoginController {
         return "welcome";
     }
 
+    // model- coming from models - entity which are pojos
+    // data coming from our database
+    // spring servlet is big daddy controller - not a class
+    // every dao/model/controller - classes
 
 
 //Displays on the page "login failed"
