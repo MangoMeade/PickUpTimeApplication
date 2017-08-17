@@ -1,6 +1,7 @@
 package com.jdbc.dao;
 
 import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UserEventsEntity;
 import org.springframework.ui.Model;
 
 import java.sql.Date;
@@ -17,4 +18,8 @@ public interface ParentEventDao {
     public void updateEvent(int eventID, int peopleGoing);
     public void deleteEvent();
     public EventsEntity getEvent(int eventID);
+
+    public ArrayList<UserEventsEntity> userEventList();
+    public void addUserEvent(int eventID, String username);
+    public ArrayList<UserEventsEntity> userEventListFiltered(Integer eventID);
 }

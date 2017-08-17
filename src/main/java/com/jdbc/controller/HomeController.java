@@ -2,6 +2,7 @@ package com.jdbc.controller;
 
 import com.google.gson.Gson;
 import com.jdbc.models.EventsEntity;
+import com.jdbc.models.UserEventsEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -83,6 +84,8 @@ public class HomeController {
         userID = checkCookie(userID, cookies);
 
         if (userID != "") {
+            eventDao.addUserEvent(eventId, userID);
+
             model.addAttribute("eventId", eventId);
             model.addAttribute("peopleGoing", peopleGoing);
             model.addAttribute("latitude", latitude);
@@ -166,11 +169,12 @@ public class HomeController {
     }
 
     @RequestMapping("attendees")
-    public ModelAndView attendees(@RequestParam("id") int eventId) {
-        EventsEntity event = new EventsEntity();
-        //event.getUserID();
+    public ModelAndView attendees(@RequestParam("id") Integer eventID) {
 
-        return new ModelAndView("", "", "");
+        ArrayList<UserEventsEntity> userEventList = eventDao.userEventListFiltered(eventID);
+        //ArrayList<UserEventsEntity> userEventList = eventDao.userEventList();
+
+        return new ModelAndView("attendees", "cList", userEventList);
     }
 
     @RequestMapping("/confirmation")

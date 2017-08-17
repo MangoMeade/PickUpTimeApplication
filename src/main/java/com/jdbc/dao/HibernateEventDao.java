@@ -25,6 +25,7 @@ public class HibernateEventDao implements ParentEventDao {
         ArrayList<EventsEntity> eventsEntityArrayList = (ArrayList<EventsEntity>) c.list();
         return (ArrayList<EventsEntity>) c.list();
     }
+
     public ArrayList<EventsEntity> eventList() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -34,6 +35,7 @@ public class HibernateEventDao implements ParentEventDao {
         ArrayList<EventsEntity> eventsEntityArrayList = (ArrayList<EventsEntity>) c.list();
         return (ArrayList<EventsEntity>) c.list();
     }
+
     public String addEvent(String name, String sport, String address, Date day, String description,
                            int peopleGoing, int minNeeded, String time, double lat, double lng, String username, Model model) {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -51,8 +53,8 @@ public class HibernateEventDao implements ParentEventDao {
         int foreingKey = 0;
         ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
         ArrayList<UsersEntity> users = userDao.userList();
-        for (UsersEntity user: users) {
-            if (user.getUserName().equalsIgnoreCase(username)){
+        for (UsersEntity user : users) {
+            if (user.getUserName().equalsIgnoreCase(username)) {
                 foreingKey = user.getUserId();
             }
         }
@@ -117,8 +119,8 @@ public class HibernateEventDao implements ParentEventDao {
         Transaction tx = selectEvents.beginTransaction();
 
         Query query = selectEvents.createQuery("FROM EventsEntity WHERE day < subdate(current_date, 1)");
-        
-        EventsEntity deletedEvent = (EventsEntity) query.setMaxResults(1).uniqueResult( );
+
+        EventsEntity deletedEvent = (EventsEntity) query.setMaxResults(1).uniqueResult();
 
 
         selectEvents.delete(deletedEvent);
@@ -147,5 +149,57 @@ public class HibernateEventDao implements ParentEventDao {
         selectEvents.close();
         return event;
 
+    }
+
+    public ArrayList<UserEventsEntity> userEventList() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectUserEvents = sessionFact.openSession();
+        selectUserEvents.beginTransaction();
+        Criteria c = selectUserEvents.createCriteria(UserEventsEntity.class);
+        ArrayList<UserEventsEntity> eventsEntityArrayList = (ArrayList<UserEventsEntity>) c.list();
+        return (ArrayList<UserEventsEntity>) c.list();
+    }
+
+    public ArrayList<UserEventsEntity> userEventListFiltered(Integer eventID) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session selectUserEvents = sessionFact.openSession();
+        selectUserEvents.beginTransaction();
+        Criteria c = selectUserEvents.createCriteria(UserEventsEntity.class);
+        //selectEvents.close();
+        //c.add(Restrictions.like("eventId", "%" + eventID + "%"));
+        c.add(Restrictions.like("eventId", eventID));
+        //ArrayList<UserEventsEntity> eventsEntityArrayList = (ArrayList<UserEventsEntity>) c.list();
+        return (ArrayList<UserEventsEntity>) c.list();
+    }
+
+    public void addUserEvent(int eventID, String username) {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFact = cfg.buildSessionFactory(); // design pattern
+
+        Session session = sessionFact.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+        UserEventsEntity newUserEvent = new UserEventsEntity();
+
+        newUserEvent.setEventId(eventID);
+
+
+        ParentUserDao userDao = DaoUserFactory.getDaoInstance(ParentUserDao.HIBERNATE_DAO);
+        ArrayList<UsersEntity> users = userDao.userList();
+        for (UsersEntity user : users) {
+            if (user.getUserName().equalsIgnoreCase(username)) {
+
+                newUserEvent.setUsername(username);
+            }
+        }
+
+
+        session.save(newUserEvent);
+        tx.commit();
+        session.close();
     }
 }
