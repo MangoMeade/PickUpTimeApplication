@@ -159,9 +159,6 @@
     <input type="submit" value="Add New Event">
 </form>
 
-        <form action="/listofsports">
-            <input type="submit" value="View Sport List">
-        </form>
 
     </div>
 
