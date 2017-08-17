@@ -37,7 +37,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping("/")
+    @RequestMapping("/") // controller - / is the url
     public String welcomePage() {
 
         return "welcome";
