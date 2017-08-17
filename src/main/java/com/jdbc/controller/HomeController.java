@@ -165,7 +165,10 @@ public class HomeController {
         Cookie[] cookies = request.getCookies();
 
         usernameCookie = checkCookie(usernameCookie, cookies);
-        return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, usernameCookie, model);
+        if (usernameCookie != "") {
+            return eventDao.addEvent(name, sport, address, day, description, peopleGoing, minNeeded, time, lat, lng, usernameCookie, model);
+        }
+        return "login";
     }
 
     // Returns list of sports
@@ -179,8 +182,16 @@ public class HomeController {
     //returns addevent
     @RequestMapping("/addevent")
     // the String method returns the jsp page that we want to show
-    public String addevent() {
-        return "addevent";
+    public String addevent(HttpServletRequest request) {
+        String usernameCookie = "";
+        //stores all the cookies, gotten by the getmethod
+        Cookie[] cookies = request.getCookies();
+
+        usernameCookie = checkCookie(usernameCookie, cookies);
+        if (usernameCookie != "") {
+            return "addevent";
+        }
+        return "login";
     }
 
     //calls the deleteEvent method and directs you to the login page
