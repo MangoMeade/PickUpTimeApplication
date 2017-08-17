@@ -82,6 +82,7 @@ public class HomeController {
 
         return new ModelAndView("listevents", "cList", eventList);
     } // clist is the object you use to display the list
+    // eventlist is the data that is being updated (model)
 
     //The GET method means retrieve whatever information (in the form of an entity) is
     // identified by the Request-URI, the POST method allows users to insert data
