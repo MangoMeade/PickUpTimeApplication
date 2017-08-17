@@ -13,12 +13,13 @@ public class Notification {
 
 
     public static void sendNotification() {
+        //Initializes
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
+        //determines where the notification will go and what it will say
         Message message = Message
                 .creator(new PhoneNumber("+18104343973"), new PhoneNumber("+16362385638"), "location confirmed")
                 .create();
-
+        //debugging purposes
         System.out.println(message.getSid());
     }
 }

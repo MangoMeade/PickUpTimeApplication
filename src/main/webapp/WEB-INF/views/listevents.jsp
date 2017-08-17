@@ -54,10 +54,11 @@
         .filterable .filters input[disabled]:-ms-input-placeholder {
             color: #333;
         }
+
         body {
             background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
             height: 100%;
-            margin:0px;
+            margin: 0px;
             background-size: cover;
             background-attachment: fixed;
         }
@@ -74,11 +75,11 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -88,9 +89,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li class="active"><a href="/listevents">See Events</a></li>
-                <li class="active"><a href="/listofsports">Sport List</a></li>
+
+                <li><a href="/">Home</a></li>
+                <li><a href="/listofsports">Sport List</a></li>
+                <li><a href="/listevents">See Events</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout">Logout</a></li>
 
             </ul>
         </div><!--/.nav-collapse -->
@@ -104,6 +109,7 @@
         text-align: center;
 
     }
+
     body {
         background-color: red;
     }
@@ -112,44 +118,48 @@
 <div class="container">
     <div class="jumbotron">
 
-<h1>Events List</h1>
+        <h1>Events List</h1>
 
         <table class="table table-bordered">
 
-    <tr>
-        <th>Event Name</th>
-        <th>Sport</th>
-        <th>Players Going</th>
-        <th>Players Needed</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Attendance</th>
-        <th>Join</th>
-    </tr>
-    <c:forEach var="myvar" items="${cList}">
+            <tr>
+                <th>Event Name</th>
+                <th>Sport</th>
+                <th>Players Going</th>
+                <th>Players Needed</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Attendance</th>
+                <th>Join</th>
+            </tr>
+            <c:forEach var="myvar" items="${cList}">
 
 
-        <tr>
-            <td> ${myvar.name}</td>
-            <td> ${myvar.sport}</td>
-            <td> ${myvar.peopleGoing}</td>
-            <td> ${myvar.minNeeded}</td>
-            <td> ${myvar.day}</td>
-            <td> ${myvar.description}</td>
-            <td><a href="/attendees?=${myvar.eventId}">Attendees</a></td>
-            <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
+                <tr>
+                    <td> ${myvar.name}</td>
+                    <td> ${myvar.sport}</td>
+                    <td> ${myvar.peopleGoing}</td>
+                    <td> ${myvar.minNeeded}</td>
+                    <td> ${myvar.day}</td>
+                    <td> ${myvar.description}</td>
+
+                    <td><a href="/attendees?id=${myvar.eventId}">Attendees</a></td>
+
+                    <!-- This is passing the parameters onto the page to show that info -->
+
+                    <td><a href="update?id=${myvar.eventId}&peopleGoing=${myvar.peopleGoing}
         &latitude=${myvar.latitude}&longitude=${myvar.longitude}&name=${myvar.name}
         &sport=${myvar.sport}&address=${myvar.address}&description=${myvar.description}&time=${myvar.time}
         "> + </a></td>
+
         </tr>
 
     </c:forEach></table>
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
-<form action="/listofsports">
-    <input type="submit" value="View Sport List">
-</form>
+
+
     </div>
 
 </div>
