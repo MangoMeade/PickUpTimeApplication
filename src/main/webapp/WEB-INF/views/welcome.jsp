@@ -660,7 +660,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="w3l-footer">
     <div class="container">
         <div class="copyright-agile">
-            <p>&copy; 2017 Surfer. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+            <p>&copy; 2017. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
         </div>
     </div>
 </div>

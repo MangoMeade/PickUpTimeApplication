@@ -60,7 +60,7 @@ public class LoginController {
        //if username and password match in the database it will go to list of sports
         boolean isValid = userDao.isValid(username, password);
         String url = "redirect:loginfailed";
-        if (isValid) {//has account or authemticated
+        if (isValid) {//has account or authenticated
             //add to session
             //Adds a cookie to keep the user logged in and extracts your information
             Cookie usernameCookie = new Cookie("username", username);

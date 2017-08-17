@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "userEvents", schema = "pickupdb", catalog = "")
 public class UserEventsEntity {
     private int userEventscol;
-    private Integer userId;
+    private String username;
     private Integer eventId;
 
     @Id
@@ -40,13 +40,13 @@ public class UserEventsEntity {
     }
 
     @Basic
-    @Column(name = "userID", nullable = true)
-    public Integer getUserId() {
-        return userId;
+    @Column(name = "username", nullable = true)
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Basic
