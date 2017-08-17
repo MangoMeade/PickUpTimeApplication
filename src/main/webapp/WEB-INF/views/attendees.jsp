@@ -67,7 +67,7 @@
             }
 
         </style>
-        <title>ListEvents</title>
+        <title>Pick up Time</title>
 
 
         <meta charset="utf-8">
@@ -131,6 +131,11 @@
     </tr>
 </c:forEach>
 </table>
+
+        <form action="/listevents">
+            <input type="submit" value="Back">
+        </form>
+
     </div>
 </div>
 </body>

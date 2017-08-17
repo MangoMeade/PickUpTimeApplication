@@ -73,15 +73,18 @@ public class HomeController {
     }
 
     //Lists the events by showing the listevents page. Not filtered.
+
     @RequestMapping(value = "/listevents") //controller
-    //original list with no filters
+
     public ModelAndView listEvents() {
         //Explain the structure of this array list
         //calls the eventList method from HibernateEventDao
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         return new ModelAndView("listevents", "cList", eventList);
-    } // clist is the object you use to display the list
+    }
+
+    // clist is the object you use to display the list
     // eventlist is the data that is being updated (model)
 
     //The GET method means retrieve whatever information (in the form of an entity) is

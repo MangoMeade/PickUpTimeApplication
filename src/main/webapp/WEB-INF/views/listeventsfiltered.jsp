@@ -126,6 +126,9 @@ charset=ISO-8859-1">
     <input type="submit" value="Add New Event">
 </form>
 
+
+
+
     </div>
 
 </div>

@@ -110,9 +110,7 @@
         text-align: center;
 
     }
-    body {
-        background-color: red;
-    }
+
 
 </style>
 <div class="container">
@@ -136,7 +134,7 @@
 
 
                 <tr>
-                    <td> ${myvar.name}</td>
+                    <td> ${myvar.name}</td>  <!-- expression language - coming from cList-->
                     <td> ${myvar.sport}</td>
                     <td> ${myvar.peopleGoing}</td>
                     <td> ${myvar.minNeeded}</td>
