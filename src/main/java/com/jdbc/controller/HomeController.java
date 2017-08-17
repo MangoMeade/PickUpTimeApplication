@@ -74,7 +74,7 @@ public class HomeController {
     }
 
     //Lists the events by showing the listevents page. Not filtered.
-    @RequestMapping(value = "/listevents")
+    @RequestMapping(value = "/listevents") //controller
     //original list with no filters
     public ModelAndView listEvents() {
         //Explain the structure of this array list
@@ -82,7 +82,7 @@ public class HomeController {
         ArrayList<EventsEntity> eventList = eventDao.eventList();
 
         return new ModelAndView("listevents", "cList", eventList);
-    }
+    } // clist is the object you use to display the list
 
     //The GET method means retrieve whatever information (in the form of an entity) is
     // identified by the Request-URI, the POST method allows users to insert data
