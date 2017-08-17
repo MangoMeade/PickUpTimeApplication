@@ -14,11 +14,12 @@ import com.jdbc.dao.DaoEventFactory;
 import com.jdbc.dao.DaoUserFactory;
 import com.jdbc.dao.ParentEventDao;
 import com.jdbc.dao.ParentUserDao;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -37,9 +38,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/listeventsfiltered")
-    //Displays the listeventsfiltered JSP
-    //added string parameter
-    //list should be filtered, added jsp file to show filtered list
+
     public ModelAndView listEventsFiltered(@RequestParam("sport") String sport) {
 
         //Array of EventsEntity objects, calling a method from the eventdao which was then implemented in
