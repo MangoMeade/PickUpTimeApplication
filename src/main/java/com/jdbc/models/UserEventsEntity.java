@@ -12,6 +12,7 @@ public class UserEventsEntity {
     private String username;
     private int eventId;
 
+
     @Id
     @Column(name = "userEventscol", nullable = false)
     public int getUserEventscol() {

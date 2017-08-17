@@ -6,7 +6,8 @@ import org.springframework.ui.Model;
 
 import java.sql.Date;
 import java.util.ArrayList;
-
+//Declare the methdods
+//
 public interface ParentEventDao {
     public int HIBERNATE_DAO = 1;
     //Made changes to eventList method, added parameter
