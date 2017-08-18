@@ -168,7 +168,7 @@
     <form action="/addeventsuccess" method="get" novalidate>
         <p>
             <%--<h2>Add a new event.</h2>--%>
-            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="name" placeholder="Event Name" required>
             <select name="sport">
                 <option>Please choose a sport</option>
                 <option value="soccer">Soccer</option>

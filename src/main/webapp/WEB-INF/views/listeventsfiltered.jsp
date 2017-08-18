@@ -17,6 +17,58 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .table, tr, th, td {
+            /*border: 1px solid black;*/
+            border-collapse: collapse;
+            padding: 4px;
+            text-align: left;
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        .filterable {
+            margin-top: 15px;
+        }
+
+        .filterable .panel-heading .pull-right {
+            margin-top: -20px;
+        }
+
+        .filterable .filters input[disabled] {
+            background-color: transparent;
+            border: none;
+            cursor: auto;
+            box-shadow: none;
+            padding: 0;
+            height: auto;
+        }
+
+        .filterable .filters input[disabled]::-webkit-input-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]::-moz-placeholder {
+            color: #333;
+        }
+
+        .filterable .filters input[disabled]:-ms-input-placeholder {
+            color: #333;
+        }
+
+        body {
+            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
+            height: 100%;
+            margin: 0px;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+    </style>
 </head>
 
 
