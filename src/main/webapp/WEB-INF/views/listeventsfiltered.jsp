@@ -15,6 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<<<<<<< HEAD
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -72,11 +73,13 @@
 </head>
 
 
+<body>
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -99,51 +102,41 @@
     </div>
 </nav>
 
-    <meta http-equiv="Content-Type" content="text/html;
-<<style>
-    .table {
+<%--<meta http-equiv="Content-Type" content="text/html;--%>
+<%--<<style>--%>
+<%--.table {--%>
 
-</style>
-
-
+<%--</style>--%>
 
 
-charset=ISO-8859-1">
-    <title>ListEvents</title>
-<style>
-    div {
-        text-align: center;
+<%--charset=ISO-8859-1">--%>
+<%--<title>ListEvents</title>--%>
+<%--<style>--%>
+<%--div {--%>
+<%--text-align: center;--%>
 
-    }
-    body {
-        background-color: red;
-    }
+<%--}--%>
+<%--body {--%>
+<%--background-color: red;--%>
+<%--}--%>
 
-</style>
+<%--</style>--%>
+<%--<div class="container">--%>
+<%--<div class="jumbotron">--%>
+
+
+<%--</head>--%>
+
+
+<%--<meta http-equiv="Content-Type" content="text/html;--%>
+<%--<charset=ISO-8859-1">--%>
+<%--<title>ListEvents</title></head>--%>
 <div class="container">
     <div class="jumbotron">
-
-    <style>
-        body {
-            background: url("http://cdn.wallpapersafari.com/54/71/y74YHd.jpg") no-repeat center center;
-            height: 100%;
-            margin:0px;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-    </style>
-</head>
-
-
-    <meta http-equiv="Content-Type" content="text/html;
-<charset=ISO-8859-1">
-    <title>ListEvents</title></head>
-
 <h3>Events List</h3>
 
 
-        <table class="table table-bordered">
+<table class="table table-bordered">
 
 
     <tr>
@@ -177,15 +170,16 @@ charset=ISO-8859-1">
 <form action="/addevent">
     <input type="submit" value="Add New Event">
 </form>
-
-
-
-
     </div>
-
 </div>
-</body>
 
+
+<%--</div>--%>
+
+<%--</div>--%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
 
 
 </html>
